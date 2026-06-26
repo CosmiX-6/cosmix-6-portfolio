@@ -29,7 +29,7 @@ Marketing Science Data Scientist, ML Platform Engineer.
 - Time-series forecasting (EOQ prediction, multi-horizon, daily scoring)
 - Marketing mix modeling (MMM, Hill saturation, adstock, scenario planning)
 - Propensity modeling (account, lead, opportunity scoring)
-- Multi-touch attribution (Markov Chain MTA, Hidden Markov Model MTA)
+- Multi-touch attribution (Markov Chain MTA with firmographic and campaign enrichment)
 - Feature engineering at 1000+ column scale
 - SHAP model explainability and interpretability
 - PySpark distributed computing on GCP Dataproc
@@ -59,13 +59,14 @@ Central projection system integrating 8+ ML model families into daily pipeline a
 projections. Two-layer architecture: bottom-up propensity aggregation + top-down macro forecast scaling.
 
 ### Multi-Touch Attribution (P18)
-Markov Chain MTA (removal-effect attribution) + Hidden Markov Model MTA enriched with firmographic
-and campaign metadata. Daily attribution across marketing touchpoints.
+Markov Chain MTA using removal-effect attribution — customer journeys as Markov states, transition
+matrix from historical paths, enriched with firmographic and campaign metadata. Daily attribution
+across marketing touchpoints.
 
 ## Tech Stack
 
 Python, XGBoost, Ridge Regression, BayesianRidge, scikit-learn, SHAP, STL, SARIMAX, Markov Chain,
-Hidden Markov Models, L-BFGS-B, PySpark, Spark SQL, BigQuery, GCP, GCP Dataproc, Parquet,
+L-BFGS-B, PySpark, Spark SQL, BigQuery, GCP, GCP Dataproc, Parquet,
 Apache Airflow, Splink, BERT Embeddings, pandas, NumPy, statsmodels, SciPy, joblib
 
 ## Education

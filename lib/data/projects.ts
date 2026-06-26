@@ -51,7 +51,7 @@ export const projects: Project[] = [
     problem:
       "Revenue teams at B2B SaaS companies needed reliable end-of-quarter pipeline and booking forecasts—starting from day one of the quarter—to drive planning, capacity allocation, and executive reporting. Simple heuristics couldn't capture seasonality, pacing dynamics, or macroeconomic context.",
     what:
-      "Built and evolved the core end-of-quarter (EOQ) forecasting system, growing it from a QTD-based heuristic into a multi-layer ML platform. The system produces daily forecasts across four quarter horizons using XGBoost with leakage-safe GroupShuffleSplit validation. Enhancements over 4 years include: time-decay and average-index adjustment layers, Error Correction Index for calendar-residual correction, monthly forecasting layer (m-1 through m-5), SHAP explainability with dual-algorithm contribution logging, and a configurable multi-model framework supporting 30+ parameters for algorithm selection, feature groups, and ensemble composition.",
+      "Built and evolved the core end-of-quarter (EOQ) forecasting system, growing it from a QTD-based heuristic into a multi-layer ML platform. The system produces daily forecasts across four quarter horizons using XGBoost with leakage-safe GroupShuffleSplit validation. Enhancements over 4 years include: time-decay and average-index adjustment layers, SHAP explainability with dual-algorithm contribution logging, and a configurable multi-model framework supporting 30+ parameters for algorithm selection, feature groups, and ensemble composition.",
     impact:
       "Reduced booking model MAPE by ~52% through forecast category feature engineering. System delivers daily pipeline and booking forecasts used by enterprise revenue teams for EOQ planning and boardroom reporting.",
     metrics: [
@@ -113,11 +113,11 @@ export const projects: Project[] = [
     featured: true,
     role: "Primary Owner",
     tagline:
-      "Two-tier probabilistic attribution: Markov Chain removal-effect + Hidden Markov Model enriched with firmographic and campaign metadata.",
+      "Probabilistic multi-touch attribution using Markov Chain removal-effect modeling — crediting each channel based on its actual influence on conversion probability across the full customer journey.",
     problem:
       "Marketing teams were using first-touch and last-touch attribution — both systematically over-crediting one touchpoint and ignoring the influence of others. They needed statistically-grounded attribution to justify channel investment and understand which audience-campaign combinations drove conversion at each funnel stage.",
     what:
-      "Built a dual-approach attribution system. Tier 1: Markov Chain MTA — customer journeys modeled as Markov states, transition matrix built from historical paths, attribution computed via removal effect (drop in conversion probability when a channel is removed). Tier 2: Hidden Markov Model MTA — enhanced with firmographic attributes (region, industry, company size, persona) and campaign-level metadata (channel type, content format, offer type, message theme), enabling attribution of not just which channels work but why specific audience × campaign combinations are effective at each funnel stage.",
+      "Built a Markov Chain MTA system — customer journeys modeled as Markov states, transition matrix built from historical paths, attribution computed via removal effect (drop in conversion probability when a channel is removed). Enriched with firmographic attributes (region, industry, company size, persona) and campaign-level metadata (channel type, content format, offer type, message theme), enabling attribution of not just which channels work but why specific audience × campaign combinations are effective at each funnel stage.",
     impact:
       "Replaced rule-based first/last-touch attribution with daily probabilistic multi-touch attribution. Enabled stage-by-stage conversion credit by channel, audience segment, and campaign type — giving marketing teams evidence-backed answers to budget allocation questions.",
     metrics: [
@@ -126,10 +126,10 @@ export const projects: Project[] = [
       { value: "6", label: "Funnel Stages Covered" },
     ],
     techStack: [
-      "Python", "Markov Chain", "Hidden Markov Models", "scikit-learn", "BigQuery",
+      "Python", "Markov Chain", "scikit-learn", "BigQuery",
     ],
     tags: [
-      "Multi-Touch Attribution", "Markov Chain", "HMM", "Marketing Attribution",
+      "Multi-Touch Attribution", "Markov Chain", "Marketing Attribution",
       "Firmographic Enrichment", "Funnel Analytics",
     ],
   },

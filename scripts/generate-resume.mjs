@@ -300,11 +300,10 @@ const html = `<!DOCTYPE html>
     <ul class="bullets">
       <li>Built the Revenue Forecasting Platform from a QTD heuristic through a production multi-layer XGBoost EOQ system with SHAP explainability and daily scoring across 4 quarter horizons</li>
       <li>Architected the Pipeline Projection Engine integrating 8+ ML model families into daily current and forward-quarter projections via a two-layer bottom-up and macro-scaling architecture</li>
-      <li>Built Markov Chain and Hidden Markov Model multi-touch attribution with firmographic and campaign metadata enrichment for daily touchpoint-level attribution</li>
+      <li>Built Markov Chain multi-touch attribution enriched with firmographic and campaign metadata for daily touchpoint-level attribution across funnel stages</li>
       <li>Built account, lead, opportunity, and demand generation propensity models as a four-model scoring suite with daily production scoring and SHAP-based feature attribution</li>
-      <li>Rewrote the PySpark revenue metrics pipeline using broadcast joins, filter pushdown, and window function optimization, cutting end-to-end runtime from approximately 1 day to under 3 minutes</li>
+      <li>Migrated revenue metrics pipeline from pandas to distributed PySpark, resolving critical implementation bugs and improving pipeline reliability at scale</li>
       <li>Reduced modeling pipeline runtime from 5-6 hours to 1 hour via joblib parallelization, processing 30+ customer accounts concurrently</li>
-      <li>Delivered automated mailer report system end-to-end: HTML/Handlebars templating, REST API integration, Airflow DAG, and PDF conversion pipeline</li>
     </ul>
   </div>
 </div>
@@ -317,7 +316,7 @@ const html = `<!DOCTYPE html>
     <div class="proj-card">
       <div class="proj-name">Revenue Forecasting Platform</div>
       <div class="proj-tech">XGBoost, Ridge, STL, SHAP, SARIMAX, BigQuery, GCP Dataproc</div>
-      <div class="proj-desc">Multi-layer EOQ system predicting pipeline and booking outcomes at daily frequency across 4 quarter horizons. Integrates time-decay adjustment, average-index fallback, Error Correction Index, monthly layer (m-1 through m-5), and dual-algorithm SHAP explainability. Delivered ~52% reduction in booking model MAPE.</div>
+      <div class="proj-desc">Multi-layer EOQ system predicting pipeline and booking outcomes at daily frequency across 4 quarter horizons. Integrates time-decay adjustment, average-index fallback, and dual-algorithm SHAP explainability. Delivered ~52% reduction in booking model MAPE.</div>
     </div>
 
     <div class="proj-card">
@@ -334,8 +333,8 @@ const html = `<!DOCTYPE html>
 
     <div class="proj-card">
       <div class="proj-name">Multi-Touch Attribution System</div>
-      <div class="proj-tech">Markov Chain, Hidden Markov Models, Python, pandas, scikit-learn, BigQuery</div>
-      <div class="proj-desc">Two-tier probabilistic attribution system combining Markov Chain removal-effect modeling with Hidden Markov Model sequencing enriched by firmographic and campaign metadata. Computes per-channel contribution by simulating all conversion paths, enabling cross-channel budget allocation and daily marketing ROI attribution.</div>
+      <div class="proj-tech">Markov Chain, Python, pandas, scikit-learn, BigQuery</div>
+      <div class="proj-desc">Probabilistic attribution system using Markov Chain removal-effect modeling — customer journeys represented as Markov states, transition matrix built from historical paths, enriched with firmographic and campaign metadata to explain which audience-campaign combinations drive conversion at each funnel stage.</div>
     </div>
 
   </div>
@@ -352,7 +351,7 @@ const html = `<!DOCTYPE html>
       </tr>
       <tr>
         <td class="sk">Machine Learning</td>
-        <td class="sv">XGBoost, scikit-learn Pipelines, BayesianRidge, Ridge, LightGBM, CatBoost, Markov Chain, Hidden Markov Models</td>
+        <td class="sv">XGBoost, scikit-learn Pipelines, BayesianRidge, Ridge, LightGBM, CatBoost, Markov Chain</td>
       </tr>
       <tr>
         <td class="sk">Statistical Modeling</td>

@@ -26,7 +26,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Feature Selection", level: "Expert", years: "4+", category: "ML" },
       { name: "Rare Event Classification", level: "Advanced", years: "3+", category: "ML" },
       { name: "Markov Chain MTA", level: "Advanced", years: "2+", category: "ML" },
-      { name: "Hidden Markov Models", level: "Advanced", years: "2+", category: "ML" },
+
       { name: "L-BFGS-B Optimization", level: "Advanced", years: "2+", category: "ML" },
       { name: "Model Stacking (LGBM/CatBoost)", level: "Intermediate", years: "2+", category: "ML" },
     ],

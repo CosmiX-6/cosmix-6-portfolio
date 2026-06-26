@@ -38,7 +38,7 @@ export const experiences: Experience[] = [
       "Built the Revenue Forecasting Platform from QTD heuristic through production XGBoost-based EOQ system",
       "Engineered the Marketing Mix Modeling Platform from research through production",
       "Designed and owned the Pipeline Projection Engine integrating 8+ ML model families",
-      "Built Markov Chain + HMM Multi-Touch Attribution system",
+      "Built Markov Chain Multi-Touch Attribution system with firmographic and campaign metadata enrichment",
       "Migrated revenue metrics pipeline from pandas to distributed PySpark, resolving critical implementation bugs",
       "Reduced modeling pipeline from 5–6 hours to 1 hour via joblib parallelization",
       "Provided guidance and mentorship to interns across the team",

@@ -86,7 +86,7 @@ export default function AboutPage() {
                 <p>
                   I took on progressively more complex system ownership — a complete rewrite of the
                   outlier handling system, a parallelized Hill Curve Transformer scaling to 1000+ features,
-                  cascade bug fixes in scenario planning, and an HMM-enhanced attribution layer.
+                  cascade bug fixes in scenario planning, and a firmographic-enriched attribution layer.
                 </p>
                 <p>
                   In December 2024, I transitioned into Revsure AI as an AI Engineer, continuing to own
