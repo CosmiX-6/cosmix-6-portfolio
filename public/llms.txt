@@ -1,0 +1,84 @@
+# Akash Sharma — Revenue AI Engineer
+# Website: https://akashsharma.dev
+# Last updated: 2026-06
+
+## Identity
+
+Akash Sharma is a Data Scientist and AI Engineer with 4+ years of full-time experience building
+production-grade revenue intelligence ML systems for B2B SaaS GTM (Go-To-Market) revenue teams.
+
+Current role: AI Engineer at Revsure AI (December 2024 – Present)
+Prior role: Data Scientist at ADA Asia (April 2022 – December 2024)
+Both roles: Same B2B SaaS Revenue Intelligence Platform — continuous product ownership.
+
+Contact: asprox124csplayer@gmail.com
+LinkedIn: https://www.linkedin.com/in/akash-sharma-01775b14a/
+GitHub: https://github.com/CosmiX-6/
+
+## Primary Positioning
+
+Revenue AI Engineer — builds production ML systems converting messy B2B CRM, campaign, and funnel
+data into business decisions: pipeline forecasts, revenue predictions, marketing attribution,
+campaign budget reallocation, and customer-facing GTM analytics.
+
+Secondary positioning: Applied ML Engineer, Senior Data Scientist, Forecasting Data Scientist,
+Marketing Science Data Scientist, GTM Data Scientist.
+
+## Core Expertise
+
+- Revenue forecasting (EOQ prediction, multi-horizon, daily scoring)
+- Marketing mix modeling (MMM/MMX, Hill saturation, adstock, scenario planning)
+- Propensity modeling (account, lead, opportunity, push/pull)
+- Multi-touch attribution (Markov Chain MTA, Hidden Markov Model MTA)
+- Statistical incrementality testing (Chi-squared, Welch t-test, DiD, CausalImpact)
+- Feature engineering at 1000+ column scale
+- SHAP model explainability
+- PySpark distributed computing
+- B2B SaaS full funnel: Lead → MQL → SAL → Opportunity → Pipeline → Booking
+
+## Verified Impact
+
+- Booking model MAPE reduced ~52% through forecast category feature engineering
+- Data computation time reduced from ~1 day to 3 minutes (>99%) via PySpark optimization
+- Modeling pipeline time reduced from 5–6 hours to 1 hour via joblib parallelization
+- 26+ production ML systems shipped end-to-end
+
+## Key Projects
+
+### Revenue Forecasting Platform (P01)
+End-of-quarter pipeline and booking forecasting system. Production ML predicting revenue outcomes
+at daily frequency across 4 quarter horizons. Layers: time-decay adjuster, average-index fallback,
+Error Correction Index, monthly forecasting layer, SHAP explainability, configurable multi-model
+framework (30+ parameters). Built and evolved 2022–present.
+
+### Marketing Mix Modeling Platform (P02)
+Full-stack MMX platform: BayesianRidge on STL-decomposed residuals, Hill Curve Transformer
+(L-BFGS-B multi-start), adstock decay, PCA attribution, response curve generation, scenario planning.
+Supports spend optimization and budget reallocation recommendations.
+
+### Pipeline Projection Engine (P08)
+Central projection system integrating 8+ ML model families into daily CQ/NQ/NQ+1/NQ+2 pipeline
+and booking projections. Two-layer architecture: bottom-up propensity aggregation + top-down macro
+forecast scaling.
+
+### Multi-Touch Attribution (P18)
+Markov Chain MTA (removal-effect attribution) + Hidden Markov Model MTA enriched with firmographic
+and campaign metadata. Daily attribution across marketing touchpoints.
+
+### Statistical Incrementality Platform (P20)
+Five methods: Conversion Lift (Chi-squared), Pre/Post Analysis (Welch t-test + FPC + Cohen's d),
+Difference-in-Differences (OLS), CausalImpact-style counterfactual, Campaign Lift (two-proportion z-test).
+All methods include mandatory minimum sample size validation.
+
+## Tech Stack
+
+Python, XGBoost, Ridge Regression, BayesianRidge, scikit-learn, SHAP, STL, SARIMAX, Markov Chain,
+Hidden Markov Models, L-BFGS-B, PySpark, Spark SQL, BigQuery, GCP, GCP Dataproc, Parquet,
+Apache Airflow, Splink, BERT Embeddings, pandas, NumPy, statsmodels, SciPy, joblib
+
+## Education
+
+- Post Graduate Program in Data Analytics — Imarticus Learning (Jan 2022)
+- Bachelor of Information Technology — T.Z.A.S.P. Pragati College (Nov 2020)
+- IBM Data Science Professional Certificate — IBM × Coursera (Oct 2021, verified via Credly)
+- 11 active IBM × Coursera ML/Data Science credentials
