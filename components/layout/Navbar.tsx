@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/work", label: "Work" },
@@ -16,61 +15,76 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50"
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-200"
       style={{
-        background: "rgba(7,7,13,0.85)",
-        backdropFilter: "blur(16px)",
-        borderBottom: "1px solid var(--color-border)",
+        background: scrolled ? "var(--color-overlay-bg)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px) saturate(1.5)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.5)" : "none",
+        borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
       }}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <nav className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        {/* Wordmark */}
         <Link
           href="/"
-          className="font-mono text-sm font-semibold tracking-widest uppercase"
-          style={{ color: "var(--color-accent)" }}
+          className="text-sm font-semibold tracking-tight transition-colors duration-150"
+          style={{ color: "var(--color-headline)" }}
         >
-          AS
+          Akash Sharma
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={cn(
-                "text-sm font-medium transition-colors duration-200",
-                pathname === l.href
-                  ? "text-accent"
-                  : "text-body hover:text-headline"
-              )}
-              style={
-                pathname === l.href
-                  ? { color: "var(--color-accent)" }
-                  : undefined
-              }
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const isActive =
+              pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href + "/"));
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="relative text-sm font-medium transition-colors duration-150 pb-px"
+                style={{ color: isActive ? "var(--color-headline)" : "var(--color-body)" }}
+              >
+                {l.label}
+                {isActive && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                    style={{ background: "var(--color-accent)" }}
+                  />
+                )}
+              </Link>
+            );
+          })}
+
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-mono px-4 py-1.5 rounded transition-all duration-200"
+            className="text-sm font-medium px-4 py-1.5 rounded-md transition-all duration-150"
             style={{
-              border: "1px solid var(--color-accent)",
-              color: "var(--color-accent)",
+              border: "1.5px solid var(--color-border)",
+              color: "var(--color-body)",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "var(--color-accent-dim)";
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.borderColor = "var(--color-accent)";
+              el.style.color = "var(--color-accent)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.borderColor = "var(--color-border)";
+              el.style.color = "var(--color-body)";
             }}
           >
             Resume ↗
@@ -79,10 +93,11 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden"
+          className="md:hidden p-1.5 rounded-md transition-colors duration-150"
           style={{ color: "var(--color-body)" }}
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -91,33 +106,37 @@ export function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden px-6 pb-6 flex flex-col gap-4"
-          style={{ borderTop: "1px solid var(--color-border)" }}
+          className="md:hidden px-6 pb-5 flex flex-col"
+          style={{
+            background: "var(--color-surface)",
+            borderBottom: "1px solid var(--color-border)",
+          }}
         >
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-sm font-medium py-2"
-              style={{
-                color:
-                  pathname === l.href
-                    ? "var(--color-accent)"
-                    : "var(--color-body)",
-              }}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const isActive = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-sm font-medium py-3 border-b transition-colors duration-150"
+                style={{
+                  color: isActive ? "var(--color-accent)" : "var(--color-body)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-mono text-center py-2 rounded"
+            className="mt-4 text-sm font-medium text-center py-2.5 rounded-md transition-colors duration-150"
             style={{
-              border: "1px solid var(--color-accent)",
-              color: "var(--color-accent)",
+              border: "1.5px solid var(--color-border)",
+              color: "var(--color-body)",
             }}
           >
             Resume ↗

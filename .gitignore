@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private career documents — never commit to public repo
+AR_SSOT_*.md
+*.ssot.md
+akash-resume-*.pdf
+
+# Claude Code agent data (memory, jobs, worktrees)
+.claude/

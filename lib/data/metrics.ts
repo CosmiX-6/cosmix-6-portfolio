@@ -22,17 +22,17 @@ export const confirmedMetrics: ConfirmedMetric[] = [
     project: "Platform Optimization",
   },
   {
-    id: "M-003",
-    value: ">99%",
-    label: "Data Processing Speed",
-    description: "Revenue metrics computation reduced from ~1 day to 3 minutes via PySpark optimization",
-    project: "PySpark Revenue Metrics",
-  },
-  {
-    id: "M-026",
-    value: "26+",
+    id: "M-025",
+    value: "25",
     label: "Production ML Systems",
     description: "End-to-end ML systems shipped across 4+ years on a single B2B SaaS platform",
     project: "Full Career",
+  },
+  {
+    id: "M-021",
+    value: "~15%",
+    label: "Pipeline Increase",
+    description: "Pipeline grew while cutting channel spend ~50% via marketing mix response curve analysis",
+    project: "Marketing Mix Modeling Platform",
   },
 ];

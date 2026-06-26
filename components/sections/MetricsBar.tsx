@@ -6,17 +6,21 @@ import { confirmedMetrics } from "@/lib/data/metrics";
 export function MetricsBar() {
   return (
     <section
-      style={{ borderTop: "1px solid var(--color-border)", borderBottom: "1px solid var(--color-border)" }}
+      style={{
+        background: "var(--color-surface)",
+        borderTop: "1px solid var(--color-border)",
+        borderBottom: "1px solid var(--color-border)",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-5xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto">
           {confirmedMetrics.map((m, i) => (
             <motion.div
               key={m.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.45 }}
               className="text-center"
             >
               <p

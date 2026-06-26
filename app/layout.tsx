@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd, personSchema } from "@/components/shared/JsonLd";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const baseUrl = "https://akashsharma.dev";
@@ -20,24 +22,24 @@ const baseUrl = "https://akashsharma.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Akash Sharma — Revenue AI Engineer",
+    default: "Akash Sharma — AI Engineer",
     template: "%s | Akash Sharma",
   },
   description:
-    "Data Scientist and AI Engineer with 4+ years building production ML systems for B2B SaaS GTM revenue teams. Expert in pipeline forecasting, marketing mix modeling, and multi-touch attribution.",
+    "AI Engineer with 4+ years building production ML systems — forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
   keywords: [
-    "Revenue AI Engineer",
+    "AI Engineer",
     "Data Scientist",
     "ML Engineer",
-    "Pipeline Forecasting",
+    "Time-Series Forecasting",
     "Marketing Mix Modeling",
     "XGBoost",
     "SHAP Explainability",
-    "B2B SaaS",
-    "GTM Analytics",
+    "Machine Learning",
     "Multi-Touch Attribution",
     "PySpark",
     "BigQuery",
+    "Applied ML",
   ],
   authors: [{ name: "Akash Sharma", url: baseUrl }],
   creator: "Akash Sharma",
@@ -45,17 +47,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    siteName: "Akash Sharma — Revenue AI Engineer",
-    title: "Akash Sharma — Revenue AI Engineer",
+    siteName: "Akash Sharma — AI Engineer",
+    title: "Akash Sharma — AI Engineer",
     description:
-      "Building production ML systems for B2B SaaS GTM teams — pipeline forecasting, marketing attribution, and revenue intelligence.",
+      "AI Engineer building production ML systems — forecasting pipelines, attribution models, and decision intelligence at scale.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Akash Sharma" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akash Sharma — Revenue AI Engineer",
+    title: "Akash Sharma — AI Engineer",
     description:
-      "4+ years building production ML systems for B2B SaaS revenue teams.",
+      "4+ years shipping production AI systems — forecasting, attribution, and ML infrastructure at scale.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -74,14 +76,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <JsonLd data={personSchema} />
       </head>
       <body className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
+        <main className="flex-1 pt-14">{children}</main>
         <Footer />
       </body>
     </html>

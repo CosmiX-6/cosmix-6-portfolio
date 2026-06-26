@@ -29,18 +29,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const domainColors: Record<string, string> = {
-  "Revenue Forecasting": "#00c2ff",
-  "Pipeline Intelligence": "#4fffcb",
-  "Marketing Science": "#c084fc",
-  "Propensity & Scoring": "#fb923c",
-  "Data Engineering": "#facc15",
-  "Platform & Infrastructure": "#94a3b8",
+  "Revenue Forecasting":    "#0EA5E9",
+  "Pipeline Intelligence":  "#6366F1",
+  "Marketing Science":      "#8B5CF6",
+  "Propensity & Scoring":   "#F59E0B",
+  "Data Engineering":       "#4F46E5",
+  "Platform & Infrastructure": "#64748B",
 };
 
 const employmentLabels: Record<string, string> = {
-  "ada-asia": "ADA Asia",
-  "revsure-ai": "Revsure AI",
-  "both": "ADA Asia → Revsure AI",
+  "ada-asia":    "ADA Asia",
+  "revsure-ai":  "Revsure AI",
+  "both":        "ADA Asia → Revsure AI",
 };
 
 export default async function ProjectPage({ params }: PageProps) {
@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: PageProps) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const accentColor = domainColors[project.domain] ?? "#4fffcb";
+  const accentColor = domainColors[project.domain] ?? "var(--color-accent)";
 
   const projectSchema = {
     "@context": "https://schema.org",
@@ -70,18 +70,18 @@ export default async function ProjectPage({ params }: PageProps) {
       <article>
         {/* Back nav */}
         <div
-          className="sticky top-16 z-30 px-6 py-3"
+          className="sticky top-14 z-30 px-6 py-3"
           style={{
-            background: "rgba(7,7,13,0.9)",
+            background: "var(--color-overlay-bg)",
             backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             borderBottom: "1px solid var(--color-border)",
           }}
         >
           <div className="max-w-4xl mx-auto">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-sm transition-colors duration-200"
-              style={{ color: "var(--color-muted)" }}
+              className="link-secondary inline-flex items-center gap-2 text-sm"
             >
               <ArrowLeft size={14} />
               Back to Work
@@ -90,23 +90,32 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
 
         {/* Header */}
-        <header className="px-6 pt-12 pb-10" style={{ borderBottom: "1px solid var(--color-border)" }}>
+        <header
+          className="px-6 pt-10 pb-10"
+          style={{ borderBottom: "1px solid var(--color-border)" }}
+        >
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap items-center gap-3 mb-5">
+            {/* Domain accent bar */}
+            <div
+              className="h-0.5 w-12 rounded-full mb-6"
+              style={{ background: accentColor }}
+            />
+
+            <div className="flex flex-wrap items-center gap-2 mb-5">
               <span
-                className="text-xs font-mono px-3 py-1.5 rounded-full"
+                className="text-xs font-mono px-2.5 py-1 rounded-md"
                 style={{
-                  background: `${accentColor}18`,
+                  background: `${accentColor}12`,
                   color: accentColor,
-                  border: `1px solid ${accentColor}33`,
+                  border: `1px solid ${accentColor}28`,
                 }}
               >
                 {project.domain}
               </span>
               <span
-                className="text-xs font-mono px-3 py-1.5 rounded-full"
+                className="text-xs font-mono px-2.5 py-1 rounded-md"
                 style={{
-                  background: "var(--color-surface)",
+                  background: "var(--color-surface-el)",
                   color: "var(--color-muted)",
                   border: "1px solid var(--color-border)",
                 }}
@@ -114,9 +123,9 @@ export default async function ProjectPage({ params }: PageProps) {
                 {employmentLabels[project.employment]}
               </span>
               <span
-                className="text-xs font-mono px-3 py-1.5 rounded-full"
+                className="text-xs font-mono px-2.5 py-1 rounded-md"
                 style={{
-                  background: "var(--color-surface)",
+                  background: "var(--color-surface-el)",
                   color: "var(--color-muted)",
                   border: "1px solid var(--color-border)",
                 }}
@@ -124,11 +133,11 @@ export default async function ProjectPage({ params }: PageProps) {
                 {project.period}
               </span>
               <span
-                className="text-xs font-mono px-2.5 py-1.5 rounded-full flex items-center gap-1"
+                className="text-xs font-mono px-2.5 py-1 rounded-md flex items-center gap-1"
                 style={{
-                  background: "rgba(79,255,203,0.08)",
-                  color: "var(--color-accent)",
-                  border: "1px solid rgba(79,255,203,0.2)",
+                  background: "var(--color-metric-dim)",
+                  color: "var(--color-metric)",
+                  border: "1px solid rgba(5,150,105,0.20)",
                 }}
               >
                 <CheckCircle2 size={11} />
@@ -138,7 +147,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
             <h1
               className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
-              style={{ color: "var(--color-headline)" }}
+              style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
             >
               {project.title}
             </h1>
@@ -149,7 +158,10 @@ export default async function ProjectPage({ params }: PageProps) {
 
             {/* Metrics row */}
             {project.metrics.length > 0 && (
-              <div className="flex flex-wrap gap-8 mt-8">
+              <div
+                className="flex flex-wrap gap-8 mt-8 pt-8"
+                style={{ borderTop: "1px solid var(--color-border)" }}
+              >
                 {project.metrics.map((m) => (
                   <div key={m.label}>
                     <p
@@ -173,11 +185,10 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12">
             {/* Main content */}
             <div className="md:col-span-2 space-y-10">
-              {/* Problem */}
               <section>
                 <h2
                   className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: accentColor }}
+                  style={{ color: "var(--color-muted)" }}
                 >
                   The Problem
                 </h2>
@@ -186,11 +197,10 @@ export default async function ProjectPage({ params }: PageProps) {
                 </p>
               </section>
 
-              {/* What was built */}
               <section>
                 <h2
                   className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: accentColor }}
+                  style={{ color: "var(--color-muted)" }}
                 >
                   What Was Built
                 </h2>
@@ -199,11 +209,10 @@ export default async function ProjectPage({ params }: PageProps) {
                 </p>
               </section>
 
-              {/* Impact */}
               <section>
                 <h2
                   className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: accentColor }}
+                  style={{ color: "var(--color-muted)" }}
                 >
                   Business Impact
                 </h2>
@@ -214,7 +223,7 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-8">
+            <div className="space-y-5">
               {/* Tech stack */}
               <div
                 className="rounded-xl p-5"
@@ -229,7 +238,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 >
                   Tech Stack
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.techStack.map((t) => (
                     <span
                       key={t}
@@ -246,7 +255,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Tags */}
+              {/* Domain tags */}
               <div
                 className="rounded-xl p-5"
                 style={{
@@ -260,7 +269,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 >
                   Domain Tags
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((t) => (
                     <span
                       key={t}
@@ -300,16 +309,10 @@ export default async function ProjectPage({ params }: PageProps) {
                     { label: "Employment", value: employmentLabels[project.employment] },
                   ].map(({ label, value }) => (
                     <div key={label}>
-                      <dt
-                        className="text-xs font-mono"
-                        style={{ color: "var(--color-muted)" }}
-                      >
+                      <dt className="text-xs font-mono" style={{ color: "var(--color-muted)" }}>
                         {label}
                       </dt>
-                      <dd
-                        className="text-sm mt-0.5"
-                        style={{ color: "var(--color-headline)" }}
-                      >
+                      <dd className="text-sm mt-0.5" style={{ color: "var(--color-headline)" }}>
                         {value}
                       </dd>
                     </div>
@@ -328,15 +331,13 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="max-w-4xl mx-auto flex justify-between items-center">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-sm transition-colors duration-200"
-              style={{ color: "var(--color-muted)" }}
+              className="link-secondary inline-flex items-center gap-2 text-sm"
             >
               <ArrowLeft size={14} /> All Projects
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm transition-colors duration-200"
-              style={{ color: "var(--color-accent)" }}
+              className="link-accent inline-flex items-center gap-2 text-sm font-medium"
             >
               Get in Touch <ArrowUpRight size={14} />
             </Link>

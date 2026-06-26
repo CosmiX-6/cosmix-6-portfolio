@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Akash Sharma's career story — from building the first ML models on a Revenue Intelligence Platform to owning a full-stack of forecasting, attribution, and GTM intelligence systems.",
+    "Akash Sharma's career story — from building the first ML models from scratch to owning a full production stack of forecasting, attribution, and decision intelligence systems.",
 };
 
 const cvSchema = {
@@ -16,9 +16,9 @@ const cvSchema = {
   mainEntity: {
     "@type": "Person",
     name: "Akash Sharma",
-    jobTitle: "Revenue AI Engineer",
+    jobTitle: "AI Engineer",
     description:
-      "Data Scientist and AI Engineer with 4+ years building production ML systems for B2B SaaS GTM revenue teams.",
+      "AI Engineer with 4+ years building production ML systems — forecasting pipelines, attribution models, and decision intelligence at scale.",
     worksFor: { "@type": "Organization", name: "Revsure AI" },
     alumniOf: [
       { "@type": "Organization", name: "ADA Asia" },
@@ -33,76 +33,111 @@ export default function AboutPage() {
       <JsonLd data={cvSchema} />
       <div className="min-h-screen">
         {/* Header */}
-        <section className="pt-16 pb-12 px-6 grid-bg" style={{ borderBottom: "1px solid var(--color-border)" }}>
+        <section
+          className="pt-14 pb-10 px-6"
+          style={{ borderBottom: "1px solid var(--color-border)" }}
+        >
           <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-xs tracking-widest uppercase mb-3" style={{ color: "var(--color-accent)" }}>
+            <p
+              className="font-mono text-xs tracking-widest uppercase mb-3"
+              style={{ color: "var(--color-accent)" }}
+            >
               About
             </p>
-            <h1 className="text-4xl font-bold mb-5" style={{ color: "var(--color-headline)" }}>
+            <h1
+              className="text-3xl font-bold mb-2 tracking-tight"
+              style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
+            >
               Akash Sharma
             </h1>
-            <p className="text-xl font-medium mb-4" style={{ color: "var(--color-body)" }}>
-              Revenue AI Engineer · Applied ML · B2B SaaS GTM Intelligence
+            <p className="text-sm font-medium mb-4" style={{ color: "var(--color-muted)" }}>
+              AI Engineer · Applied ML · Production Systems
             </p>
             <p className="text-base leading-relaxed max-w-2xl" style={{ color: "var(--color-body)" }}>
-              I build production ML systems that convert messy CRM, campaign, and funnel data
-              into business decisions — pipeline forecasts, revenue predictions, marketing attribution,
-              campaign budget reallocation, and customer-facing analytics.
+              I build production AI systems that convert complex, high-dimensional data into
+              reliable business decisions — forecasting, attribution, experimentation, and
+              ML infrastructure that companies can depend on.
             </p>
           </div>
         </section>
 
-        <div className="px-6 py-14">
-          <div className="max-w-4xl mx-auto space-y-16">
+        <div className="px-6 py-12">
+          <div className="max-w-4xl mx-auto space-y-14">
 
             {/* Career narrative */}
             <section>
-              <h2 className="font-mono text-xs tracking-widest uppercase mb-6" style={{ color: "var(--color-accent)" }}>
+              <h2
+                className="font-mono text-xs tracking-widest uppercase mb-6"
+                style={{ color: "var(--color-muted)" }}
+              >
                 Career Narrative
               </h2>
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
+              <div className="space-y-4 text-base leading-relaxed max-w-2xl" style={{ color: "var(--color-body)" }}>
                 <p>
-                  My strongest story is not &ldquo;I trained models.&rdquo; It is: I build production ML
-                  systems that convert messy B2B CRM, campaign, and funnel data into business
-                  decisions.
+                  My strongest story is not &ldquo;I trained models.&rdquo; It is: I build production AI
+                  systems that convert complex data into decisions — ones companies can act on at scale.
                 </p>
                 <p>
-                  Starting in April 2022, I joined a team building a B2B SaaS Revenue Intelligence Platform,
-                  initially as a Data Scientist. Over 2.5 years I built the foundational platform
-                  infrastructure — the Pipeline Projection Engine, propensity models, multi-touch attribution,
-                  marketing mix modeling, statistical incrementality testing, process automation, and the
-                  first version of the Macro Forecast Model.
+                  Starting in April 2022, I joined a team building an enterprise SaaS intelligence platform
+                  as a Data Scientist. Over 2.5 years I built foundational ML infrastructure from scratch
+                  — a pipeline projection engine, propensity models, multi-touch attribution, marketing mix
+                  modeling, statistical incrementality testing, and the first version of a macro forecast model.
                 </p>
                 <p>
-                  I took on progressively more complex modeling ownership — a complete rewrite of the
-                  outlier handling system, a parallelized Hill Curve Transformer for 1000+ feature scale,
-                  a scenario planner cascade bug fix, and an HMM-enhanced attribution layer.
+                  I took on progressively more complex system ownership — a complete rewrite of the
+                  outlier handling system, a parallelized Hill Curve Transformer scaling to 1000+ features,
+                  cascade bug fixes in scenario planning, and an HMM-enhanced attribution layer.
                 </p>
                 <p>
-                  In December 2024, I transitioned directly into Revsure AI as an AI Engineer, continuing
-                  to own and evolve the same platform systems — reducing booking model MAPE by ~52%,
-                  shipping forecast explainability infrastructure, building the configurable multi-model
-                  framework, and fixing production-critical MMX edge cases.
+                  In December 2024, I transitioned into Revsure AI as an AI Engineer, continuing to own
+                  and evolve the same platform — reducing forecast MAPE by ~52%, shipping explainability
+                  infrastructure, building a configurable multi-model framework, and resolving
+                  production-critical edge cases at scale.
                 </p>
               </div>
             </section>
 
             {/* Experience */}
             <section>
-              <h2 className="font-mono text-xs tracking-widest uppercase mb-8" style={{ color: "var(--color-accent)" }}>
+              <h2
+                className="font-mono text-xs tracking-widest uppercase mb-8"
+                style={{ color: "var(--color-muted)" }}
+              >
                 Experience
               </h2>
               <div className="space-y-10">
                 {experiences.map((exp) => (
-                  <div key={exp.company} className="relative pl-5" style={{ borderLeft: `2px solid ${exp.type === "current" ? "var(--color-accent)" : "var(--color-border)"}` }}>
+                  <div
+                    key={exp.company}
+                    className="relative pl-5"
+                    style={{
+                      borderLeft: `2px solid ${
+                        exp.type === "current"
+                          ? "var(--color-accent)"
+                          : "var(--color-border)"
+                      }`,
+                    }}
+                  >
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div>
                         <div className="flex items-center gap-3 mb-1">
-                          <h3 className="text-lg font-semibold" style={{ color: "var(--color-headline)" }}>
+                          <h3
+                            className="text-lg font-semibold"
+                            style={{ color: "var(--color-headline)" }}
+                          >
                             {exp.role}
                           </h3>
                           {exp.type === "current" && (
-                            <span className="text-xs font-mono px-2 py-0.5 rounded-full" style={{ background: "rgba(79,255,203,0.12)", color: "var(--color-accent)", border: "1px solid rgba(79,255,203,0.25)" }}>
+                            <span
+                              className="text-xs font-mono px-2 py-0.5 rounded-full"
+                              style={{
+                                background: "var(--color-accent-dim)",
+                                color: "var(--color-accent)",
+                                border: "1px solid var(--color-accent)",
+                                borderColor: "var(--color-accent)",
+                                opacity: 1,
+                              }}
+                            >
                               Current
                             </span>
                           )}
@@ -112,17 +147,32 @@ export default function AboutPage() {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-mono" style={{ color: "var(--color-muted)" }}>{exp.period}</p>
-                        <p className="text-xs font-mono" style={{ color: "var(--color-muted)" }}>{exp.duration}</p>
+                        <p className="text-sm font-mono" style={{ color: "var(--color-muted)" }}>
+                          {exp.period}
+                        </p>
+                        <p className="text-xs font-mono" style={{ color: "var(--color-muted)" }}>
+                          {exp.duration}
+                        </p>
                       </div>
                     </div>
-                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-body)" }}>
+                    <p
+                      className="text-sm leading-relaxed mb-4"
+                      style={{ color: "var(--color-body)" }}
+                    >
                       {exp.context}
                     </p>
                     <ul className="space-y-2">
                       {exp.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-2 text-sm" style={{ color: "var(--color-body)" }}>
-                          <CheckCircle2 size={14} className="mt-0.5 shrink-0" style={{ color: "var(--color-accent)" }} />
+                        <li
+                          key={h}
+                          className="flex items-start gap-2 text-sm"
+                          style={{ color: "var(--color-body)" }}
+                        >
+                          <CheckCircle2
+                            size={13}
+                            className="mt-0.5 shrink-0"
+                            style={{ color: "var(--color-accent)" }}
+                          />
                           {h}
                         </li>
                       ))}
@@ -134,26 +184,45 @@ export default function AboutPage() {
 
             {/* Education */}
             <section>
-              <h2 className="font-mono text-xs tracking-widest uppercase mb-8" style={{ color: "var(--color-accent)" }}>
+              <h2
+                className="font-mono text-xs tracking-widest uppercase mb-8"
+                style={{ color: "var(--color-muted)" }}
+              >
                 Education
               </h2>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-5">
                 {education.map((edu) => (
                   <div
                     key={edu.institution}
                     className="rounded-xl p-5"
-                    style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
+                    style={{
+                      background: "var(--color-surface)",
+                      border: "1px solid var(--color-border)",
+                    }}
                   >
-                    <p className="text-sm font-semibold mb-1" style={{ color: "var(--color-headline)" }}>
+                    <p
+                      className="text-sm font-semibold mb-1"
+                      style={{ color: "var(--color-headline)" }}
+                    >
                       {edu.credential}
                     </p>
-                    <p className="text-sm" style={{ color: "var(--color-body)" }}>{edu.institution}</p>
+                    <p className="text-sm" style={{ color: "var(--color-body)" }}>
+                      {edu.institution}
+                    </p>
                     <p className="text-xs font-mono mt-1" style={{ color: "var(--color-muted)" }}>
                       {edu.period} · {edu.location}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {edu.skills.slice(0, 5).map((s) => (
-                        <span key={s} className="text-xs font-mono px-2 py-0.5 rounded" style={{ background: "var(--color-surface-el)", color: "var(--color-muted)" }}>
+                        <span
+                          key={s}
+                          className="text-xs font-mono px-2 py-0.5 rounded"
+                          style={{
+                            background: "var(--color-surface-el)",
+                            color: "var(--color-muted)",
+                            border: "1px solid var(--color-border)",
+                          }}
+                        >
                           {s}
                         </span>
                       ))}
@@ -165,7 +234,10 @@ export default function AboutPage() {
 
             {/* Certifications */}
             <section>
-              <h2 className="font-mono text-xs tracking-widest uppercase mb-6" style={{ color: "var(--color-accent)" }}>
+              <h2
+                className="font-mono text-xs tracking-widest uppercase mb-6"
+                style={{ color: "var(--color-muted)" }}
+              >
                 Verified Credentials
               </h2>
               <p className="text-sm mb-6" style={{ color: "var(--color-muted)" }}>
@@ -176,11 +248,21 @@ export default function AboutPage() {
                   <div
                     key={cert.name}
                     className="flex items-start gap-3 rounded-lg p-4"
-                    style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
+                    style={{
+                      background: "var(--color-surface)",
+                      border: "1px solid var(--color-border)",
+                    }}
                   >
-                    <CheckCircle2 size={14} className="mt-0.5 shrink-0" style={{ color: "var(--color-accent)" }} />
+                    <CheckCircle2
+                      size={13}
+                      className="mt-0.5 shrink-0"
+                      style={{ color: "var(--color-accent)" }}
+                    />
                     <div>
-                      <p className="text-sm font-medium leading-snug" style={{ color: "var(--color-headline)" }}>
+                      <p
+                        className="text-sm font-medium leading-snug"
+                        style={{ color: "var(--color-headline)" }}
+                      >
                         {cert.name}
                       </p>
                       <p className="text-xs font-mono mt-0.5" style={{ color: "var(--color-muted)" }}>
@@ -193,17 +275,20 @@ export default function AboutPage() {
             </section>
 
             {/* CTA */}
-            <div className="flex flex-wrap gap-4 pt-4" style={{ borderTop: "1px solid var(--color-border)" }}>
+            <div
+              className="flex flex-wrap gap-4 pt-4"
+              style={{ borderTop: "1px solid var(--color-border)" }}
+            >
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 text-sm font-medium"
+                className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150"
                 style={{ color: "var(--color-accent)" }}
               >
                 View my work <ArrowUpRight size={14} />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium"
+                className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-150"
                 style={{ color: "var(--color-body)" }}
               >
                 Get in touch →

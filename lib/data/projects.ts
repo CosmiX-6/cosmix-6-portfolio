@@ -133,39 +133,6 @@ export const projects: Project[] = [
       "Firmographic Enrichment", "Funnel Analytics",
     ],
   },
-  {
-    id: "P20",
-    slug: "statistical-incrementality-lift-analysis",
-    title: "Statistical Incrementality & Lift Analysis",
-    domain: "Marketing Science",
-    tier: 1,
-    employment: "ada-asia",
-    period: "2022 – 2024",
-    status: "Production",
-    featured: true,
-    role: "Primary Owner",
-    tagline:
-      "Five-method statistical testing platform to measure whether marketing campaigns genuinely cause conversion uplift.",
-    problem:
-      "Attribution models showed correlation but couldn't answer 'did this campaign actually cause an uplift?' Marketing teams needed statistically-validated evidence to defend spend decisions and identify which interventions had genuine causal impact.",
-    what:
-      "Built a comprehensive incrementality platform supporting five distinct statistical methods: (1) Conversion Lift Analysis via Chi-squared test on test/control groups. (2) Pre/Post Analysis with Welch t-test, Finite Population Correction, and Cohen's d effect size. (3) Difference-in-Differences via OLS regression isolating true incremental lift from baseline trends. (4) CausalImpact-style multi-variate analysis — time-series model trained on pre-period generates counterfactual, actual vs. counterfactual gap computed with Bayesian significance. (5) Campaign Lift Analysis using two-proportion z-test. All methods include mandatory minimum sample size validation before reporting.",
-    impact:
-      "Enabled statistically-backed campaign measurement across five frameworks. Teams could distinguish genuine causal uplift from coincidental correlation, with significance flags understandable to non-statistical business stakeholders.",
-    metrics: [
-      { value: "5", label: "Statistical Methods" },
-      { value: "100%", label: "Sample Size Validated" },
-      { value: "Bayesian", label: "Significance Language" },
-    ],
-    techStack: [
-      "Python", "SciPy", "statsmodels", "OLS Regression", "Chi-squared",
-      "Welch t-test", "BigQuery",
-    ],
-    tags: [
-      "Causal Inference", "A/B Testing", "Difference-in-Differences",
-      "CausalImpact", "Conversion Lift", "Statistical Significance",
-    ],
-  },
 
   // ── PIPELINE INTELLIGENCE ──────────────────────────────
   {
@@ -177,7 +144,7 @@ export const projects: Project[] = [
     employment: "ada-asia",
     period: "Apr 2022 – Dec 2024",
     status: "Production",
-    featured: false,
+    featured: true,
     role: "Primary Owner",
     tagline:
       "Central projection system integrating 8+ ML model families into a single daily revenue forecast across four quarter horizons.",
@@ -329,32 +296,6 @@ export const projects: Project[] = [
     tags: ["Opportunity Scoring", "Propensity Modeling", "Pipeline Intelligence", "CRM Analytics"],
   },
   {
-    id: "P12",
-    slug: "opportunity-push-pull-models",
-    title: "Opportunity Push & Pull Models",
-    domain: "Propensity & Scoring",
-    tier: 1,
-    employment: "ada-asia",
-    period: "2022 – 2024",
-    status: "Production",
-    featured: false,
-    role: "Primary Owner",
-    tagline:
-      "Two-stage ML system predicting close-date slippage (push) and acceleration (pull) to produce risk-adjusted pipeline estimates.",
-    problem:
-      "Pipeline estimates based only on assigned close dates systematically over- or under-projected because opportunities frequently slipped to later quarters or accelerated into earlier ones.",
-    what:
-      "Two-stage architecture: (1) Movement Prediction Model — XGBoost Classifier predicting whether a close date will change at all. (2) Transition Prediction Model — predicts which quarter the opportunity moves to, conditional on movement. Pull contribution computed as P(movement) × P(Qb → Qa) summed across all source quarters. Trained on historical CRM snapshot close-date transition records.",
-    impact:
-      "Produced risk-adjusted pipeline availability estimates accounting for close-date dynamics, replacing static assigned-close-date aggregations.",
-    metrics: [
-      { value: "2-Stage", label: "Model Architecture" },
-      { value: "4", label: "Quarter Transitions Modeled" },
-    ],
-    techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
-    tags: ["Pipeline Movement", "Close Date Prediction", "Risk Adjustment", "CRM Analytics"],
-  },
-  {
     id: "P24",
     slug: "account-propensity-x-month",
     title: "Account Propensity X Month",
@@ -424,52 +365,6 @@ export const projects: Project[] = [
     metrics: [],
     techStack: ["Python", "scikit-learn", "BigQuery"],
     tags: ["Statistical Forecasting", "Average Index", "Early-Quarter Stability", "Revenue Forecasting"],
-  },
-  {
-    id: "P01D",
-    slug: "error-correction-index",
-    title: "Error Correction Index (ECI)",
-    domain: "Revenue Forecasting",
-    tier: 1,
-    employment: "revsure-ai",
-    period: "Dec 2024 – Present",
-    status: "Production",
-    featured: false,
-    role: "Primary Owner",
-    tagline:
-      "Residual correction layer modeling calendar-driven systematic forecast errors to reduce recurrent bias.",
-    problem:
-      "The base forecast had systematic, calendar-driven residuals — consistent over- or under-prediction at specific points in the quarter — not captured by the main model features.",
-    what:
-      "Built an Error Correction Index layer that models the residual between base forecast and actual, using calendar features (week-of-quarter, month-of-quarter, day-of-week) as predictors. Trained on historical residuals and applied as a post-processing correction to the main forecast output.",
-    impact:
-      "Reduced systematic calendar-driven forecast bias, improving accuracy at structurally challenging points in the quarter.",
-    metrics: [],
-    techStack: ["Python", "Ridge Regression", "scikit-learn", "BigQuery"],
-    tags: ["Error Correction", "Residual Modeling", "Calendar Features", "Revenue Forecasting"],
-  },
-  {
-    id: "P01E",
-    slug: "monthly-forecasting-layer",
-    title: "Monthly Forecasting Layer",
-    domain: "Revenue Forecasting",
-    tier: 1,
-    employment: "revsure-ai",
-    period: "Dec 2024 – Present",
-    status: "Production",
-    featured: false,
-    role: "Primary Owner",
-    tagline:
-      "Disaggregates quarterly EOQ forecasts into monthly breakdown targets (m-1 through m-5) for operational planning.",
-    problem:
-      "Revenue and operations teams plan monthly but the base system produced quarterly forecasts. Monthly breakdowns were manual and inconsistent.",
-    what:
-      "Built a monthly forecasting layer using m-1 through m-5 lag features (prior month performance), month-end target construction, and normalization ensuring monthly values sum to the quarterly total with no negative forecasts.",
-    impact:
-      "Enabled automated monthly forecast breakdowns aligned to quarterly totals, supporting monthly revenue planning and reporting.",
-    metrics: [{ value: "m-1–m-5", label: "Monthly Horizons" }],
-    techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
-    tags: ["Monthly Forecasting", "Revenue Planning", "Normalization", "Revenue Forecasting"],
   },
   {
     id: "P01F",
@@ -552,8 +447,8 @@ export const projects: Project[] = [
   // ── DATA ENGINEERING ────────────────────────────────────
   {
     id: "P05",
-    slug: "pyspark-revenue-metrics-optimization",
-    title: "PySpark Revenue Metrics Optimization",
+    slug: "pyspark-revenue-metrics-pipeline",
+    title: "Revenue Metrics Pipeline Migration",
     domain: "Data Engineering",
     tier: 1,
     employment: "ada-asia",
@@ -562,19 +457,19 @@ export const projects: Project[] = [
     featured: false,
     role: "Primary Owner",
     tagline:
-      "PySpark optimization reducing daily revenue metrics computation from ~1 day to 3 minutes via broadcast joins, window functions, and filter pushdown.",
+      "Migrated the revenue metrics pipeline from single-machine pandas to distributed PySpark, resolving critical implementation bugs to unblock daily ML scoring.",
     problem:
-      "Daily revenue metrics computation took ~1 day, creating a bottleneck for all downstream ML scoring and dashboard refresh pipelines.",
+      "The revenue metrics pipeline was built on single-machine pandas processing large CRM datasets — inherently unsuitable for daily production scale. A partial PySpark migration existed but had critical bugs causing incorrect metric outputs that blocked downstream ML scoring pipelines.",
     what:
-      "Profiled and rewrote the PySpark jobs: replaced shuffle-heavy joins with broadcast joins, rewrote aggregations using window functions, applied filter pushdown to minimize data reads, restructured cohort construction for partition efficiency.",
+      "Rewrote the pipeline in PySpark using broadcast joins, window function aggregations, and filter pushdown to leverage distributed execution on GCP Dataproc. Diagnosed and resolved the existing PySpark implementation bugs — including incorrect cohort boundary logic and partition misalignment — that were producing silent metric errors in production.",
     impact:
-      "Reduced data computation from ~1 day to 3 minutes (>99% reduction), unblocking daily ML scoring pipelines and enabling real-time dashboard refresh.",
+      "Delivered a correct, production-stable distributed pipeline that unblocked daily ML scoring and dashboard refresh. Replaced a fundamentally unscalable single-machine approach with distributed execution suited to the data volume.",
     metrics: [
-      { value: ">99%", label: "Compute Time Reduction" },
-      { value: "~1 day → 3 min", label: "Before vs. After" },
+      { value: "Distributed", label: "Execution Model" },
+      { value: "GCP Dataproc", label: "Infrastructure" },
     ],
     techStack: ["PySpark", "Spark SQL", "GCP Dataproc", "BigQuery", "Parquet"],
-    tags: ["PySpark", "Distributed Computing", "Query Optimization", "Data Engineering"],
+    tags: ["PySpark", "Distributed Computing", "Pipeline Migration", "Data Engineering"],
   },
   {
     id: "P03",
@@ -648,29 +543,6 @@ export const projects: Project[] = [
     ],
     techStack: ["Python", "XGBoost", "Ridge", "scikit-learn", "GroupShuffleSplit", "BigQuery", "joblib"],
     tags: ["ML Infrastructure", "Framework Design", "Reusable Components", "Standardization"],
-  },
-  {
-    id: "P21",
-    slug: "automated-mailer-report",
-    title: "Automated Mailer Report",
-    domain: "Platform & Infrastructure",
-    tier: 3,
-    employment: "ada-asia",
-    period: "2023 – 2024",
-    status: "Production",
-    featured: false,
-    role: "Primary Owner",
-    tagline:
-      "End-to-end automated report generation — Airflow DAG → API data retrieval → HTML/Handlebars template → PDF → email distribution.",
-    problem:
-      "Stakeholders received performance reports manually with inconsistent timing and formatting. Every report cycle required analyst preparation time.",
-    what:
-      "Full-stack automation built over a weekend and shipped directly to production: Airflow DAG for scheduling, API requests for data retrieval, HTML/Handlebars templating for dynamic content rendering, PDF conversion, and email distribution to stakeholder lists.",
-    impact:
-      "Eliminated manual reporting effort. Delivered consistent, scheduled performance reports to GTM stakeholders automatically.",
-    metrics: [{ value: "Weekend", label: "Build-to-Production" }],
-    techStack: ["Python", "Airflow", "HTML", "Handlebars", "PDF Conversion", "Email API"],
-    tags: ["Automation", "Reporting", "Airflow DAG", "Full-Stack", "Stakeholder Communication"],
   },
   {
     id: "P26",
