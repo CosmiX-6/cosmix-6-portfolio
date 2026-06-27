@@ -217,7 +217,7 @@ const html = `<!DOCTYPE html>
   <div class="name">Akash Sharma</div>
   <div class="title-line">AI Engineer</div>
   <div class="contact-line">
-    <span>asprox124csplayer@gmail.com</span>
+    <span>akashsharmaxxiv@gmail.com</span>
     <span class="contact-sep">|</span>
     <span>linkedin.com/in/akash-sharma-01775b14a</span>
     <span class="contact-sep">|</span>
