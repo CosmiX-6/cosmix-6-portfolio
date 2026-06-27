@@ -14,11 +14,8 @@ const fadeUp = (delay: number) => ({
 
 export function Hero() {
   return (
-    <section
-      className="relative px-6 overflow-hidden flex items-center"
-      style={{ minHeight: "calc(100vh - 56px)" }}
-    >
-      <div className="relative max-w-5xl mx-auto w-full py-16">
+    <section className="relative px-6 overflow-hidden">
+      <div className="relative max-w-5xl mx-auto w-full pt-14 pb-12">
         <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
 
           {/* Left column — text */}
@@ -183,7 +180,7 @@ export function Hero() {
             className="shrink-0 flex justify-center md:justify-end"
           >
             <div
-              className="relative w-40 h-40 rounded-full overflow-hidden"
+              className="relative w-56 h-56 rounded-full overflow-hidden"
               style={{
                 border: "2px solid var(--color-border)",
                 boxShadow: "0 0 0 8px var(--color-bg)",
@@ -193,7 +190,7 @@ export function Hero() {
                 src="/me.png"
                 alt="Akash Sharma"
                 fill
-                sizes="160px"
+                sizes="224px"
                 className="object-cover object-center"
                 priority
               />
