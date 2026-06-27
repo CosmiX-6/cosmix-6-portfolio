@@ -2,16 +2,25 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, TrendingUp, GitBranch, BarChart2, Target, Database, Server } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
 
 const domainColors: Record<string, string> = {
-  "Revenue Forecasting":    "#0EA5E9",
-  "Pipeline Intelligence":  "#6366F1",
-  "Marketing Science":      "#8B5CF6",
-  "Propensity & Scoring":   "#F59E0B",
-  "Data Engineering":       "#4F46E5",
-  "Platform & Infrastructure": "#64748B",
+  "Revenue Forecasting":       "#4F46E5",
+  "Pipeline Intelligence":     "#7C3AED",
+  "Marketing Science":         "#059669",
+  "Propensity & Scoring":      "#0891B2",
+  "Data Engineering":          "#D97706",
+  "Platform & Infrastructure": "#6B7280",
+};
+
+const domainIcons: Record<string, React.ReactNode> = {
+  "Revenue Forecasting":       <TrendingUp size={30} strokeWidth={1.5} />,
+  "Pipeline Intelligence":     <GitBranch size={30} strokeWidth={1.5} />,
+  "Marketing Science":         <BarChart2 size={30} strokeWidth={1.5} />,
+  "Propensity & Scoring":      <Target size={30} strokeWidth={1.5} />,
+  "Data Engineering":          <Database size={30} strokeWidth={1.5} />,
+  "Platform & Infrastructure": <Server size={30} strokeWidth={1.5} />,
 };
 
 interface ProjectCardProps {
@@ -21,23 +30,25 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) {
   const accentColor = domainColors[project.domain] ?? "var(--color-accent)";
+  const domainIcon = domainIcons[project.domain];
 
   if (variant === "featured") {
     return (
       <motion.div
-        whileHover={{ y: -3 }}
+        whileHover={{ y: -2 }}
         transition={{ duration: 0.18 }}
         className="relative rounded-xl overflow-hidden group h-full flex flex-col"
         style={{
           background: "var(--color-surface)",
           border: "1px solid var(--color-border)",
           boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+          transition: "box-shadow 0.2s, border-color 0.2s",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
-            "0 4px 16px rgba(0,0,0,0.08)";
+            "0 6px 20px rgba(0,0,0,0.10)";
           (e.currentTarget as HTMLDivElement).style.borderColor =
-            "var(--color-border-subtle)";
+            accentColor + "60";
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
@@ -46,8 +57,16 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
             "var(--color-border)";
         }}
       >
-        {/* Top accent line */}
-        <div className="h-0.5 w-full shrink-0" style={{ background: accentColor }} />
+        {/* Gradient header — 120px thumbnail zone */}
+        <div
+          className="h-[120px] w-full shrink-0 flex items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${accentColor}18 0%, transparent 100%)`,
+            borderBottom: `1px solid ${accentColor}20`,
+          }}
+        >
+          <span style={{ color: accentColor, opacity: 0.65 }}>{domainIcon}</span>
+        </div>
 
         <div className="p-6 flex flex-col flex-1">
           {/* Domain + period */}
@@ -115,9 +134,9 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
           <Link
             href={`/work/${project.slug}`}
             className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-150"
-            style={{ color: accentColor }}
+            style={{ color: "var(--color-accent)" }}
           >
-            View case study
+            View Case Study →
             <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -133,19 +152,33 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
       className="group rounded-lg overflow-hidden h-full flex flex-col"
       style={{
         background: "var(--color-surface)",
-        border: "1px solid var(--color-border)",
+        borderTop: "1px solid var(--color-border)",
+        borderRight: "1px solid var(--color-border)",
+        borderBottom: "1px solid var(--color-border)",
+        borderLeft: `4px solid ${accentColor}`,
         boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+        transition: "box-shadow 0.2s, border-color 0.2s",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow =
+          "0 4px 14px rgba(0,0,0,0.08)";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow =
+          "0 1px 2px rgba(0,0,0,0.03)";
       }}
     >
-      <div
-        className="h-px w-full shrink-0"
-        style={{ background: accentColor, opacity: 0.6 }}
-      />
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-3">
-          <span className="text-xs font-mono" style={{ color: accentColor }}>
-            {project.domain}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span
+              className="w-1.5 h-1.5 rounded-full shrink-0"
+              style={{ background: accentColor }}
+            />
+            <span className="text-xs font-mono" style={{ color: accentColor }}>
+              {project.domain}
+            </span>
+          </div>
           <span className="text-xs font-mono shrink-0" style={{ color: "var(--color-muted)" }}>
             {project.status}
           </span>
@@ -194,15 +227,15 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
         <Link
           href={`/work/${project.slug}`}
           className="inline-flex items-center gap-1 text-xs font-medium transition-colors duration-150"
-          style={{ color: "var(--color-muted)" }}
+          style={{ color: "var(--color-accent)" }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = accentColor)
+            ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.75")
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--color-muted)")
+            ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")
           }
         >
-          Details <ArrowUpRight size={12} />
+          View Case Study →
         </Link>
       </div>
     </motion.div>

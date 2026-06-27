@@ -53,8 +53,9 @@ export function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="relative text-sm font-medium transition-colors duration-150 pb-px"
-                style={{ color: isActive ? "var(--color-headline)" : "var(--color-body)" }}
+                aria-current={isActive ? "page" : undefined}
+                className={`relative text-sm transition-colors duration-150 pb-px ${isActive ? "font-semibold" : "font-medium"}`}
+                style={{ color: isActive ? "var(--color-accent)" : "var(--color-body)" }}
               >
                 {l.label}
                 {isActive && (
@@ -69,8 +70,7 @@ export function Navbar() {
 
           <a
             href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Akash_Sharma_Resume.pdf"
             className="text-sm font-medium px-4 py-1.5 rounded-md transition-all duration-150"
             style={{
               border: "1.5px solid var(--color-border)",
@@ -78,16 +78,18 @@ export function Navbar() {
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = "var(--color-accent-dim)";
               el.style.borderColor = "var(--color-accent)";
               el.style.color = "var(--color-accent)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = "transparent";
               el.style.borderColor = "var(--color-border)";
               el.style.color = "var(--color-body)";
             }}
           >
-            Resume ↗
+            Download Resume ↓
           </a>
         </div>
 
@@ -131,15 +133,14 @@ export function Navbar() {
           })}
           <a
             href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Akash_Sharma_Resume.pdf"
             className="mt-4 text-sm font-medium text-center py-2.5 rounded-md transition-colors duration-150"
             style={{
               border: "1.5px solid var(--color-border)",
               color: "var(--color-body)",
             }}
           >
-            Resume ↗
+            Download Resume ↓
           </a>
         </div>
       )}

@@ -6,13 +6,13 @@ import { projects, allDomains, type Domain } from "@/lib/data/projects";
 import { ProjectCard } from "@/components/shared/ProjectCard";
 
 const domainColors: Record<string, string> = {
-  "All":                    "var(--color-accent)",
-  "Revenue Forecasting":    "#0EA5E9",
-  "Pipeline Intelligence":  "#6366F1",
-  "Marketing Science":      "#8B5CF6",
-  "Propensity & Scoring":   "#F59E0B",
-  "Data Engineering":       "#4F46E5",
-  "Platform & Infrastructure": "#64748B",
+  "All":                       "var(--color-accent)",
+  "Revenue Forecasting":       "#4F46E5",
+  "Pipeline Intelligence":     "#7C3AED",
+  "Marketing Science":         "#059669",
+  "Propensity & Scoring":      "#0891B2",
+  "Data Engineering":          "#D97706",
+  "Platform & Infrastructure": "#6B7280",
 };
 
 type Filter = "All" | Domain;
@@ -73,9 +73,26 @@ export default function WorkPage() {
                   onClick={() => setActive(f)}
                   className="text-xs font-mono px-3 py-1.5 rounded-md transition-all duration-150"
                   style={{
-                    background: isActive ? `${color}14` : "var(--color-surface)",
-                    color: isActive ? color : "var(--color-muted)",
-                    border: `1px solid ${isActive ? color : "var(--color-border)"}`,
+                    background: isActive ? "var(--color-accent)" : "var(--color-surface)",
+                    color: isActive ? "#FFFFFF" : "var(--color-muted)",
+                    border: `1px solid ${isActive ? "var(--color-accent)" : "var(--color-border)"}`,
+                    fontWeight: isActive ? 600 : 400,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      const el = e.currentTarget as HTMLButtonElement;
+                      el.style.background = "var(--color-accent-dim)";
+                      el.style.color = "var(--color-accent)";
+                      el.style.borderColor = "var(--color-accent)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      const el = e.currentTarget as HTMLButtonElement;
+                      el.style.background = "var(--color-surface)";
+                      el.style.color = "var(--color-muted)";
+                      el.style.borderColor = "var(--color-border)";
+                    }
                   }}
                 >
                   {f}
@@ -94,10 +111,26 @@ export default function WorkPage() {
       {/* Project grid */}
       <section className="py-10 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs mb-6 font-mono" style={{ color: "var(--color-muted)" }}>
-            {filtered.length} project{filtered.length !== 1 ? "s" : ""}
-            {active !== "All" ? ` in ${active}` : " across all domains"}
-          </p>
+          {/* Domain count summary pills */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {allDomains.map((domain) => {
+              const count = projects.filter((p) => p.domain === domain).length;
+              const color = domainColors[domain] ?? "var(--color-accent)";
+              return (
+                <span
+                  key={domain}
+                  className="text-xs font-mono px-2.5 py-1 rounded-full"
+                  style={{
+                    background: `${color}10`,
+                    color,
+                    border: `1px solid ${color}28`,
+                  }}
+                >
+                  {domain} · {count}
+                </span>
+              );
+            })}
+          </div>
 
           <AnimatePresence mode="popLayout">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

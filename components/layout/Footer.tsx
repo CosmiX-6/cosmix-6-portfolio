@@ -95,9 +95,20 @@ export function Footer() {
           <p className="text-xs font-mono" style={{ color: "#475569" }}>
             © {year} Akash Sharma
           </p>
-          <p className="text-xs font-mono" style={{ color: "#475569" }}>
-            akashsharma.dev
-          </p>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-xs font-mono transition-colors duration-150"
+            style={{ color: "#475569", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLButtonElement).style.color = "#E2E8F0")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLButtonElement).style.color = "#475569")
+            }
+          >
+            Back to top ↑
+          </button>
         </div>
       </div>
     </footer>

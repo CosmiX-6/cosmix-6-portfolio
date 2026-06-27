@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const domainColors: Record<string, string> = {
-  "Revenue Forecasting":    "#0EA5E9",
-  "Pipeline Intelligence":  "#6366F1",
-  "Marketing Science":      "#8B5CF6",
-  "Propensity & Scoring":   "#F59E0B",
-  "Data Engineering":       "#4F46E5",
-  "Platform & Infrastructure": "#64748B",
+  "Revenue Forecasting":       "#4F46E5",
+  "Pipeline Intelligence":     "#7C3AED",
+  "Marketing Science":         "#059669",
+  "Propensity & Scoring":      "#0891B2",
+  "Data Engineering":          "#D97706",
+  "Platform & Infrastructure": "#6B7280",
 };
 
 const employmentLabels: Record<string, string> = {
@@ -49,6 +49,12 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
 
   const accentColor = domainColors[project.domain] ?? "var(--color-accent)";
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  const relatedProjects = projects
+    .filter((p) => p.domain === project.domain && p.slug !== project.slug)
+    .slice(0, 2);
 
   const projectSchema = {
     "@context": "https://schema.org",
@@ -319,6 +325,47 @@ export default async function ProjectPage({ params }: PageProps) {
                   ))}
                 </dl>
               </div>
+
+              {/* Related Projects */}
+              {relatedProjects.length > 0 && (
+                <div
+                  className="rounded-xl p-5"
+                  style={{
+                    background: "var(--color-surface)",
+                    border: "1px solid var(--color-border)",
+                  }}
+                >
+                  <h3
+                    className="font-mono text-xs tracking-widest uppercase mb-4"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    Related Projects
+                  </h3>
+                  <div className="space-y-3">
+                    {relatedProjects.map((rel) => (
+                      <Link
+                        key={rel.slug}
+                        href={`/work/${rel.slug}`}
+                        className="related-project-link block rounded-lg p-3"
+                        style={{
+                          background: "var(--color-surface-el)",
+                          border: "1px solid var(--color-border)",
+                        }}
+                      >
+                        <p
+                          className="text-xs font-semibold leading-snug mb-1"
+                          style={{ color: "var(--color-headline)" }}
+                        >
+                          {rel.title}
+                        </p>
+                        <p className="text-xs font-mono" style={{ color: "var(--color-muted)" }}>
+                          {rel.period}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -328,19 +375,62 @@ export default async function ProjectPage({ params }: PageProps) {
           className="px-6 py-8"
           style={{ borderTop: "1px solid var(--color-border)" }}
         >
-          <div className="max-w-4xl mx-auto flex justify-between items-center">
-            <Link
-              href="/work"
-              className="link-secondary inline-flex items-center gap-2 text-sm"
-            >
-              <ArrowLeft size={14} /> All Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="link-accent inline-flex items-center gap-2 text-sm font-medium"
-            >
-              Get in Touch <ArrowUpRight size={14} />
-            </Link>
+          <div className="max-w-4xl mx-auto grid grid-cols-3 items-center gap-4">
+            {/* Prev project */}
+            <div>
+              {prevProject ? (
+                <Link
+                  href={`/work/${prevProject.slug}`}
+                  className="group flex flex-col gap-0.5"
+                >
+                  <span
+                    className="inline-flex items-center gap-1 text-xs font-mono transition-colors duration-150"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    <ArrowLeft size={12} /> Prev
+                  </span>
+                  <span
+                    className="text-sm font-medium leading-snug transition-colors duration-150 group-hover:underline"
+                    style={{ color: "var(--color-headline)" }}
+                  >
+                    {prevProject.title}
+                  </span>
+                </Link>
+              ) : null}
+            </div>
+
+            {/* Center — All Projects */}
+            <div className="flex justify-center">
+              <Link
+                href="/work"
+                className="link-secondary inline-flex items-center gap-2 text-sm"
+              >
+                <ArrowLeft size={14} /> All Projects
+              </Link>
+            </div>
+
+            {/* Next project */}
+            <div className="flex justify-end text-right">
+              {nextProject ? (
+                <Link
+                  href={`/work/${nextProject.slug}`}
+                  className="group flex flex-col gap-0.5 items-end"
+                >
+                  <span
+                    className="inline-flex items-center gap-1 text-xs font-mono transition-colors duration-150"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    Next <ArrowUpRight size={12} />
+                  </span>
+                  <span
+                    className="text-sm font-medium leading-snug transition-colors duration-150 group-hover:underline"
+                    style={{ color: "var(--color-headline)" }}
+                  >
+                    {nextProject.title}
+                  </span>
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       </article>

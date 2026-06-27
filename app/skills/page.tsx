@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { skillCategories, type SkillLevel } from "@/lib/data/skills";
 import { Cpu, TrendingUp, BarChart2, Code2, Cloud, Briefcase } from "lucide-react";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Skills",
@@ -106,8 +107,9 @@ export default function SkillsPage() {
       {/* Skills grid */}
       <section className="px-6 py-12">
         <div className="max-w-5xl mx-auto space-y-12">
-          {skillCategories.map((cat) => (
-            <div key={cat.name}>
+          {skillCategories.map((cat, i) => (
+            <AnimatedSection key={cat.name} delay={i * 0.06}>
+            <div>
               {/* Category header */}
               <div className="flex items-center gap-3 mb-5">
                 <span style={{ color: "var(--color-accent)" }}>
@@ -130,7 +132,7 @@ export default function SkillsPage() {
                 {cat.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="flex items-center gap-3 rounded-lg px-4 py-3"
+                    className="skill-item flex items-center gap-3 rounded-lg px-4 py-3"
                     style={{
                       background: "var(--color-surface)",
                       border: "1px solid var(--color-border)",
@@ -163,6 +165,7 @@ export default function SkillsPage() {
                 ))}
               </div>
             </div>
+            </AnimatedSection>
           ))}
         </div>
       </section>

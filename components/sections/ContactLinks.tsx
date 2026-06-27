@@ -22,8 +22,8 @@ const contactLinks = [
   },
   {
     label: "Email",
-    value: "asprox124csplayer@gmail.com",
-    href: "mailto:asprox124csplayer@gmail.com",
+    value: "akashsharmaxxiv@gmail.com",
+    href: "mailto:akashsharmaxxiv@gmail.com",
     icon: <Mail size={20} />,
     hoverColor: "var(--color-accent)",
     description: "For detailed conversation or opportunities",

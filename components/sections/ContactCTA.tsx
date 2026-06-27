@@ -1,17 +1,38 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { LinkedinIcon } from "@/components/shared/SocialIcons";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
+
+const tiles = [
+  {
+    label: "LinkedIn",
+    sub: "linkedin.com/in/akash-sharma-01775b14a",
+    href: "https://www.linkedin.com/in/akash-sharma-01775b14a/",
+    icon: <LinkedinIcon size={20} />,
+    hoverBorder: "#0A66C2",
+  },
+  {
+    label: "GitHub",
+    sub: "github.com/CosmiX-6",
+    href: "https://github.com/CosmiX-6/",
+    icon: <GithubIcon size={20} />,
+    hoverBorder: "var(--color-headline)",
+  },
+  {
+    label: "Email",
+    sub: "akashsharmaxxiv@gmail.com",
+    href: "mailto:akashsharmaxxiv@gmail.com",
+    icon: <Mail size={20} />,
+    hoverBorder: "var(--color-accent)",
+  },
+];
 
 export function ContactCTA() {
   return (
     <section
       className="py-20 px-6"
-      style={{
-        borderTop: "1px solid var(--color-border)",
-      }}
+      style={{ borderTop: "1px solid var(--color-border)" }}
     >
       <div className="max-w-2xl mx-auto text-center">
         <motion.div
@@ -37,44 +58,41 @@ export function ContactCTA() {
             production systems end-to-end. I respond fastest on LinkedIn.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150"
-              style={{ background: "var(--color-accent)", color: "#FFFFFF" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.opacity = "0.88";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-              }}
-            >
-              Get in Touch <ArrowRight size={15} />
-            </Link>
-            <a
-              href="https://www.linkedin.com/in/akash-sharma-01775b14a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150"
-              style={{
-                border: "1.5px solid var(--color-border)",
-                color: "var(--color-body)",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.borderColor = "var(--color-accent)";
-                el.style.color = "var(--color-headline)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.borderColor = "var(--color-border)";
-                el.style.color = "var(--color-body)";
-              }}
-            >
-              <LinkedinIcon size={15} /> LinkedIn
-            </a>
+          <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3">
+            {tiles.map((tile) => (
+              <a
+                key={tile.label}
+                href={tile.href}
+                target={tile.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={tile.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                className="flex flex-col items-center gap-2 rounded-xl px-5 py-4 text-center transition-all duration-150 flex-1"
+                style={{
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-border)",
+                  minWidth: 0,
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.borderColor = tile.hoverBorder;
+                  el.style.transform = "translateY(-2px)";
+                  el.style.boxShadow = "0 4px 12px rgba(0,0,0,0.07)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.borderColor = "var(--color-border)";
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "none";
+                }}
+              >
+                <span style={{ color: "var(--color-muted)" }}>{tile.icon}</span>
+                <span className="text-sm font-semibold" style={{ color: "var(--color-headline)" }}>
+                  {tile.label}
+                </span>
+                <span className="text-xs font-mono truncate w-full" style={{ color: "var(--color-muted)" }}>
+                  {tile.sub}
+                </span>
+              </a>
+            ))}
           </div>
         </motion.div>
       </div>
