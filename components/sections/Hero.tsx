@@ -187,7 +187,7 @@ export function Hero() {
               }}
             >
               <Image
-                src="/me.png"
+                src="/akash.png"
                 alt="Akash Sharma"
                 fill
                 sizes="224px"
