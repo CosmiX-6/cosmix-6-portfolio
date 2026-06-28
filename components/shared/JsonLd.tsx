@@ -16,7 +16,7 @@ export const personSchema = {
   "@type": "Person",
   name: "Akash Sharma",
   jobTitle: "AI Engineer",
-  url: "https://akashsharma.dev",
+  url: "https://akashlabs.dev",
   sameAs: [
     "https://www.linkedin.com/in/akash-sharma-01775b14a/",
     "https://github.com/CosmiX-6/",

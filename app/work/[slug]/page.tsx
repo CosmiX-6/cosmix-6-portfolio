@@ -64,7 +64,7 @@ export default async function ProjectPage({ params }: PageProps) {
     author: {
       "@type": "Person",
       name: "Akash Sharma",
-      url: "https://akashsharma.dev",
+      url: "https://akashlabs.dev",
     },
     about: project.tags,
     keywords: [...project.techStack, ...project.tags].join(", "),

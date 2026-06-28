@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const baseUrl = "https://akashsharma.dev";
+const baseUrl = "https://akashlabs.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

@@ -223,7 +223,7 @@ const html = `<!DOCTYPE html>
     <span class="contact-sep">|</span>
     <span>github.com/CosmiX-6</span>
     <span class="contact-sep">|</span>
-    <span>akashsharma.dev</span>
+    <span>akashlabs.dev</span>
     <span class="contact-sep">|</span>
     <span>Mumbai, India</span>
   </div>
