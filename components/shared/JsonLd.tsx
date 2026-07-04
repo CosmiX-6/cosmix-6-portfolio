@@ -15,8 +15,12 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Akash Sharma",
+  givenName: "Akash",
+  familyName: "Sharma",
   jobTitle: "AI Engineer",
   url: "https://akashlabs.dev",
+  email: "akashsharmaxxiv@gmail.com",
+  image: "https://akashlabs.dev/akash.png",
   sameAs: [
     "https://www.linkedin.com/in/akash-sharma-01775b14a/",
     "https://github.com/CosmiX-6/",
@@ -46,5 +50,6 @@ export const personSchema = {
   worksFor: {
     "@type": "Organization",
     name: "Revsure AI",
+    url: "https://revsure.ai",
   },
 };
