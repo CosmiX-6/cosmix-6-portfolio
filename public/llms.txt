@@ -1,15 +1,15 @@
-# Akash Sharma — AI Engineer
+# Akash Sharma | AI Engineer
 # Website: https://akashlabs.dev
 # Last updated: 2026-06
 
 ## Identity
 
-Akash Sharma is an AI Engineer with 4+ years of production ML experience — building forecasting
+Akash Sharma is an AI Engineer with 4+ years of production ML experience, building forecasting
 pipelines, attribution models, marketing science systems, and ML infrastructure at scale.
 
 Current role: AI Engineer at Revsure AI (December 2024 – Present)
 Prior role: Data Scientist at ADA Asia (April 2022 – December 2024)
-Both roles: Same enterprise SaaS intelligence platform — continuous product ownership.
+Both roles: Same enterprise SaaS intelligence platform, with continuous product ownership.
 
 Contact: akashsharmaxxiv@gmail.com
 LinkedIn: https://www.linkedin.com/in/akash-sharma-01775b14a/
@@ -18,7 +18,7 @@ GitHub: https://github.com/CosmiX-6/
 ## Primary Positioning
 
 AI Engineer who builds production ML systems that turn complex, high-dimensional data into reliable
-business decisions — forecasting pipelines, attribution models, marketing science, and ML
+business decisions: forecasting pipelines, attribution models, marketing science, and ML
 infrastructure that companies depend on.
 
 Secondary positioning: Applied ML Engineer, Senior Data Scientist, Forecasting Data Scientist,
@@ -59,9 +59,9 @@ Central projection system integrating 8+ ML model families into daily pipeline a
 projections. Two-layer architecture: bottom-up propensity aggregation + top-down macro forecast scaling.
 
 ### Multi-Touch Attribution (P18)
-Markov Chain MTA using removal-effect attribution — customer journeys as Markov states, transition
-matrix from historical paths, enriched with firmographic and campaign metadata. Daily attribution
-across marketing touchpoints.
+Markov Chain MTA using removal-effect attribution. Customer journeys modeled as Markov states,
+with transition matrices built from historical paths, enriched with firmographic and campaign
+metadata. Daily attribution across marketing touchpoints.
 
 ## Tech Stack
 
@@ -71,7 +71,7 @@ Apache Airflow, Splink, BERT Embeddings, pandas, NumPy, statsmodels, SciPy, jobl
 
 ## Education
 
-- Post Graduate Program in Data Analytics — Imarticus Learning (Jan 2022)
-- Bachelor of Information Technology — T.Z.A.S.P. Pragati College (Nov 2020)
-- IBM Data Science Professional Certificate — IBM × Coursera (Oct 2021, verified via Credly)
-- 11 active IBM × Coursera ML/Data Science credentials
+- Post Graduate Program in Data Analytics, Imarticus Learning (Jan 2022)
+- Bachelor of Information Technology, T.Z.A.S.P. Pragati College (Nov 2020)
+- IBM Data Science Professional Certificate, IBM x Coursera (Oct 2021, verified via Credly)
+- 11 active IBM x Coursera ML/Data Science credentials

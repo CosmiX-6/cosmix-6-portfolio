@@ -26,7 +26,7 @@ export function Footer() {
               AI Engineer · Applied ML · Production Systems
             </p>
             <p className="text-xs mt-0.5" style={{ color: "#64748B" }}>
-              Mumbai, India
+              Bengaluru, India
             </p>
           </div>
 

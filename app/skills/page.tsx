@@ -6,7 +6,7 @@ import { AnimatedSection } from "@/components/shared/AnimatedSection";
 export const metadata: Metadata = {
   title: "Skills",
   description:
-    "Full competency matrix — machine learning, forecasting, marketing science, PySpark, BigQuery, and applied ML across 4+ years of production system ownership.",
+    "Full competency matrix: machine learning, forecasting, marketing science, PySpark, BigQuery, and applied ML across 4+ years of production system ownership.",
 };
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -68,7 +68,7 @@ export default function SkillsPage() {
             Skills & Expertise
           </h1>
           <p className="text-base max-w-2xl" style={{ color: "var(--color-body)" }}>
-            4+ years of production ML experience — forecasting, attribution, marketing science,
+            4+ years of production ML experience across forecasting, attribution, marketing science,
             infrastructure, and data engineering. Every skill backed by shipped production systems.
           </p>
         </div>

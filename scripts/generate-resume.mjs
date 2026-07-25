@@ -225,7 +225,7 @@ const html = `<!DOCTYPE html>
     <span class="contact-sep">|</span>
     <span>akashlabs.dev</span>
     <span class="contact-sep">|</span>
-    <span>Mumbai, India</span>
+    <span>Bengaluru, India</span>
   </div>
 </div>
 

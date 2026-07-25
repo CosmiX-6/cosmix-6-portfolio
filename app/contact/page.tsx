@@ -4,7 +4,7 @@ import { ContactLinks } from "@/components/sections/ContactLinks";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Akash Sharma — AI Engineer and Applied ML specialist.",
+  description: "Get in touch with Akash Sharma, AI Engineer and Applied ML specialist.",
 };
 
 export default function ContactPage() {
@@ -30,7 +30,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-base leading-relaxed max-w-xl" style={{ color: "var(--color-body)" }}>
             I&apos;m interested in senior AI engineering and applied ML roles where I can own
-            production systems — forecasting, attribution, ML platforms, or decision intelligence.
+            production systems: forecasting, attribution, ML platforms, and decision intelligence.
           </p>
         </div>
       </section>
@@ -103,7 +103,7 @@ export default function ContactPage() {
 
           {/* Location note */}
           <p className="text-sm mb-8" style={{ color: "var(--color-muted)" }}>
-            Based in Mumbai, India. Open to remote roles globally.
+            Based in Bengaluru, India. Open to remote roles globally.
           </p>
 
           {/* Quick nav */}

@@ -46,8 +46,8 @@ export default function WorkPage() {
             All Projects
           </h1>
           <p className="text-base max-w-2xl" style={{ color: "var(--color-body)" }}>
-            25 production ML systems built across 4+ years — every project here shipped to
-            production and was owned end-to-end, from research through maintenance.
+            25 production ML systems built across 4+ years. Every project shipped to
+            production and owned end-to-end, from research through maintenance.
           </p>
         </div>
       </section>

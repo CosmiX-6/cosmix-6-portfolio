@@ -8,7 +8,7 @@ import { AnimatedSection } from "@/components/shared/AnimatedSection";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Akash Sharma's career story — from building the first ML models from scratch to owning a full production stack of forecasting, attribution, and decision intelligence systems.",
+    "Akash Sharma's career story: from the first ML models built from scratch to owning a full production stack of forecasting, attribution, and decision intelligence systems.",
 };
 
 const cvSchema = {
@@ -19,7 +19,7 @@ const cvSchema = {
     name: "Akash Sharma",
     jobTitle: "AI Engineer",
     description:
-      "AI Engineer with 4+ years building production ML systems — forecasting pipelines, attribution models, and decision intelligence at scale.",
+      "AI Engineer with 4+ years building production ML systems: forecasting pipelines, attribution models, and decision intelligence at scale.",
     worksFor: { "@type": "Organization", name: "Revsure AI" },
     alumniOf: [
       { "@type": "Organization", name: "ADA Asia" },
@@ -70,11 +70,11 @@ export default function AboutPage() {
               AI Engineer · Applied ML · Production Systems
             </p>
             <p className="text-base font-medium mb-4 italic" style={{ color: "var(--color-body)" }}>
-              I turn messy data into decisions companies can bet on — end-to-end, in production.
+              I turn messy data into decisions companies can bet on, built end-to-end and in production.
             </p>
             <p className="text-base leading-relaxed max-w-2xl" style={{ color: "var(--color-body)" }}>
               I build production AI systems that convert complex, high-dimensional data into
-              reliable business decisions — forecasting, attribution, experimentation, and
+              reliable business decisions: forecasting, attribution, experimentation, and
               ML infrastructure that companies can depend on.
             </p>
           </div>
@@ -138,22 +138,22 @@ export default function AboutPage() {
                 <div className="space-y-4 text-base leading-relaxed max-w-2xl" style={{ color: "var(--color-body)" }}>
                   <p>
                     My strongest story is not &ldquo;I trained models.&rdquo; It is: I build production AI
-                    systems that convert complex data into decisions — ones companies can act on at scale.
+                    systems that convert complex data into decisions companies can act on at scale.
                   </p>
                   <p>
                     Starting in April 2022, I joined a team building an enterprise SaaS intelligence platform
-                    as a Data Scientist. Over 2.5 years I built foundational ML infrastructure from scratch
-                    — a pipeline projection engine, propensity models, multi-touch attribution, marketing mix
+                    as a Data Scientist. Over 2.5 years I built foundational ML infrastructure from scratch:
+                    a pipeline projection engine, propensity models, multi-touch attribution, marketing mix
                     modeling, statistical incrementality testing, and the first version of a macro forecast model.
                   </p>
                   <p>
-                    I took on progressively more complex system ownership — a complete rewrite of the
+                    I took on progressively more complex system ownership, including a complete rewrite of the
                     outlier handling system, a parallelized Hill Curve Transformer scaling to 1000+ features,
                     cascade bug fixes in scenario planning, and a firmographic-enriched attribution layer.
                   </p>
                   <p>
                     In December 2024, I transitioned into Revsure AI as an AI Engineer, continuing to own
-                    and evolve the same platform — reducing forecast MAPE by ~52%, shipping explainability
+                    and evolve the same platform, reducing forecast MAPE by ~52%, shipping explainability
                     infrastructure, building a configurable multi-model framework, and resolving
                     production-critical edge cases at scale.
                   </p>

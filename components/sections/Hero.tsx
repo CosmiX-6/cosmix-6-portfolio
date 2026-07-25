@@ -18,7 +18,7 @@ export function Hero() {
       <div className="relative max-w-5xl mx-auto w-full pt-14 pb-12">
         <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
 
-          {/* Left column — text */}
+          {/* Left column */}
           <div className="flex-1 min-w-0">
 
             {/* Availability badge */}
@@ -67,7 +67,7 @@ export function Hero() {
               style={{ color: "var(--color-body)" }}
             >
               I build production ML systems that convert complex data into reliable
-              business decisions — owned end-to-end, shipped at scale.
+              business decisions, built end-to-end and shipped at scale.
             </motion.p>
             <motion.p
               {...fadeUp(0.22)}
@@ -174,7 +174,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column — profile photo */}
+          {/* Right column */}
           <motion.div
             {...fadeUp(0.1)}
             className="shrink-0 flex justify-center md:justify-end"

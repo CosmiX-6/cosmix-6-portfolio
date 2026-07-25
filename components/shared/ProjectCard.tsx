@@ -57,7 +57,7 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
             "var(--color-border)";
         }}
       >
-        {/* Gradient header — 120px thumbnail zone */}
+        {/* Gradient header: 120px thumbnail zone */}
         <div
           className="h-[120px] w-full shrink-0 flex items-center justify-center"
           style={{
@@ -144,7 +144,7 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
     );
   }
 
-  // Compact variant — work index page
+  // Compact variant for work index page
   return (
     <motion.div
       whileHover={{ y: -2 }}

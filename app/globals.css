@@ -29,7 +29,7 @@
   --color-body:                #475569;
   --color-muted:               #94A3B8;
 
-  /* Accent — indigo-600 */
+  /* Accent: indigo-600 */
   --color-accent:              #4F46E5;
   --color-accent-dim:          #EEF2FF;
   --color-accent-glow:         rgba(79,70,229,0.08);
@@ -55,7 +55,7 @@
     --color-body:                #A8A29E;
     --color-muted:               #78716C;
 
-    /* Accent lighter for dark bg — indigo-400 */
+    /* Accent lighter for dark bg: indigo-400 */
     --color-accent:              #818CF8;
     --color-accent-dim:          rgba(49,46,129,0.40);
     --color-accent-glow:         rgba(129,140,248,0.10);

@@ -18,15 +18,15 @@ export const personSchema = {
   givenName: "Akash",
   familyName: "Sharma",
   jobTitle: "AI Engineer",
-  url: "https://akashlabs.dev",
+  url: "https://www.akashlabs.dev",
   email: "akashsharmaxxiv@gmail.com",
-  image: "https://akashlabs.dev/akash.png",
+  image: "https://www.akashlabs.dev/akash.png",
   sameAs: [
     "https://www.linkedin.com/in/akash-sharma-01775b14a/",
     "https://github.com/CosmiX-6/",
   ],
   description:
-    "AI Engineer with 4+ years building production ML systems — forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
+    "AI Engineer with 4+ years building production ML systems: forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
   knowsAbout: [
     "Time-Series Forecasting",
     "Marketing Mix Modeling",

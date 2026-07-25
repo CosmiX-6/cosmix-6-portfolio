@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
     duration: "1.5+ years",
     type: "current",
     context:
-      "Continued ownership and evolution of the same B2B SaaS Revenue Intelligence Platform — enhancing the forecasting, attribution, and marketing mix modeling systems built during the prior engagement.",
+      "Continued ownership and evolution of the same B2B SaaS Revenue Intelligence Platform, enhancing the forecasting, attribution, and marketing mix modeling systems built during the prior engagement.",
     highlights: [
       "Reduced booking model MAPE by ~52% through forecast category feature engineering",
       "Deployed time-decay and average-index forecast adjustment layers to production",
@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
     duration: "~2 years 9 months",
     type: "past",
     context:
-      "Built and maintained the ML layer of a B2B SaaS Revenue Intelligence Platform from early prototype through full production — across 25+ models spanning forecasting, attribution, propensity, and data engineering.",
+      "Built and maintained the ML layer of a B2B SaaS Revenue Intelligence Platform from early prototype through full production: 25+ models spanning forecasting, attribution, propensity, and data engineering.",
     highlights: [
       "Built the Revenue Forecasting Platform from QTD heuristic through production XGBoost-based EOQ system",
       "Engineered the Marketing Mix Modeling Platform from research through production",

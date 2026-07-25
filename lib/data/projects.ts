@@ -49,7 +49,7 @@ export const projects: Project[] = [
     tagline:
       "Production ML system predicting pipeline and booking outcomes at daily frequency across current and future quarters.",
     problem:
-      "Revenue teams at B2B SaaS companies needed reliable end-of-quarter pipeline and booking forecasts—starting from day one of the quarter—to drive planning, capacity allocation, and executive reporting. Simple heuristics couldn't capture seasonality, pacing dynamics, or macroeconomic context.",
+      "Revenue teams at B2B SaaS companies needed reliable end-of-quarter pipeline and booking forecasts, starting from day one of the quarter, to drive planning, capacity allocation, and executive reporting. Simple heuristics couldn't capture seasonality, pacing dynamics, or macroeconomic context.",
     what:
       "Built and evolved the core end-of-quarter (EOQ) forecasting system, growing it from a QTD-based heuristic into a multi-layer ML platform. The system produces daily forecasts across four quarter horizons using XGBoost with leakage-safe GroupShuffleSplit validation. Enhancements over 4 years include: time-decay and average-index adjustment layers, SHAP explainability with dual-algorithm contribution logging, and a configurable multi-model framework supporting 30+ parameters for algorithm selection, feature groups, and ensemble composition.",
     impact:
@@ -80,13 +80,13 @@ export const projects: Project[] = [
     featured: true,
     role: "Primary Owner",
     tagline:
-      "Full-stack marketing attribution and budget optimization platform—from raw channel spend to response curves and scenario planning.",
+      "Full-stack marketing attribution and budget optimization platform: from raw channel spend to response curves and scenario planning.",
     problem:
       "Marketing teams had spend across multiple channels but no systematic way to measure each channel's contribution to pipeline generation or optimize budget allocation. Rule-based attribution couldn't capture saturation effects, adstock carryover, or the non-linear relationship between spend and return.",
     what:
       "Engineered a marketing mix modeling platform using BayesianRidge regression on STL-decomposed residuals. Built a parallelized Hill Curve Transformer (L-BFGS-B multi-start optimization) for saturation modeling at 1000+ feature scale, adstock decay features, PCA-based group-level attribution, and response curve generation (isotonic + spline/hill variants). Implemented scenario planning via response-curve delta algorithm with business-rule guardrails to prevent cascade drift. Fixed critical production bugs: MinMax extrapolation bug, scenario planner 6.8% cascade drift, STL phantom baseline edge cases.",
     impact:
-      "Quantified channel-level marketing contribution and enabled spend optimization recommendations for enterprise B2B SaaS customers. Analysis guided reallocation decisions—e.g., identifying that reducing spend on one underperforming channel while maintaining pipeline output was viable.",
+      "Quantified channel-level marketing contribution and enabled spend optimization recommendations for enterprise B2B SaaS customers. Analysis guided reallocation decisions, e.g., identifying that reducing spend on one underperforming channel while maintaining pipeline output was viable.",
     metrics: [
       { value: "1000+", label: "Feature Scale" },
       { value: "0%", label: "Cascade Drift (fixed)" },
@@ -113,13 +113,13 @@ export const projects: Project[] = [
     featured: true,
     role: "Primary Owner",
     tagline:
-      "Probabilistic multi-touch attribution using Markov Chain removal-effect modeling — crediting each channel based on its actual influence on conversion probability across the full customer journey.",
+      "Probabilistic multi-touch attribution using Markov Chain removal-effect modeling, crediting each channel based on its actual influence on conversion probability across the full customer journey.",
     problem:
-      "Marketing teams were using first-touch and last-touch attribution — both systematically over-crediting one touchpoint and ignoring the influence of others. They needed statistically-grounded attribution to justify channel investment and understand which audience-campaign combinations drove conversion at each funnel stage.",
+      "Marketing teams were using first-touch and last-touch attribution, which systematically over-credited one touchpoint and ignored the influence of others. They needed statistically-grounded attribution to justify channel investment and understand which audience-campaign combinations drove conversion at each funnel stage.",
     what:
-      "Built a Markov Chain MTA system — customer journeys modeled as Markov states, transition matrix built from historical paths, attribution computed via removal effect (drop in conversion probability when a channel is removed). Enriched with firmographic attributes (region, industry, company size, persona) and campaign-level metadata (channel type, content format, offer type, message theme), enabling attribution of not just which channels work but why specific audience × campaign combinations are effective at each funnel stage.",
+      "Built a Markov Chain MTA system: customer journeys modeled as Markov states, transition matrix built from historical paths, attribution computed via removal effect (drop in conversion probability when a channel is removed). Enriched with firmographic attributes (region, industry, company size, persona) and campaign-level metadata (channel type, content format, offer type, message theme), enabling attribution of not just which channels work but why specific audience × campaign combinations are effective at each funnel stage.",
     impact:
-      "Replaced rule-based first/last-touch attribution with daily probabilistic multi-touch attribution. Enabled stage-by-stage conversion credit by channel, audience segment, and campaign type — giving marketing teams evidence-backed answers to budget allocation questions.",
+      "Replaced rule-based first/last-touch attribution with daily probabilistic multi-touch attribution. Enabled stage-by-stage conversion credit by channel, audience segment, and campaign type, giving marketing teams evidence-backed answers to budget allocation questions.",
     metrics: [
       { value: "Daily", label: "Attribution Scoring" },
       { value: "2-Tier", label: "Model Architecture" },
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     problem:
       "Revenue teams needed reliable daily pipeline and booking forecasts from day one of the quarter, but no single model could capture all dynamics: known pipeline readiness, close-date slippage, unseen opportunity creation, macroeconomic context, and historical seasonality.",
     what:
-      "Designed a two-layer projection architecture: (1) Bottom-up layer scoring every lead and opportunity daily with propensity models, multiplying scores by predicted opportunity sizes, aggregating by target quarter. (2) Top-down macro scaling layer from the Macro Forecast Model — scale factor reconciles record-level aggregates with EOQ expectations. Added Demand Generation Potential for unseen pipeline, push/pull models for close-date transitions, monthly breakdown normalization, and both ML and heuristic modes for low-data customers.",
+      "Designed a two-layer projection architecture: (1) Bottom-up layer scoring every lead and opportunity daily with propensity models, multiplying scores by predicted opportunity sizes, aggregating by target quarter. (2) Top-down macro scaling layer from the Macro Forecast Model; the scale factor reconciles record-level aggregates with EOQ expectations. Added Demand Generation Potential for unseen pipeline, push/pull models for close-date transitions, monthly breakdown normalization, and both ML and heuristic modes for low-data customers.",
     impact:
       "Enabled daily CQ/NQ/NQ+1/NQ+2 pipeline and booking projections for enterprise B2B SaaS revenue teams, integrated into customer-facing dashboard widgets.",
     metrics: [
@@ -179,11 +179,11 @@ export const projects: Project[] = [
     featured: false,
     role: "Primary Owner",
     tagline:
-      "Estimates pipeline contribution from opportunities not yet visible in the CRM — the 'unseen' quarter contribution.",
+      "Estimates pipeline contribution from opportunities not yet visible in the CRM (the unseen quarter contribution).",
     problem:
-      "Record-level propensity models can only score opportunities already in the system. Historically, 20–61% of quarter-end bookings came from deals created and closed within the same quarter — not captured by existing scoring.",
+      "Record-level propensity models can only score opportunities already in the system. Historically, 20–61% of quarter-end bookings came from deals created and closed within the same quarter, not captured by existing scoring.",
     what:
-      "Built two modes: (1) Heuristic — rolling average of historical same-quarter origination rates per day applied to current day forward. (2) ML — XGBoost Regressor trained on calendar features, cumulative quarter actuals, marketing spend, and macroeconomic controls to predict remaining unseen contribution.",
+      "Built two modes: (1) Heuristic: rolling average of historical same-quarter origination rates per day applied to current day forward. (2) ML: XGBoost Regressor trained on calendar features, cumulative quarter actuals, marketing spend, and macroeconomic controls to predict remaining unseen contribution.",
     impact:
       "Prevented systematic under-projection of EOQ totals by accounting for 20–61% of quarter-end pipeline that originates from same-quarter deal creation.",
     metrics: [
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     problem:
       "Complementing the Demand Generation model, teams needed a simpler regression-based estimate for walk-in pipeline from sources that don't follow the standard demand generation pattern.",
     what:
-      "First model built using the Generic Regressor Framework (P22). Predicts walk-in pipeline — created within the quarter from new sources — as a regression target using the standardized feature pipeline and validation framework.",
+      "First model built using the Generic Regressor Framework (P22). Predicts walk-in pipeline created within the quarter from new sources, as a regression target using the standardized feature pipeline and validation framework.",
     impact: "Added granularity to within-quarter pipeline creation estimates, complementing the Demand Generation model.",
     metrics: [],
     techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     problem:
       "Sales and marketing teams worked with large account lists without systematic prioritization, dispersing effort across accounts with low conversion probability.",
     what:
-      "Built two components: (1) Base Fit Propensity — XGBoost Classifier on firmographic features (industry, company size, region, existing customer flag) for long-term ICP fit. (2) 3-Month Propensity — XGBoost Classifier with engagement, funnel stage, activity, journey, and temporal features for short-term conversion likelihood. Feature selection via Feature Importance, Chi-squared test, ANOVA F-test. Heuristic fallback using historical conversion rates for low-data customers.",
+      "Built two components: (1) Base Fit Propensity: XGBoost Classifier on firmographic features (industry, company size, region, existing customer flag) for long-term ICP fit. (2) 3-Month Propensity: XGBoost Classifier with engagement, funnel stage, activity, journey, and temporal features for short-term conversion likelihood. Feature selection via Feature Importance, Chi-squared test, ANOVA F-test. Heuristic fallback using historical conversion rates for low-data customers.",
     impact:
       "Enabled High/Medium/Low/Deprioritize bucket assignment for systematic, daily account prioritization across enterprise B2B SaaS customers.",
     metrics: [
@@ -283,7 +283,7 @@ export const projects: Project[] = [
     tagline:
       "Predicts each opportunity's close likelihood per quarter, replacing static CRM probability fields with dynamically scored multi-quarter estimates.",
     problem:
-      "CRM probability fields are manually set and rarely updated — they don't reflect actual close likelihood. Pipeline projections using these fields were systematically miscalibrated.",
+      "CRM probability fields are manually set and rarely updated, so they don't reflect actual close likelihood. Pipeline projections using these fields were systematically miscalibrated.",
     what:
       "XGBoost Classifier trained on opportunity type, forecast category, stage timestamps, journey sequences, and close-date-relative temporal features. Scored daily across four quarter horizons. Feature selection via Feature Importance, Chi-squared, ANOVA F-test.",
     impact:
@@ -378,7 +378,7 @@ export const projects: Project[] = [
     featured: false,
     role: "Primary Owner",
     tagline:
-      "Dual-algorithm explainability infrastructure — SHAP for tree models, coefficient contribution for linear models — with BigQuery logging.",
+      "Dual-algorithm explainability infrastructure: SHAP for tree models, coefficient contribution for linear models, with BigQuery logging.",
     problem:
       "Revenue leaders and customers couldn't understand why the forecast changed week-over-week. Black-box outputs eroded trust in the model.",
     what:
@@ -431,11 +431,11 @@ export const projects: Project[] = [
     tagline:
       "Two-stage system predicting campaign pipeline potential before launch and monitoring active campaigns daily.",
     problem:
-      "Marketing teams were reactive — they only knew a campaign underperformed after it ended. They needed forward-looking predictions to decide which campaigns to scale, which to cut, and how to reallocate budget.",
+      "Marketing teams were reactive; they only knew a campaign underperformed after it ended. They needed forward-looking predictions to decide which campaigns to scale, which to cut, and how to reallocate budget.",
     what:
       "Two-stage architecture: (1) XGBoost Classifier predicting high vs. low potential campaigns (pipeline threshold classification). (2) XGBoost Regressor estimating expected pipeline value/volume for predicted high-potential campaigns. Features include campaign attributes, budget, type, date-derived features, pipeline context at campaign start, active campaign counts, and historical averages for similar campaigns.",
     impact:
-      "Enabled proactive campaign management — predicting success before launch and flagging underperformers for budget reallocation, shifting marketing teams from post-campaign hindsight to forward-looking intelligence.",
+      "Enabled proactive campaign management by predicting success before launch and flagging underperformers for budget reallocation, shifting marketing teams from post-campaign hindsight to forward-looking intelligence.",
     metrics: [
       { value: "Daily", label: "Campaign Scoring" },
       { value: "2-Stage", label: "Architecture" },
@@ -459,9 +459,9 @@ export const projects: Project[] = [
     tagline:
       "Migrated the revenue metrics pipeline from single-machine pandas to distributed PySpark, resolving critical implementation bugs to unblock daily ML scoring.",
     problem:
-      "The revenue metrics pipeline was built on single-machine pandas processing large CRM datasets — inherently unsuitable for daily production scale. A partial PySpark migration existed but had critical bugs causing incorrect metric outputs that blocked downstream ML scoring pipelines.",
+      "The revenue metrics pipeline was built on single-machine pandas processing large CRM datasets, inherently unsuitable for daily production scale. A partial PySpark migration existed but had critical bugs causing incorrect metric outputs that blocked downstream ML scoring pipelines.",
     what:
-      "Rewrote the pipeline in PySpark using broadcast joins, window function aggregations, and filter pushdown to leverage distributed execution on GCP Dataproc. Diagnosed and resolved the existing PySpark implementation bugs — including incorrect cohort boundary logic and partition misalignment — that were producing silent metric errors in production.",
+      "Rewrote the pipeline in PySpark using broadcast joins, window function aggregations, and filter pushdown to leverage distributed execution on GCP Dataproc. Diagnosed and resolved the existing PySpark implementation bugs, including incorrect cohort boundary logic and partition misalignment, that were producing silent metric errors in production.",
     impact:
       "Delivered a correct, production-stable distributed pipeline that unblocked daily ML scoring and dashboard refresh. Replaced a fundamentally unscalable single-machine approach with distributed execution suited to the data volume.",
     metrics: [
@@ -485,7 +485,7 @@ export const projects: Project[] = [
     tagline:
       "Fuzzy matching + BERT embedding system to deduplicate and resolve campaign entities across CRM and marketing platform data sources.",
     problem:
-      "Campaign names across CRM and marketing platforms had inconsistent naming conventions, abbreviations, and typos — preventing accurate join between ad spend data and pipeline impact data.",
+      "Campaign names across CRM and marketing platforms had inconsistent naming conventions, abbreviations, and typos, preventing accurate join between ad spend data and pipeline impact data.",
     what:
       "Built entity resolution pipeline using Splink for probabilistic record linkage, enhanced with BERT sentence embeddings for semantic matching of campaign names. Resolves campaign variants across systems into canonical entities for accurate attribution and MMX modeling.",
     impact:
@@ -508,7 +508,7 @@ export const projects: Project[] = [
     tagline:
       "Metadata-driven SQL generation system translating user-defined filter configurations into executable BigQuery queries.",
     problem:
-      "Customer dashboard filters needed to dynamically generate different SQL queries based on user configuration — building this with hard-coded SQL per filter was unmaintainable.",
+      "Customer dashboard filters needed to dynamically generate different SQL queries based on user configuration; building this with hard-coded SQL per filter was unmaintainable.",
     what:
       "Built a metadata-driven parser that reads filter configuration (field, operator, value, data type) and generates valid BigQuery SQL. Supports complex filter combinations, nested conditions, and data type–aware comparisons.",
     impact:
@@ -531,7 +531,7 @@ export const projects: Project[] = [
     featured: false,
     role: "Primary Owner",
     tagline:
-      "Reusable ML regression framework standardizing feature engineering, training, validation, and scoring — adopted as the baseline for all subsequent platform models.",
+      "Reusable ML regression framework standardizing feature engineering, training, validation, and scoring, adopted as the baseline for all subsequent platform models.",
     problem:
       "Each new regression model required rebuilding the same boilerplate: feature pipeline, hyperparameter tuning, validation splits, scoring logic, and BigQuery writeback. This created code duplication and inconsistent engineering standards.",
     what:
@@ -654,7 +654,7 @@ export const projects: Project[] = [
     problem:
       "Revenue teams needed per-record booking predictions for bottom-up forecasting, separate from the aggregate macro forecast.",
     what:
-      "Built using the Generic Regressor Framework — XGBoost Regressor and Classifier combination predicting booking likelihood and value at the record level. Evolved into the Product Prediction Model (P14) and established the reusable framework (P22).",
+      "Built using the Generic Regressor Framework: XGBoost Regressor and Classifier combination predicting booking likelihood and value at the record level. Evolved into the Product Prediction Model (P14) and established the reusable framework (P22).",
     impact:
       "Provided per-record booking contribution estimates for the Pipeline Projection Engine and established the reusable modeling framework.",
     metrics: [{ value: "Weekend", label: "MVP Build Time" }],

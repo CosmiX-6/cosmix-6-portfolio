@@ -32,7 +32,7 @@ export function FeaturedProjects() {
               Flagship AI Systems
             </h2>
             <p className="mt-2 text-sm max-w-md" style={{ color: "var(--color-body)" }}>
-              Four flagship AI systems from 25 production ML projects — forecasting,
+              Four flagship AI systems from 25 production ML projects: forecasting,
               attribution, marketing science, and pipeline intelligence.
             </p>
           </div>
