@@ -17,12 +17,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const baseUrl = "https://akashlabs.dev";
+const baseUrl = "https://www.akashlabs.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Akash Sharma — AI Engineer",
+    default: "Akash Sharma | AI Engineer",
     template: "%s | Akash Sharma",
   },
   icons: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   description:
-    "AI Engineer with 4+ years building production ML systems — forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
+    "AI Engineer with 4+ years building production ML systems: forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
   keywords: [
     "AI Engineer",
     "Data Scientist",
@@ -54,18 +54,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    siteName: "Akash Sharma — AI Engineer",
-    title: "Akash Sharma — AI Engineer",
+    siteName: "Akash Sharma | AI Engineer",
+    title: "Akash Sharma | AI Engineer",
     description:
-      "AI Engineer building production ML systems — forecasting pipelines, attribution models, and decision intelligence at scale.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Akash Sharma — AI Engineer", type: "image/png" }],
+      "AI Engineer building production ML systems: forecasting pipelines, attribution models, and decision intelligence at scale.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Akash Sharma, AI Engineer", type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akash Sharma — AI Engineer",
+    title: "Akash Sharma | AI Engineer",
     description:
-      "4+ years shipping production AI systems — forecasting, attribution, and ML infrastructure at scale.",
-    images: [{ url: "/og-image.png", alt: "Akash Sharma — AI Engineer" }],
+      "4+ years shipping production AI systems: forecasting, attribution, and ML infrastructure at scale.",
+    images: [{ url: "/og-image.png", alt: "Akash Sharma, AI Engineer" }],
   },
   robots: {
     index: true,

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/data/projects";
 
-const baseUrl = "https://akashlabs.dev";
+const baseUrl = "https://www.akashlabs.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

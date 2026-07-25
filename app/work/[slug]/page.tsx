@@ -18,12 +18,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
+  const description = `${project.tagline} ${project.impact}`.slice(0, 160).trim();
+  const keywords = [
+    ...project.techStack,
+    ...project.tags,
+    project.domain,
+    "AI Engineer",
+    "Akash Sharma",
+    "production ML",
+  ].join(", ");
+
   return {
     title: project.title,
-    description: project.tagline,
+    description,
+    keywords,
     openGraph: {
       title: `${project.title} | Akash Sharma`,
-      description: project.tagline,
+      description,
     },
   };
 }
@@ -64,7 +75,7 @@ export default async function ProjectPage({ params }: PageProps) {
     author: {
       "@type": "Person",
       name: "Akash Sharma",
-      url: "https://akashlabs.dev",
+      url: "https://www.akashlabs.dev",
     },
     about: project.tags,
     keywords: [...project.techStack, ...project.tags].join(", "),
@@ -399,7 +410,7 @@ export default async function ProjectPage({ params }: PageProps) {
               ) : null}
             </div>
 
-            {/* Center — All Projects */}
+            {/* Center: All Projects */}
             <div className="flex justify-center">
               <Link
                 href="/work"
