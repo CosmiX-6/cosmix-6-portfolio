@@ -51,12 +51,12 @@ const html = `<!DOCTYPE html>
   }
 
   .contact {
-    font-size: 8.5pt;
+    font-size: 8pt;
     color: #444444;
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
-  .sep { color: #AAAAAA; padding: 0 5px; }
+  .sep { color: #AAAAAA; padding: 0 4px; }
 
   .section { margin-top: 5px; }
 
@@ -166,6 +166,7 @@ const html = `<!DOCTYPE html>
   <div class="tagline">AI / ML Engineer - Production ML &amp; Revenue Intelligence</div>
   <div class="contact">
     Bengaluru, India
+    <span class="sep">|</span>+91 8422081717
     <span class="sep">|</span>akashsharmaxxiv@gmail.com
     <span class="sep">|</span>linkedin.com/in/akash-sharma-01775b14a
     <span class="sep">|</span>github.com/CosmiX-6
