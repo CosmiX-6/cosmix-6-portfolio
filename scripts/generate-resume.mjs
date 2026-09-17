@@ -15,19 +15,19 @@ const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Akash Sharma - AI &amp; Machine Learning Engineer</title>
+<title>Akash Sharma - AI / ML Engineer</title>
 <style>
   @page {
     size: A4;
-    margin: 12.7mm 14.5mm;
+    margin: 10mm 13mm;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'Times New Roman', Times, Georgia, serif;
-    font-size: 9pt;
-    line-height: 1.33;
+    font-size: 8.75pt;
+    line-height: 1.26;
     color: #111111;
     background: #ffffff;
     -webkit-print-color-adjust: exact;
@@ -58,26 +58,32 @@ const html = `<!DOCTYPE html>
 
   .sep { color: #AAAAAA; padding: 0 5px; }
 
-  .section { margin-top: 7px; }
+  .section { margin-top: 5px; }
 
   .sh {
-    font-size: 8.5pt;
+    font-size: 8.25pt;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.1px;
     color: #111111;
     border-bottom: 1px solid #BBBBBB;
-    padding-bottom: 2px;
-    margin-bottom: 5px;
+    padding-bottom: 1.5px;
+    margin-bottom: 4px;
   }
 
   .summary {
-    font-size: 9pt;
-    line-height: 1.45;
+    font-size: 8.75pt;
+    line-height: 1.32;
     color: #111111;
   }
 
-  .job { margin-top: 7px; page-break-inside: avoid; }
+  .job { margin-top: 5px; page-break-inside: avoid; }
+
+  .job-link {
+    font-size: 8.5pt;
+    color: #444444;
+    font-weight: 400;
+  }
 
   .job-header {
     display: flex;
@@ -111,17 +117,17 @@ const html = `<!DOCTYPE html>
   }
 
   .bullets li {
-    font-size: 9pt;
+    font-size: 8.75pt;
     color: #111111;
-    line-height: 1.3;
-    padding-bottom: 2px;
+    line-height: 1.2;
+    padding-bottom: 1px;
   }
 
   .skills-row {
     display: flex;
-    padding: 1.5px 0;
-    font-size: 9pt;
-    line-height: 1.38;
+    padding: 1px 0;
+    font-size: 8.75pt;
+    line-height: 1.3;
   }
 
   .sk-label {
@@ -135,21 +141,21 @@ const html = `<!DOCTYPE html>
   .sk-val { color: #222222; }
 
   .edu-line {
-    font-size: 9pt;
+    font-size: 8.75pt;
     color: #111111;
-    line-height: 1.5;
+    line-height: 1.35;
   }
 
   .cert-line {
-    font-size: 8.5pt;
+    font-size: 8.25pt;
     color: #444444;
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
   .award-line {
-    font-size: 9pt;
+    font-size: 8.75pt;
     color: #111111;
-    line-height: 1.5;
+    line-height: 1.35;
   }
 </style>
 </head>
@@ -157,7 +163,7 @@ const html = `<!DOCTYPE html>
 
 <div>
   <div class="name">Akash Sharma</div>
-  <div class="tagline">AI &amp; Machine Learning Engineer</div>
+  <div class="tagline">AI / ML Engineer - Production ML &amp; Revenue Intelligence</div>
   <div class="contact">
     Bengaluru, India
     <span class="sep">|</span>akashsharmaxxiv@gmail.com
@@ -169,10 +175,10 @@ const html = `<!DOCTYPE html>
 
 <div class="section">
   <div class="sh">Summary</div>
-  <p class="summary">4+ years of full-lifecycle ownership of 25+ production ML systems for B2B SaaS Revenue Intelligence.
-  Designed, productionized, and operated systems spanning EOQ revenue forecasting, pipeline projection, marketing mix modeling,
-  multi-touch attribution, and propensity scoring at daily scale. Transforms CRM, funnel, and campaign data into
-  revenue forecasts and GTM decision systems.</p>
+  <p class="summary">AI/ML Engineer with 4+ years building and operating production ML systems for B2B SaaS revenue intelligence.
+  Owned 25+ systems spanning revenue forecasting, pipeline projection, propensity modeling, attribution, and marketing mix modeling,
+  scoring millions of records daily. Strong across modeling, leakage-safe validation, explainability, monitoring, distributed data
+  processing, and production ML pipelines on GCP.</p>
 </div>
 
 <div class="section">
@@ -181,30 +187,43 @@ const html = `<!DOCTYPE html>
   <div class="job">
     <div class="job-header">
       <div class="job-title">AI Engineer</div>
-      <div class="job-meta">Dec 2024 – Present &nbsp;|&nbsp; ~1.5 yrs, Full-Time</div>
+      <div class="job-meta">Dec 2024 – Present &nbsp;|&nbsp; Full-Time</div>
     </div>
     <div class="job-company">Revsure AI</div>
     <ul class="bullets">
-      <li>Improved end-of-quarter booking forecast accuracy by ~52% through forecast-category feature engineering on the production revenue prediction model</li>
-      <li>Built two production forecast adjustment layers: time-decay (re-weights recent quarters over older history) and average-index (day-of-quarter historical rates as early-quarter fallback); the combined macro forecast system maintains overall pipeline MAPE below 10%</li>
-      <li>Built model explainability for all forecast outputs: SHAP for tree models (XGBoost) and coefficient contribution for linear models (Ridge), logging feature attributions to BigQuery and displaying them in customer-facing dashboards</li>
-      <li>Built the Generic Regressor Framework: standardizes feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV tuning, quarter-aware validation, and production scoring/writeback; configurable via 30+ runtime parameters for per-customer behavior without code changes</li>
-      <li>Built a production Model Metric Dashboard tracking MAPE, wMAPE, MAE, RMSE, and classification metrics across all deployed models for degradation detection and retraining validation</li>
+      <li>Reduced end-of-quarter booking forecast error by ~52% through forecast-category feature engineering on the production revenue prediction model</li>
+      <li>Designed two production forecast adjustment layers (time-decay and average-index), bringing the combined macro forecast system to &lt;10% overall pipeline MAPE</li>
+      <li>Productionized model explainability across XGBoost and Ridge forecasts using SHAP and coefficient attribution; logged feature contributions to BigQuery and surfaced them in customer-facing dashboards</li>
+      <li>Built a Generic Regressor Framework covering feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV, quarter-aware validation, scoring/writeback, and 30+ runtime parameters for customer-specific behavior without code changes</li>
+      <li>Built a production Model Metric Dashboard tracking MAPE, wMAPE, MAE, RMSE, and classification metrics for degradation detection and retraining validation</li>
     </ul>
   </div>
 
-  <div class="job" style="margin-top: 8px;">
+  <div class="job" style="margin-top: 6px;">
     <div class="job-header">
       <div class="job-title">Data Scientist</div>
-      <div class="job-meta">Apr 2022 – Dec 2024 &nbsp;|&nbsp; 2 yrs 9 mos, Full-Time</div>
+      <div class="job-meta">Apr 2022 – Dec 2024 &nbsp;|&nbsp; Full-Time</div>
     </div>
     <div class="job-company">ADA Asia</div>
     <ul class="bullets">
-      <li>Architected and productionized the Pipeline Projection Engine for 15+ enterprise customers: 8+ ML model families (propensity, deal size, demand generation, stage transitions) aggregate bottom-up into daily multi-quarter revenue projections, scoring millions of records daily; pipeline models achieve 80%+ F1-score and booking conversion models 85-95%</li>
-      <li>Engineered the Marketing Mix Modeling platform from research through production: measures each channel's pipeline contribution via saturation curves (Hill function), adstock decay, and seasonal decomposition, with a scenario planner for budget reallocation; achieves 5-15% MAPE across 60+ channels including 10+ paid channels</li>
-      <li>Owned the Revenue Forecasting Platform through its full lifecycle: from a quarter-to-date heuristic into a production XGBoost system with leakage-safe cross-validation and daily scoring across current and future quarter horizons</li>
-      <li>Built a four-model propensity scoring suite (accounts, leads, opportunities, demand generation) that assigns daily conversion likelihood scores across multiple quarter horizons, with SHAP-based feature explanations and a statistical fallback for low-data customers</li>
-      <li>Optimized production data pipelines: rewrote revenue metrics computation in distributed PySpark on GCP Dataproc (~1 day to ~3 minutes) and parallelized model training via joblib (5-6 hrs to 1 hr across 30+ customer tenants)</li>
+      <li>Architected and productionized a Pipeline Projection Engine for 15+ enterprise customers; 8+ ML model families aggregate bottom-up into daily multi-quarter revenue projections across millions of records</li>
+      <li>Engineered the Marketing Mix Modeling platform from research through production using Hill saturation curves, adstock decay, seasonal decomposition, and scenario planning; 5-15% MAPE across 60+ channels including 10+ paid channels</li>
+      <li>Owned the Revenue Forecasting Platform end-to-end, evolving a quarter-to-date heuristic into a production XGBoost system with leakage-safe cross-validation and daily scoring across current and future quarter horizons</li>
+      <li>Built a four-model propensity scoring suite for accounts, leads, opportunities, and demand generation, with multi-horizon conversion likelihoods, SHAP explanations, and a statistical fallback for low-data customers</li>
+      <li>Cut revenue-metric pipeline runtime from ~1 day to ~3 minutes using distributed PySpark on GCP Dataproc; parallelized model training from 5-6 hours to ~1 hour across 30+ customer tenants</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh">Personal Projects</div>
+  <div class="job">
+    <div class="job-title">Narovva - Autonomous News-to-Social Publishing Engine</div>
+    <div class="job-link">github.com/CosmiX-6/narovva</div>
+    <ul class="bullets">
+      <li>Designed and shipped an end-to-end autonomous publishing system that discovers news, structures an LLM brief, deterministically renders branded carousels, optionally assembles Reels, generates captions, publishes via Instagram Graph API, and records post history</li>
+      <li>Built the orchestration layer around independently versioned info-snipe and poster-core packages; added channel configuration, scheduling, PostgreSQL persistence, temporary Vercel Blob hosting, retries, deduplication, and per-article fault isolation</li>
+      <li>Kept LLM use constrained to article understanding and caption generation; made layout, scheduling, publishing state, and failure handling deterministic and testable. Live channel runs hourly through GitHub Actions and publishes when its schedule is due</li>
     </ul>
   </div>
 </div>
@@ -236,6 +255,14 @@ const html = `<!DOCTYPE html>
   <div class="skills-row">
     <div class="sk-label">Data &amp; Cloud</div>
     <div class="sk-val">PySpark &bull; BigQuery &bull; GCP Dataproc &bull; Airflow &bull; Cloud Storage &bull; SQL &bull; Production ML Pipelines</div>
+  </div>
+  <div class="skills-row">
+    <div class="sk-label">GenAI &amp; Automation</div>
+    <div class="sk-val">LLM Orchestration &bull; OpenAI / Gemini &bull; Instagram Graph API &bull; FFmpeg &bull; PostgreSQL &bull; Vercel Blob &bull; GitHub Actions</div>
+  </div>
+  <div class="skills-row">
+    <div class="sk-label">Collaboration</div>
+    <div class="sk-val">Cross-Team Alignment &bull; Technical Decision-Making &bull; Task Planning &amp; Documentation</div>
   </div>
 </div>
 
