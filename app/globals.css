@@ -12,24 +12,24 @@
   --radius-2xl: 28px;
 }
 
-/* ─── Light Mode (default) — Virion-inspired indigo/lavender ─── */
+/* ─── Light Mode (default) — measured from virion.framer.ai's live DOM ─── */
 :root {
   color-scheme: light dark;
 
-  /* Surfaces */
-  --color-bg:                  #F0EEFB;
+  /* Surfaces — #F3F3FE is Virion's exact page background */
+  --color-bg:                  #F3F3FE;
   --color-bg-alt:               #FFFFFF;
   --color-surface:             #FFFFFF;
-  --color-surface-el:          #F5F3FC;
-  --color-border:              #E2DFF6;
-  --color-border-subtle:       #EAE8F9;
-  --color-overlay-bg:          rgba(240,238,251,0.82);
-  --color-overlay-bg-strong:   rgba(240,238,251,0.95);
+  --color-surface-el:          #F6F5FD;
+  --color-border:              #E3E1F7;
+  --color-border-subtle:       #ECEAFA;
+  --color-overlay-bg:          rgba(243,243,254,0.82);
+  --color-overlay-bg-strong:   rgba(243,243,254,0.95);
 
-  /* Typography */
-  --color-headline:            #1C1A33;
-  --color-body:                #57566F;
-  --color-muted:                #8B89A3;
+  /* Typography — #1E213A is Virion's measured headline/ink color */
+  --color-headline:            #1E213A;
+  --color-body:                #5A5B72;
+  --color-muted:                #8D8DA3;
 
   /* Accent: deep indigo-violet */
   --color-accent:              #4F3FF0;
@@ -37,18 +37,35 @@
   --color-accent-glow:         rgba(79,63,240,0.10);
 
   /* Ink: dark navy-purple, used for CTA blocks / gradient buttons / footer */
-  --color-ink:                 #18152E;
-  --color-ink-2:               #2E2569;
+  --color-ink:                 #1E213A;
+  --color-ink-2:               #4A3681;
 
   /* Status */
   --color-metric:              #059669;
   --color-metric-dim:          rgba(209,250,229,0.70);
   --color-danger:              #E11D48;
 
-  /* Shadows */
-  --shadow-card:     0 1px 2px rgba(28,26,51,0.04), 0 10px 28px -12px rgba(28,26,51,0.14);
-  --shadow-card-hover: 0 1px 2px rgba(28,26,51,0.05), 0 16px 36px -12px rgba(28,26,51,0.20);
-  --shadow-pill:     0 8px 24px -10px rgba(28,26,51,0.18);
+  /* Virion's CTA gradient, measured: linear-gradient(103deg, #4A3681 -17%, #1E213A 100%) */
+  --gradient-cta: linear-gradient(103deg, #4A3681 -17%, #1E213A 100%);
+
+  /* Shadows — layered ambient + inset top highlight, matching Virion's signature elevation */
+  --shadow-card:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 2px rgba(26,0,108,0.04),
+    0 6px 14px rgba(26,0,108,0.05),
+    0 18px 36px rgba(61,47,98,0.08),
+    0 40px 64px rgba(61,47,98,0.10);
+  --shadow-card-hover:
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    0 2px 4px rgba(26,0,108,0.05),
+    0 10px 22px rgba(26,0,108,0.07),
+    0 28px 52px rgba(61,47,98,0.12),
+    0 56px 88px rgba(61,47,98,0.14);
+  --shadow-pill:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 2px 4px rgba(26,0,108,0.10),
+    0 10px 24px rgba(26,0,108,0.16),
+    0 24px 48px rgba(61,47,98,0.20);
 }
 
 /* ─── Dark Mode ─────────────────────────────────────────────── */
@@ -79,9 +96,19 @@
     --color-metric-dim:          rgba(6,78,59,0.50);
     --color-danger:              #F87171;
 
-    --shadow-card:     0 1px 2px rgba(0,0,0,0.20), 0 10px 28px -12px rgba(0,0,0,0.45);
-    --shadow-card-hover: 0 1px 2px rgba(0,0,0,0.24), 0 16px 36px -12px rgba(0,0,0,0.55);
-    --shadow-pill:     0 8px 24px -10px rgba(0,0,0,0.45);
+    --gradient-cta: linear-gradient(103deg, #8C7DFF -17%, #4A3681 100%);
+
+    --shadow-card:
+      inset 0 1px 0 rgba(255,255,255,0.05),
+      0 1px 2px rgba(0,0,0,0.20),
+      0 10px 28px -12px rgba(0,0,0,0.45);
+    --shadow-card-hover:
+      inset 0 1px 0 rgba(255,255,255,0.07),
+      0 1px 2px rgba(0,0,0,0.24),
+      0 16px 36px -12px rgba(0,0,0,0.55);
+    --shadow-pill:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      0 8px 24px -10px rgba(0,0,0,0.55);
   }
 }
 
@@ -109,7 +136,7 @@ section[id] { scroll-margin-top: 90px; }
 .text-accent    { color: var(--color-accent); }
 .text-metric    { color: var(--color-metric); font-family: var(--font-mono); }
 
-/* ─── Diagonal stripe texture (Virion-style decorative bg) ───── */
+/* ─── Diagonal stripe texture (Virion hero-style decorative bg) ── */
 .bg-stripes {
   background-image: repeating-linear-gradient(
     115deg,
@@ -121,17 +148,23 @@ section[id] { scroll-margin-top: 90px; }
   opacity: 0.05;
 }
 
+/* ─── Dot-grid texture (Virion "about"-style decorative bg) ────── */
+.bg-dots {
+  background-image: radial-gradient(var(--color-accent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.12;
+}
+
 /* ─── Eyebrow / pill badge (section label above headings) ─────── */
 .eyebrow-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 0.95rem;
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   color: var(--color-body);
   box-shadow: var(--shadow-card);
 }
@@ -139,13 +172,13 @@ section[id] { scroll-margin-top: 90px; }
 /* ─── Soft elevated card (bento-style) ─────────────────────────── */
 .card-soft {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
 }
 .card-soft:hover {
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
 }
 
 /* ─── Gradient pill button (primary CTA) ───────────────────────── */
@@ -158,15 +191,18 @@ section[id] { scroll-margin-top: 90px; }
   font-size: 0.875rem;
   font-weight: 600;
   color: #FFFFFF;
-  background: linear-gradient(135deg, var(--color-ink-2) 0%, var(--color-accent) 100%);
+  background: var(--gradient-cta);
   box-shadow: var(--shadow-pill);
-  transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
 }
 .btn-gradient:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.08);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
-.btn-gradient:active { transform: translateY(0); }
+.btn-gradient:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }

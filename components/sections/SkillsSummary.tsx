@@ -21,7 +21,7 @@ export function SkillsSummary() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 0.45, ease: [0, 0, 0.2, 1] }}
           className="mb-10"
         >
           <div className="eyebrow-badge mb-4">Skills &amp; Expertise</div>
@@ -44,7 +44,7 @@ export function SkillsSummary() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.4 }}
+              transition={{ delay: i * 0.05, duration: 0.4, ease: [0, 0, 0.2, 1] }}
               className="card-soft p-6"
             >
               <div className="flex items-center gap-2.5 mb-4">

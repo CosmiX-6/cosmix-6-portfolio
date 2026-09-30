@@ -15,7 +15,7 @@ export function FeaturedProjects() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 0.45, ease: [0, 0, 0.2, 1] }}
           className="flex items-end justify-between mb-10"
         >
           <div>
@@ -48,7 +48,7 @@ export function FeaturedProjects() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.45 }}
+              transition={{ delay: i * 0.05, duration: 0.45, ease: [0, 0, 0.2, 1] }}
             >
               <ProjectCard project={project} variant="featured" />
             </motion.div>

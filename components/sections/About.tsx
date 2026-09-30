@@ -15,8 +15,13 @@ const quickFacts = [
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="about"
+      className="relative py-20 px-6 overflow-hidden"
+      style={{ background: "var(--color-bg-alt)" }}
+    >
+      <div className="absolute inset-0 bg-dots pointer-events-none" aria-hidden />
+      <div className="relative max-w-5xl mx-auto">
         <AnimatedSection>
           <div className="eyebrow-badge mb-4">About</div>
           <h2

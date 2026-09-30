@@ -35,24 +35,24 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
   if (variant === "featured") {
     return (
       <motion.div
-        whileHover={{ y: -2 }}
-        transition={{ duration: 0.18 }}
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.25, ease: [0, 0, 0.2, 1] }}
         className="relative rounded-2xl overflow-hidden group h-full flex flex-col"
         style={{
           background: "var(--color-surface)",
           border: "1px solid var(--color-border)",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-          transition: "box-shadow 0.2s, border-color 0.2s",
+          boxShadow: "var(--shadow-card)",
+          transition: "box-shadow 0.25s ease-out, border-color 0.25s ease-out",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
-            "0 6px 20px rgba(0,0,0,0.10)";
+            "var(--shadow-card-hover)";
           (e.currentTarget as HTMLDivElement).style.borderColor =
             accentColor + "60";
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
-            "0 1px 3px rgba(0,0,0,0.04)";
+            "var(--shadow-card)";
           (e.currentTarget as HTMLDivElement).style.borderColor =
             "var(--color-border)";
         }}
@@ -147,8 +147,8 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
   // Compact variant for work index page
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      transition={{ duration: 0.15 }}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2, ease: [0, 0, 0.2, 1] }}
       className="group rounded-lg overflow-hidden h-full flex flex-col"
       style={{
         background: "var(--color-surface)",
@@ -156,16 +156,16 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
         borderRight: "1px solid var(--color-border)",
         borderBottom: "1px solid var(--color-border)",
         borderLeft: `4px solid ${accentColor}`,
-        boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
-        transition: "box-shadow 0.2s, border-color 0.2s",
+        boxShadow: "var(--shadow-card)",
+        transition: "box-shadow 0.2s ease-out",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLDivElement).style.boxShadow =
-          "0 4px 14px rgba(0,0,0,0.08)";
+          "var(--shadow-card-hover)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLDivElement).style.boxShadow =
-          "0 1px 2px rgba(0,0,0,0.03)";
+          "var(--shadow-card)";
       }}
     >
       <div className="p-5 flex flex-col flex-1">
