@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, Cpu, LineChart, Target } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
 
 const tiles = [
@@ -29,14 +29,17 @@ const roles = [
   {
     title: "AI / ML Engineer",
     desc: "Applied ML platform roles with end-to-end system ownership at production scale",
+    icon: <Cpu size={18} />,
   },
   {
     title: "Senior Data Scientist",
     desc: "Forecasting, attribution, experimentation, or ML infrastructure ownership",
+    icon: <LineChart size={18} />,
   },
   {
     title: "Marketing Science DS",
     desc: "MMM, MTA, incrementality testing, and spend optimization",
+    icon: <Target size={18} />,
   },
 ];
 
@@ -94,6 +97,12 @@ export function ContactCTA() {
                   className="rounded-2xl p-4 text-left"
                   style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
                 >
+                  <div
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-xl mb-3"
+                    style={{ background: "var(--color-accent)", color: "#FFFFFF" }}
+                  >
+                    {role.icon}
+                  </div>
                   <p className="text-sm font-semibold mb-1" style={{ color: "#FFFFFF" }}>
                     {role.title}
                   </p>

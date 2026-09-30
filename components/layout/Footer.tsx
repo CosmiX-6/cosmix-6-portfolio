@@ -2,110 +2,163 @@
 
 import Link from "next/link";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
+import { Mail } from "lucide-react";
 
-const navLinks = [
-  { href: "/#about", label: "About" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#work", label: "Work" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#contact", label: "Contact" },
+interface FooterLink {
+  href: string;
+  label: string;
+  download?: boolean;
+}
+
+const columns: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Navigation",
+    links: [
+      { href: "/#about", label: "About" },
+      { href: "/#experience", label: "Experience" },
+      { href: "/#work", label: "Work" },
+      { href: "/#skills", label: "Skills" },
+      { href: "/#contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { href: "/work", label: "All Projects" },
+      { href: "/resume.pdf", label: "Resume", download: true },
+    ],
+  },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/akash-sharma-01775b14a/",
+    icon: <LinkedinIcon size={15} />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/CosmiX-6/",
+    icon: <GithubIcon size={15} />,
+  },
+  {
+    label: "Email",
+    href: "mailto:akashsharmaxxiv@gmail.com",
+    icon: <Mail size={15} />,
+  },
 ];
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{ background: "var(--color-ink)" }}>
-      <div className="max-w-5xl mx-auto px-6 py-14">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Brand */}
-          <div>
-            <p className="text-sm font-semibold" style={{ color: "#F1EFFB" }}>
-              Akash Sharma
-            </p>
-            <p className="text-xs mt-1" style={{ color: "#8E8AB8" }}>
-              AI Engineer · Applied ML · Production Systems
-            </p>
-            <p className="text-xs mt-0.5" style={{ color: "#8E8AB8" }}>
-              Bengaluru, India
-            </p>
-          </div>
+    <footer className="relative px-6 pt-16 pb-8 overflow-hidden">
+      <div className="absolute inset-0 bg-stripes pointer-events-none" aria-hidden />
+      <div className="relative max-w-5xl mx-auto">
+        {/* Wordmark */}
+        <p
+          className="text-xl font-bold tracking-tight mb-8"
+          style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
+        >
+          Akash Sharma
+        </p>
 
-          {/* Nav */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {navLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-xs transition-colors duration-150"
-                style={{ color: "#8E8AB8" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
-                }
+        {/* Bento nav card */}
+        <div className="card-soft px-8 py-9 grid sm:grid-cols-3 gap-8">
+          {columns.map((col) => (
+            <div key={col.title}>
+              <p
+                className="text-sm font-semibold mb-4"
+                style={{ color: "var(--color-headline)" }}
               >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
+                {col.title}
+              </p>
+              <ul className="space-y-2.5">
+                {col.links.map((l) => {
+                  const linkClassName = "text-sm transition-colors duration-150";
+                  const linkStyle = { color: "var(--color-body)" };
+                  const handleEnter = (e: React.MouseEvent<HTMLAnchorElement>) =>
+                    (e.currentTarget.style.color = "var(--color-accent)");
+                  const handleLeave = (e: React.MouseEvent<HTMLAnchorElement>) =>
+                    (e.currentTarget.style.color = "var(--color-body)");
+                  return (
+                    <li key={l.href}>
+                      {l.download ? (
+                        <a
+                          href={l.href}
+                          download="Akash_Sharma_Resume.pdf"
+                          className={linkClassName}
+                          style={linkStyle}
+                          onMouseEnter={handleEnter}
+                          onMouseLeave={handleLeave}
+                        >
+                          {l.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={l.href}
+                          className={linkClassName}
+                          style={linkStyle}
+                          onMouseEnter={handleEnter}
+                          onMouseLeave={handleLeave}
+                        >
+                          {l.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
 
-          {/* Social */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/akash-sharma-01775b14a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="transition-colors duration-150"
-              style={{ color: "#8E8AB8" }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
-              }
+          <div>
+            <p
+              className="text-sm font-semibold mb-4"
+              style={{ color: "var(--color-headline)" }}
             >
-              <LinkedinIcon size={17} />
-            </a>
-            <a
-              href="https://github.com/CosmiX-6/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="transition-colors duration-150"
-              style={{ color: "#8E8AB8" }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
-              }
-            >
-              <GithubIcon size={17} />
-            </a>
+              Connect
+            </p>
+            <ul className="space-y-2.5">
+              {socialLinks.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target={s.href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    className="inline-flex items-center gap-2 text-sm transition-colors duration-150"
+                    style={{ color: "var(--color-body)" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color = "var(--color-accent)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color = "var(--color-body)")
+                    }
+                  >
+                    <span style={{ color: "var(--color-muted)" }}>{s.icon}</span>
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
         {/* Bottom strip */}
-        <div
-          className="mt-10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
-          style={{ borderTop: "1px solid rgba(241,239,251,0.10)" }}
-        >
-          <p className="text-xs font-mono" style={{ color: "#5F5B8A" }}>
-            © {year} Akash Sharma
+        <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-2">
+          <p className="text-xs" style={{ color: "var(--color-muted)" }}>
+            © {year} Akash Sharma. Bengaluru, India.
           </p>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xs font-mono transition-colors duration-150"
-            style={{ color: "#5F5B8A", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            className="text-xs transition-colors duration-150"
+            style={{ color: "var(--color-muted)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.color = "#F1EFFB")
+              ((e.currentTarget as HTMLButtonElement).style.color = "var(--color-accent)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.color = "#5F5B8A")
+              ((e.currentTarget as HTMLButtonElement).style.color = "var(--color-muted)")
             }
           >
             Back to top ↑

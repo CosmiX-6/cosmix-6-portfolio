@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Cpu, TrendingUp, BarChart2, Code2, Cloud, Briefcase } from "lucide-react";
 import { skillCategories } from "@/lib/data/skills";
+import { SkillsOrbit } from "@/components/sections/SkillsOrbit";
 
 const iconMap: Record<string, React.ReactNode> = {
   cpu: <Cpu size={16} />,
@@ -36,6 +37,8 @@ export function SkillsSummary() {
             science, infrastructure, and data engineering. Every skill backed by shipped systems.
           </p>
         </motion.div>
+
+        <SkillsOrbit />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillCategories.map((cat, i) => (

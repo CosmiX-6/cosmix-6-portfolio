@@ -1,9 +1,24 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  CheckCircle2,
+  Calendar,
+  Clock,
+  TrendingUp,
+  GitBranch,
+  BarChart2,
+  Target,
+  Database,
+  Server,
+} from "lucide-react";
 import { projects, getProjectBySlug } from "@/lib/data/projects";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { ShareLinks } from "@/components/shared/ShareLinks";
+import { ProjectCard } from "@/components/shared/ProjectCard";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -48,11 +63,25 @@ const domainColors: Record<string, string> = {
   "Platform & Infrastructure": "#6B7280",
 };
 
+const domainIcons: Record<string, React.ReactNode> = {
+  "Revenue Forecasting":       <TrendingUp size={56} strokeWidth={1.25} />,
+  "Pipeline Intelligence":     <GitBranch size={56} strokeWidth={1.25} />,
+  "Marketing Science":         <BarChart2 size={56} strokeWidth={1.25} />,
+  "Propensity & Scoring":      <Target size={56} strokeWidth={1.25} />,
+  "Data Engineering":          <Database size={56} strokeWidth={1.25} />,
+  "Platform & Infrastructure": <Server size={56} strokeWidth={1.25} />,
+};
+
 const employmentLabels: Record<string, string> = {
   "ada-asia":    "ADA Asia",
   "revsure-ai":  "Revsure AI",
   "both":        "ADA Asia → Revsure AI",
 };
+
+function readingTime(...parts: string[]): number {
+  const words = parts.join(" ").trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
 
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
@@ -60,12 +89,15 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
 
   const accentColor = domainColors[project.domain] ?? "var(--color-accent)";
+  const domainIcon = domainIcons[project.domain];
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
   const relatedProjects = projects
     .filter((p) => p.domain === project.domain && p.slug !== project.slug)
-    .slice(0, 2);
+    .slice(0, 3);
+  const pageUrl = `https://www.akashlabs.dev/work/${project.slug}`;
+  const minutes = readingTime(project.problem, project.what, project.impact);
 
   const projectSchema = {
     "@context": "https://schema.org",
@@ -107,17 +139,8 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
 
         {/* Header */}
-        <header
-          className="px-6 pt-10 pb-10"
-          style={{ borderBottom: "1px solid var(--color-border)" }}
-        >
+        <header className="px-6 pt-10 pb-8">
           <div className="max-w-4xl mx-auto">
-            {/* Domain accent bar */}
-            <div
-              className="h-0.5 w-12 rounded-full mb-6"
-              style={{ background: accentColor }}
-            />
-
             <div className="flex flex-wrap items-center gap-2 mb-5">
               <span
                 className="text-xs font-mono px-2.5 py-1 rounded-md"
@@ -140,16 +163,6 @@ export default async function ProjectPage({ params }: PageProps) {
                 {employmentLabels[project.employment]}
               </span>
               <span
-                className="text-xs font-mono px-2.5 py-1 rounded-md"
-                style={{
-                  background: "var(--color-surface-el)",
-                  color: "var(--color-muted)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
-                {project.period}
-              </span>
-              <span
                 className="text-xs font-mono px-2.5 py-1 rounded-md flex items-center gap-1"
                 style={{
                   background: "var(--color-metric-dim)",
@@ -169,36 +182,75 @@ export default async function ProjectPage({ params }: PageProps) {
               {project.title}
             </h1>
 
-            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: "var(--color-body)" }}>
+            <p className="text-lg leading-relaxed max-w-2xl mb-6" style={{ color: "var(--color-body)" }}>
               {project.tagline}
             </p>
 
-            {/* Metrics row */}
-            {project.metrics.length > 0 && (
-              <div
-                className="flex flex-wrap gap-8 mt-8 pt-8"
-                style={{ borderTop: "1px solid var(--color-border)" }}
-              >
-                {project.metrics.map((m) => (
-                  <div key={m.label}>
-                    <p
-                      className="font-mono text-2xl font-bold"
-                      style={{ color: "var(--color-metric)" }}
-                    >
-                      {m.value}
-                    </p>
-                    <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
-                      {m.label}
-                    </p>
-                  </div>
-                ))}
+            {/* Meta row: author / period / read time */}
+            <div
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6"
+              style={{ borderTop: "1px solid var(--color-border)" }}
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0" style={{ border: "1px solid var(--color-border)" }}>
+                  <Image src="/akash.png" alt="Akash Sharma" fill sizes="32px" className="object-cover object-center" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium leading-tight" style={{ color: "var(--color-headline)" }}>
+                    Akash Sharma
+                  </p>
+                  <p className="text-xs leading-tight" style={{ color: "var(--color-muted)" }}>
+                    {project.role}
+                  </p>
+                </div>
               </div>
-            )}
+              <span className="inline-flex items-center gap-1.5 text-xs" style={{ color: "var(--color-muted)" }}>
+                <Calendar size={13} />
+                {project.period}
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs" style={{ color: "var(--color-muted)" }}>
+                <Clock size={13} />
+                {minutes} min read
+              </span>
+            </div>
           </div>
         </header>
 
+        {/* Hero banner */}
+        <div className="px-6 mb-10">
+          <div
+            className="max-w-4xl mx-auto relative h-56 md:h-72 rounded-3xl overflow-hidden flex items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, ${accentColor}22 0%, var(--color-surface-el) 100%)`,
+            }}
+          >
+            <div className="absolute inset-0 bg-dots pointer-events-none" aria-hidden />
+            <span className="relative" style={{ color: accentColor, opacity: 0.8 }}>
+              {domainIcon}
+            </span>
+          </div>
+        </div>
+
+        {/* Metrics row */}
+        {project.metrics.length > 0 && (
+          <div className="px-6 mb-12">
+            <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {project.metrics.map((m) => (
+                <div key={m.label} className="card-soft px-5 py-4">
+                  <p className="font-mono text-2xl font-bold" style={{ color: "var(--color-metric)" }}>
+                    {m.value}
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
+                    {m.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Body */}
-        <div className="px-6 py-12">
+        <div className="px-6 pb-12">
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12">
             {/* Main content */}
             <div className="md:col-span-2 space-y-10">
@@ -240,15 +292,20 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-5">
+            <div className="space-y-5 md:sticky md:top-24 self-start">
+              {/* Share */}
+              <div className="card-soft p-5">
+                <h3
+                  className="font-mono text-xs tracking-widest uppercase mb-4"
+                  style={{ color: "var(--color-muted)" }}
+                >
+                  Share
+                </h3>
+                <ShareLinks url={pageUrl} title={project.title} />
+              </div>
+
               {/* Tech stack */}
-              <div
-                className="rounded-xl p-5"
-                style={{
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
+              <div className="card-soft p-5">
                 <h3
                   className="font-mono text-xs tracking-widest uppercase mb-4"
                   style={{ color: "var(--color-muted)" }}
@@ -263,7 +320,6 @@ export default async function ProjectPage({ params }: PageProps) {
                       style={{
                         background: "var(--color-surface-el)",
                         color: "var(--color-body)",
-                        border: "1px solid var(--color-border)",
                       }}
                     >
                       {t}
@@ -273,13 +329,7 @@ export default async function ProjectPage({ params }: PageProps) {
               </div>
 
               {/* Domain tags */}
-              <div
-                className="rounded-xl p-5"
-                style={{
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
+              <div className="card-soft p-5">
                 <h3
                   className="font-mono text-xs tracking-widest uppercase mb-4"
                   style={{ color: "var(--color-muted)" }}
@@ -294,7 +344,6 @@ export default async function ProjectPage({ params }: PageProps) {
                       style={{
                         background: `${accentColor}10`,
                         color: accentColor,
-                        border: `1px solid ${accentColor}28`,
                       }}
                     >
                       {t}
@@ -304,13 +353,7 @@ export default async function ProjectPage({ params }: PageProps) {
               </div>
 
               {/* Meta */}
-              <div
-                className="rounded-xl p-5"
-                style={{
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
+              <div className="card-soft p-5">
                 <h3
                   className="font-mono text-xs tracking-widest uppercase mb-4"
                   style={{ color: "var(--color-muted)" }}
@@ -336,50 +379,29 @@ export default async function ProjectPage({ params }: PageProps) {
                   ))}
                 </dl>
               </div>
-
-              {/* Related Projects */}
-              {relatedProjects.length > 0 && (
-                <div
-                  className="rounded-xl p-5"
-                  style={{
-                    background: "var(--color-surface)",
-                    border: "1px solid var(--color-border)",
-                  }}
-                >
-                  <h3
-                    className="font-mono text-xs tracking-widest uppercase mb-4"
-                    style={{ color: "var(--color-muted)" }}
-                  >
-                    Related Projects
-                  </h3>
-                  <div className="space-y-3">
-                    {relatedProjects.map((rel) => (
-                      <Link
-                        key={rel.slug}
-                        href={`/work/${rel.slug}`}
-                        className="related-project-link block rounded-lg p-3"
-                        style={{
-                          background: "var(--color-surface-el)",
-                          border: "1px solid var(--color-border)",
-                        }}
-                      >
-                        <p
-                          className="text-xs font-semibold leading-snug mb-1"
-                          style={{ color: "var(--color-headline)" }}
-                        >
-                          {rel.title}
-                        </p>
-                        <p className="text-xs font-mono" style={{ color: "var(--color-muted)" }}>
-                          {rel.period}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
+
+        {/* Related projects */}
+        {relatedProjects.length > 0 && (
+          <div className="px-6 py-16" style={{ background: "var(--color-bg-alt)" }}>
+            <div className="max-w-4xl mx-auto">
+              <div className="eyebrow-badge mb-4">More Work</div>
+              <h2
+                className="text-2xl md:text-3xl font-bold tracking-tight mb-8"
+                style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
+              >
+                Related {project.domain} Projects
+              </h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                {relatedProjects.map((rel) => (
+                  <ProjectCard key={rel.slug} project={rel} variant="compact" />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Footer nav */}
         <div
