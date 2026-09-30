@@ -15,7 +15,18 @@ const fadeUp = (delay: number) => ({
 export function Hero() {
   return (
     <section className="relative px-6 overflow-hidden">
-      <div className="relative max-w-5xl mx-auto w-full pt-14 pb-12">
+      {/* Decorative diagonal stripe texture */}
+      <div className="absolute inset-0 bg-stripes pointer-events-none" aria-hidden />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 0%, var(--color-accent-glow) 0%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="relative max-w-5xl mx-auto w-full pt-10 pb-16">
         <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
 
           {/* Left column */}
@@ -23,14 +34,7 @@ export function Hero() {
 
             {/* Availability badge */}
             <motion.div {...fadeUp(0)}>
-              <div
-                className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full text-xs font-medium"
-                style={{
-                  background: "var(--color-metric-dim)",
-                  border: "1px solid rgba(5,150,105,0.20)",
-                  color: "var(--color-metric)",
-                }}
-              >
+              <div className="eyebrow-badge mb-8">
                 <span
                   className="w-1.5 h-1.5 rounded-full animate-pulse"
                   style={{ background: "var(--color-metric)" }}
@@ -80,42 +84,18 @@ export function Hero() {
 
             {/* CTAs */}
             <motion.div {...fadeUp(0.28)} className="flex flex-wrap items-center gap-3 mb-8">
-              <Link
-                href="/work"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold"
-                style={{
-                  background: "var(--color-accent)",
-                  color: "#FFFFFF",
-                  transition: "background 0.2s, transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.background = "#6366f1";
-                  el.style.transform = "translateY(-1px)";
-                  el.style.boxShadow = "0 4px 12px rgba(79,70,229,0.35)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.background = "var(--color-accent)";
-                  el.style.transform = "translateY(0)";
-                  el.style.boxShadow = "none";
-                }}
-                onMouseDown={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.transform = "translateY(0)";
-                  el.style.boxShadow = "none";
-                }}
-              >
+              <Link href="#work" className="btn-gradient">
                 View My Work
                 <ArrowRight size={15} />
               </Link>
               <a
                 href="/resume.pdf"
                 download="Akash_Sharma_Resume.pdf"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium"
                 style={{
                   border: "1.5px solid var(--color-border)",
                   color: "var(--color-body)",
+                  background: "var(--color-surface)",
                   transition: "background 0.2s, border-color 0.2s, color 0.2s",
                 }}
                 onMouseEnter={(e) => {
@@ -126,7 +106,7 @@ export function Hero() {
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.background = "transparent";
+                  el.style.background = "var(--color-surface)";
                   el.style.borderColor = "var(--color-border)";
                   el.style.color = "var(--color-body)";
                 }}
@@ -182,8 +162,8 @@ export function Hero() {
             <div
               className="relative w-56 h-56 rounded-full overflow-hidden"
               style={{
-                border: "2px solid var(--color-border)",
-                boxShadow: "0 0 0 8px var(--color-bg)",
+                border: "2px solid var(--color-surface)",
+                boxShadow: "var(--shadow-pill), 0 0 0 8px var(--color-accent-dim)",
               }}
             >
               <Image

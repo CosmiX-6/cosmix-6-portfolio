@@ -87,7 +87,7 @@ export default async function ProjectPage({ params }: PageProps) {
       <article>
         {/* Back nav */}
         <div
-          className="sticky top-14 z-30 px-6 py-3"
+          className="sticky top-20 z-30 px-6 py-3"
           style={{
             background: "var(--color-overlay-bg)",
             backdropFilter: "blur(12px)",

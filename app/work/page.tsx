@@ -29,7 +29,7 @@ export default function WorkPage() {
     <div className="min-h-screen">
       {/* Page header */}
       <section
-        className="pt-14 pb-10 px-6"
+        className="pb-10 px-6"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div className="max-w-5xl mx-auto">
@@ -54,7 +54,7 @@ export default function WorkPage() {
 
       {/* Domain filter */}
       <section
-        className="sticky top-14 z-40 px-6 py-3"
+        className="sticky top-20 z-40 px-6 py-3"
         style={{
           background: "var(--color-overlay-bg-strong)",
           backdropFilter: "blur(12px)",
@@ -65,7 +65,6 @@ export default function WorkPage() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap gap-2">
             {filters.map((f) => {
-              const color = domainColors[f] ?? "var(--color-accent)";
               const isActive = active === f;
               return (
                 <button

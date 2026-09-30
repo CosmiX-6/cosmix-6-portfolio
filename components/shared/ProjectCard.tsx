@@ -37,7 +37,7 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
       <motion.div
         whileHover={{ y: -2 }}
         transition={{ duration: 0.18 }}
-        className="relative rounded-xl overflow-hidden group h-full flex flex-col"
+        className="relative rounded-2xl overflow-hidden group h-full flex flex-col"
         style={{
           background: "var(--color-surface)",
           border: "1px solid var(--color-border)",

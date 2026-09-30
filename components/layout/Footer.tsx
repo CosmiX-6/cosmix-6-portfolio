@@ -4,28 +4,29 @@ import Link from "next/link";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
 
 const navLinks = [
-  { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
-  { href: "/skills", label: "Skills" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#work", label: "Work" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{ background: "#0F172A" }}>
-      <div className="max-w-5xl mx-auto px-6 py-12">
+    <footer style={{ background: "var(--color-ink)" }}>
+      <div className="max-w-5xl mx-auto px-6 py-14">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <p className="text-sm font-semibold" style={{ color: "#E2E8F0" }}>
+            <p className="text-sm font-semibold" style={{ color: "#F1EFFB" }}>
               Akash Sharma
             </p>
-            <p className="text-xs mt-1" style={{ color: "#64748B" }}>
+            <p className="text-xs mt-1" style={{ color: "#8E8AB8" }}>
               AI Engineer · Applied ML · Production Systems
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#64748B" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#8E8AB8" }}>
               Bengaluru, India
             </p>
           </div>
@@ -37,12 +38,12 @@ export function Footer() {
                 key={l.href}
                 href={l.href}
                 className="text-xs transition-colors duration-150"
-                style={{ color: "#64748B" }}
+                style={{ color: "#8E8AB8" }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "#E2E8F0")
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "#64748B")
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
                 }
               >
                 {l.label}
@@ -58,12 +59,12 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="transition-colors duration-150"
-              style={{ color: "#64748B" }}
+              style={{ color: "#8E8AB8" }}
               onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#E2E8F0")
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
               }
               onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#64748B")
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
               }
             >
               <LinkedinIcon size={17} />
@@ -74,12 +75,12 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="GitHub"
               className="transition-colors duration-150"
-              style={{ color: "#64748B" }}
+              style={{ color: "#8E8AB8" }}
               onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#E2E8F0")
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#F1EFFB")
               }
               onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#64748B")
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#8E8AB8")
               }
             >
               <GithubIcon size={17} />
@@ -90,21 +91,21 @@ export function Footer() {
         {/* Bottom strip */}
         <div
           className="mt-10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
-          style={{ borderTop: "1px solid #1E293B" }}
+          style={{ borderTop: "1px solid rgba(241,239,251,0.10)" }}
         >
-          <p className="text-xs font-mono" style={{ color: "#475569" }}>
+          <p className="text-xs font-mono" style={{ color: "#5F5B8A" }}>
             © {year} Akash Sharma
           </p>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xs font-mono transition-colors duration-150"
-            style={{ color: "#475569", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            style={{ color: "#5F5B8A", background: "none", border: "none", cursor: "pointer", padding: 0 }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.color = "#E2E8F0")
+              ((e.currentTarget as HTMLButtonElement).style.color = "#F1EFFB")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.color = "#475569")
+              ((e.currentTarget as HTMLButtonElement).style.color = "#5F5B8A")
             }
           >
             Back to top ↑

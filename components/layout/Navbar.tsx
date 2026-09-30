@@ -2,129 +2,132 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "/work", label: "Work" },
-  { href: "/skills", label: "Skills" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#about", label: "About", id: "about" },
+  { href: "/#experience", label: "Experience", id: "experience" },
+  { href: "/#work", label: "Work", id: "work" },
+  { href: "/#skills", label: "Skills", id: "skills" },
+  { href: "/#contact", label: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (pathname !== "/") return;
+
+    const sections = links
+      .map((l) => document.getElementById(l.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sections.forEach((s) => observerRef.current?.observe(s));
+    return () => observerRef.current?.disconnect();
+  }, [pathname]);
+
+  const displayActiveId = pathname === "/" ? activeId : null;
 
   return (
-    <header
-      className="fixed top-0 inset-x-0 z-50 transition-all duration-200"
-      style={{
-        background: scrolled ? "var(--color-overlay-bg)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px) saturate(1.5)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.5)" : "none",
-        borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
-      }}
-    >
-      <nav className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+    <header className="fixed top-3 sm:top-4 inset-x-0 z-50 px-3 sm:px-4">
+      <nav
+        className="max-w-3xl mx-auto flex items-center justify-between gap-3 rounded-full pl-4 pr-2 sm:pr-2.5 py-2"
+        style={{
+          background: "var(--color-overlay-bg-strong)",
+          backdropFilter: "blur(14px) saturate(1.4)",
+          WebkitBackdropFilter: "blur(14px) saturate(1.4)",
+          border: "1px solid var(--color-border)",
+          boxShadow: "var(--shadow-pill)",
+        }}
+      >
         {/* Wordmark */}
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight transition-colors duration-150"
+          className="text-sm font-bold tracking-tight shrink-0"
           style={{ color: "var(--color-headline)" }}
         >
           Akash Sharma
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {links.map((l) => {
-            const isActive =
-              pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href + "/"));
+            const isActive = displayActiveId === l.id;
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`relative text-sm transition-colors duration-150 pb-px ${isActive ? "font-semibold" : "font-medium"}`}
-                style={{ color: isActive ? "var(--color-accent)" : "var(--color-body)" }}
+                className="relative text-sm px-3 py-1.5 rounded-full transition-colors duration-150"
+                style={{
+                  color: isActive ? "var(--color-accent)" : "var(--color-body)",
+                  background: isActive ? "var(--color-accent-dim)" : "transparent",
+                  fontWeight: isActive ? 600 : 500,
+                }}
               >
                 {l.label}
-                {isActive && (
-                  <span
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                    style={{ background: "var(--color-accent)" }}
-                  />
-                )}
               </Link>
             );
           })}
-
-          <a
-            href="/resume.pdf"
-            download="Akash_Sharma_Resume.pdf"
-            className="text-sm font-medium px-4 py-1.5 rounded-md transition-all duration-150"
-            style={{
-              border: "1.5px solid var(--color-border)",
-              color: "var(--color-body)",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "var(--color-accent-dim)";
-              el.style.borderColor = "var(--color-accent)";
-              el.style.color = "var(--color-accent)";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "transparent";
-              el.style.borderColor = "var(--color-border)";
-              el.style.color = "var(--color-body)";
-            }}
-          >
-            Download Resume ↓
-          </a>
         </div>
+
+        {/* CTA */}
+        <a
+          href="/resume.pdf"
+          download="Akash_Sharma_Resume.pdf"
+          className="btn-gradient hidden sm:inline-flex !py-2 !px-4 !text-xs shrink-0"
+        >
+          Resume
+        </a>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-1.5 rounded-md transition-colors duration-150"
-          style={{ color: "var(--color-body)" }}
+          className="md:hidden p-2 rounded-full transition-colors duration-150 shrink-0"
+          style={{ color: "var(--color-body)", background: "var(--color-surface-el)" }}
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden px-6 pb-5 flex flex-col"
+          className="md:hidden max-w-3xl mx-auto mt-2 rounded-2xl px-5 py-4 flex flex-col gap-1"
           style={{
             background: "var(--color-surface)",
-            borderBottom: "1px solid var(--color-border)",
+            border: "1px solid var(--color-border)",
+            boxShadow: "var(--shadow-pill)",
           }}
         >
           {links.map((l) => {
-            const isActive = pathname === l.href;
+            const isActive = displayActiveId === l.id;
             return (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium py-3 border-b transition-colors duration-150"
+                className="text-sm font-medium py-2.5 px-3 rounded-lg transition-colors duration-150"
                 style={{
                   color: isActive ? "var(--color-accent)" : "var(--color-body)",
-                  borderColor: "var(--color-border)",
+                  background: isActive ? "var(--color-accent-dim)" : "transparent",
                 }}
               >
                 {l.label}
@@ -134,13 +137,10 @@ export function Navbar() {
           <a
             href="/resume.pdf"
             download="Akash_Sharma_Resume.pdf"
-            className="mt-4 text-sm font-medium text-center py-2.5 rounded-md transition-colors duration-150"
-            style={{
-              border: "1.5px solid var(--color-border)",
-              color: "var(--color-body)",
-            }}
+            className="btn-gradient justify-center mt-2"
+            onClick={() => setOpen(false)}
           >
-            Download Resume ↓
+            Resume
           </a>
         </div>
       )}

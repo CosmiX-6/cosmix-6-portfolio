@@ -5,64 +5,83 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 
-  --radius-sm: 5px;
-  --radius-md: 8px;
-  --radius-lg: 10px;
-  --radius-xl: 14px;
+  --radius-sm: 7px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
 }
 
-/* ─── Light Mode (default) ──────────────────────────────────── */
+/* ─── Light Mode (default) — Virion-inspired indigo/lavender ─── */
 :root {
   color-scheme: light dark;
 
   /* Surfaces */
-  --color-bg:                  #FAFAF9;
+  --color-bg:                  #F0EEFB;
+  --color-bg-alt:               #FFFFFF;
   --color-surface:             #FFFFFF;
-  --color-surface-el:          #F5F5F4;
-  --color-border:              #E7E5E4;
-  --color-border-subtle:       #F0EDEC;
-  --color-overlay-bg:          rgba(250,250,249,0.88);
-  --color-overlay-bg-strong:   rgba(250,250,249,0.96);
+  --color-surface-el:          #F5F3FC;
+  --color-border:              #E2DFF6;
+  --color-border-subtle:       #EAE8F9;
+  --color-overlay-bg:          rgba(240,238,251,0.82);
+  --color-overlay-bg-strong:   rgba(240,238,251,0.95);
 
   /* Typography */
-  --color-headline:            #0F172A;
-  --color-body:                #475569;
-  --color-muted:               #94A3B8;
+  --color-headline:            #1C1A33;
+  --color-body:                #57566F;
+  --color-muted:                #8B89A3;
 
-  /* Accent: indigo-600 */
-  --color-accent:              #4F46E5;
-  --color-accent-dim:          #EEF2FF;
-  --color-accent-glow:         rgba(79,70,229,0.08);
+  /* Accent: deep indigo-violet */
+  --color-accent:              #4F3FF0;
+  --color-accent-dim:          #EBE8FD;
+  --color-accent-glow:         rgba(79,63,240,0.10);
+
+  /* Ink: dark navy-purple, used for CTA blocks / gradient buttons / footer */
+  --color-ink:                 #18152E;
+  --color-ink-2:               #2E2569;
 
   /* Status */
   --color-metric:              #059669;
   --color-metric-dim:          rgba(209,250,229,0.70);
   --color-danger:              #E11D48;
+
+  /* Shadows */
+  --shadow-card:     0 1px 2px rgba(28,26,51,0.04), 0 10px 28px -12px rgba(28,26,51,0.14);
+  --shadow-card-hover: 0 1px 2px rgba(28,26,51,0.05), 0 16px 36px -12px rgba(28,26,51,0.20);
+  --shadow-pill:     0 8px 24px -10px rgba(28,26,51,0.18);
 }
 
 /* ─── Dark Mode ─────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg:                  #0C0A09;
-    --color-surface:             #1C1917;
-    --color-surface-el:          #292524;
-    --color-border:              #44403C;
-    --color-border-subtle:       #292524;
-    --color-overlay-bg:          rgba(12,10,9,0.88);
-    --color-overlay-bg-strong:   rgba(12,10,9,0.96);
+    --color-bg:                  #121022;
+    --color-bg-alt:               #17152A;
+    --color-surface:             #1B1930;
+    --color-surface-el:          #242140;
+    --color-border:              #342F58;
+    --color-border-subtle:       #262242;
+    --color-overlay-bg:          rgba(18,16,34,0.82);
+    --color-overlay-bg-strong:   rgba(18,16,34,0.95);
 
-    --color-headline:            #FAFAFA;
-    --color-body:                #A8A29E;
-    --color-muted:               #78716C;
+    --color-headline:            #F5F4FC;
+    --color-body:                #B7B4D9;
+    --color-muted:                 #827FA8;
 
-    /* Accent lighter for dark bg: indigo-400 */
-    --color-accent:              #818CF8;
-    --color-accent-dim:          rgba(49,46,129,0.40);
-    --color-accent-glow:         rgba(129,140,248,0.10);
+    /* Accent lighter for dark bg */
+    --color-accent:              #8C7DFF;
+    --color-accent-dim:          rgba(79,63,240,0.20);
+    --color-accent-glow:         rgba(140,125,255,0.12);
+
+    --color-ink:                 #0B0A18;
+    --color-ink-2:               #211C46;
 
     --color-metric:              #34D399;
     --color-metric-dim:          rgba(6,78,59,0.50);
     --color-danger:              #F87171;
+
+    --shadow-card:     0 1px 2px rgba(0,0,0,0.20), 0 10px 28px -12px rgba(0,0,0,0.45);
+    --shadow-card-hover: 0 1px 2px rgba(0,0,0,0.24), 0 16px 36px -12px rgba(0,0,0,0.55);
+    --shadow-pill:     0 8px 24px -10px rgba(0,0,0,0.45);
   }
 }
 
@@ -80,12 +99,74 @@ body {
   min-height: 100vh;
 }
 
+/* Scroll offset so anchored sections clear the floating nav */
+section[id] { scroll-margin-top: 90px; }
+
 /* ─── Typography helpers ─────────────────────────────────────── */
 .text-headline  { color: var(--color-headline); }
 .text-body      { color: var(--color-body); }
 .text-muted     { color: var(--color-muted); }
 .text-accent    { color: var(--color-accent); }
 .text-metric    { color: var(--color-metric); font-family: var(--font-mono); }
+
+/* ─── Diagonal stripe texture (Virion-style decorative bg) ───── */
+.bg-stripes {
+  background-image: repeating-linear-gradient(
+    115deg,
+    var(--color-accent) 0px,
+    var(--color-accent) 1px,
+    transparent 1px,
+    transparent 13px
+  );
+  opacity: 0.05;
+}
+
+/* ─── Eyebrow / pill badge (section label above headings) ─────── */
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-body);
+  box-shadow: var(--shadow-card);
+}
+
+/* ─── Soft elevated card (bento-style) ─────────────────────────── */
+.card-soft {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+}
+.card-soft:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─── Gradient pill button (primary CTA) ───────────────────────── */
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-ink-2) 0%, var(--color-accent) 100%);
+  box-shadow: var(--shadow-pill);
+  transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+}
+.btn-gradient:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+.btn-gradient:active { transform: translateY(0); }
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }

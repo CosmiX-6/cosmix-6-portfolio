@@ -8,7 +8,7 @@ import { ProjectCard } from "@/components/shared/ProjectCard";
 
 export function FeaturedProjects() {
   return (
-    <section className="py-20 px-6">
+    <section id="work" className="py-20 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -19,15 +19,10 @@ export function FeaturedProjects() {
           className="flex items-end justify-between mb-10"
         >
           <div>
-            <p
-              className="font-mono text-xs tracking-widest uppercase mb-2"
-              style={{ color: "var(--color-accent)" }}
-            >
-              Selected Work
-            </p>
+            <div className="eyebrow-badge mb-4">Selected Work</div>
             <h2
-              className="text-2xl font-bold tracking-tight"
-              style={{ color: "var(--color-headline)", letterSpacing: "-0.015em" }}
+              className="text-3xl md:text-4xl font-bold tracking-tight"
+              style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
             >
               Flagship AI Systems
             </h2>
