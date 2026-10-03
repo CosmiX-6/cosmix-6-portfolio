@@ -1,38 +1,37 @@
-export interface ConfirmedMetric {
+export interface Highlight {
   id: string;
-  value: string;
-  label: string;
+  title: string;
   description: string;
-  project: string;
 }
 
-export const confirmedMetrics: ConfirmedMetric[] = [
+export const highlights: Highlight[] = [
   {
-    id: "M-001",
-    value: "~52%",
-    label: "MAPE Reduction",
-    description: "Booking model error reduced through forecast category feature engineering",
-    project: "Revenue Forecasting Platform",
+    id: "H-01",
+    title: "25+ Production ML Systems",
+    description:
+      "Built and evolved end-to-end across forecasting, attribution, propensity, and revenue intelligence.",
   },
   {
-    id: "M-002",
-    value: "~80%",
-    label: "Compute Time Reduction",
-    description: "Modeling pipeline time reduced from 5–6 hours to 1 hour via parallelization",
-    project: "Platform Optimization",
+    id: "H-02",
+    title: "8+ ML Families, One Revenue Engine",
+    description: "Unified into daily multi-horizon pipeline and booking projections.",
   },
   {
-    id: "M-025",
-    value: "25",
-    label: "Production ML Systems",
-    description: "End-to-end ML systems shipped across 4+ years on a single B2B SaaS platform",
-    project: "Full Career",
+    id: "H-03",
+    title: "Production-Scale Engineering",
+    description:
+      "1000+ feature pipelines, distributed processing, configurable ML infrastructure, and production explainability.",
   },
   {
-    id: "M-021",
-    value: "~15%",
-    label: "Pipeline Increase",
-    description: "Pipeline grew while cutting channel spend ~50% via marketing mix response curve analysis",
-    project: "Marketing Mix Modeling Platform",
+    id: "H-04",
+    title: "Prototype → Production → Platform",
+    description:
+      "Four+ years evolving a B2B SaaS Revenue Intelligence platform from early models to production AI infrastructure.",
   },
 ];
+
+export const supportingProof = {
+  value: "~52%",
+  label: "reduction in booking model MAPE",
+  detail: "through forecast-category feature engineering, shipped to production at Revsure AI.",
+};
