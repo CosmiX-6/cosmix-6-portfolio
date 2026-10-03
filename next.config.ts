@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
       { source: "/about", destination: "/#about", permanent: true },
       { source: "/skills", destination: "/#skills", permanent: true },
       { source: "/contact", destination: "/#contact", permanent: true },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "akashlabs.dev" }],
+        destination: "https://www.akashlabs.dev/:path*",
+        permanent: true,
+      },
     ];
   },
 };
