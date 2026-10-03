@@ -47,6 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: project.title,
     description,
     keywords,
+    alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
       title: `${project.title} | Akash Sharma`,
       description,
