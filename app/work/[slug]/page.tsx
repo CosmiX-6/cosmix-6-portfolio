@@ -105,6 +105,7 @@ export default async function ProjectPage({ params }: PageProps) {
     "@type": "Article",
     headline: project.title,
     description: project.tagline,
+    image: "https://www.akashlabs.dev/og-image.png",
     author: {
       "@type": "Person",
       name: "Akash Sharma",
