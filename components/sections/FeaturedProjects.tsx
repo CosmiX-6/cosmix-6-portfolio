@@ -1,21 +1,12 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { featuredProjects } from "@/lib/data/projects";
-import { ProjectCard } from "@/components/shared/ProjectCard";
+import { WorkCard } from "@/components/shared/WorkCard";
 
 export function FeaturedProjects() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scrollBy = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: "smooth" });
-  };
-
   return (
     <section id="work" className="py-20 px-6">
       <div className="max-w-5xl mx-auto">
@@ -35,58 +26,30 @@ export function FeaturedProjects() {
               Flagship <em className="font-serif-accent font-normal">AI</em> Systems
             </h2>
             <p className="mt-2 text-sm max-w-md" style={{ color: "var(--color-body)" }}>
-              Four flagship systems from 25 production ML projects: forecasting, attribution,
-              marketing science, and pipeline intelligence.
+              Four flagship systems from 25 production ML projects. Open any card for its business impact.
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => scrollBy(-1)}
-              aria-label="Previous project"
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-150 hover:-translate-y-0.5"
-              style={{ background: "var(--color-surface)", color: "var(--color-headline)", boxShadow: "var(--shadow-card)" }}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollBy(1)}
-              aria-label="Next project"
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-150 hover:-translate-y-0.5"
-              style={{ background: "var(--gradient-cta)", color: "#FFFFFF", boxShadow: "var(--shadow-pill)" }}
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full"
+            style={{ background: "var(--color-surface)", color: "var(--color-accent)", boxShadow: "var(--shadow-card)" }}
+          >
+            All 25 projects <ArrowRight size={14} />
+          </Link>
         </motion.div>
 
-        <div
-          ref={trackRef}
-          className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 md:mx-0 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
+        <div className="grid md:grid-cols-2 gap-5 items-start">
           {featuredProjects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.4, ease: [0, 0, 0.2, 1] }}
-              className="snap-start shrink-0 w-[85%] sm:w-[60%] md:w-[calc(50%-10px)] flex"
+              transition={{ delay: i * 0.06, duration: 0.4, ease: [0, 0, 0.2, 1] }}
             >
-              <ProjectCard project={project} variant="featured" />
+              <WorkCard project={project} />
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-2 text-center md:text-left">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-1.5 text-sm font-medium"
-            style={{ color: "var(--color-accent)" }}
-          >
-            View all 25 projects <ArrowRight size={14} />
-          </Link>
         </div>
       </div>
     </section>

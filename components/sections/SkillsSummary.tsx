@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { skillCategories, type Skill } from "@/lib/data/skills";
+import { Search, X } from "lucide-react";
+import { skillCategories, type Skill, type SkillLevel } from "@/lib/data/skills";
 
-const levelWeight: Record<Skill["level"], number> = {
+type LevelFilter = "All" | SkillLevel;
+
+const levels: LevelFilter[] = ["All", "Expert", "Advanced", "Intermediate"];
+
+const levelWeight: Record<SkillLevel, number> = {
   Expert: 1,
   Advanced: 0.7,
   Intermediate: 0.45,
 };
+
+const allSkills: (Skill & { category: string })[] = skillCategories.flatMap((cat) =>
+  cat.skills.map((s) => ({ ...s, category: cat.name }))
+);
 
 function tileLabel(name: string): string {
   const words = name.replace(/[()/&+]/g, " ").split(/\s+/).filter(Boolean);
@@ -16,10 +25,79 @@ function tileLabel(name: string): string {
   return (words[0][0] + words[1][0]).toUpperCase();
 }
 
+function Tile({
+  skill,
+  index,
+  selected,
+  onSelect,
+  showCategory,
+}: {
+  skill: Skill;
+  index: number;
+  selected: boolean;
+  onSelect: () => void;
+  showCategory: boolean;
+}) {
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.02, duration: 0.25, ease: [0, 0, 0.2, 1] }}
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onSelect}
+      aria-pressed={selected}
+      aria-label={`${skill.name}, ${skill.level}, ${skill.years} years`}
+      className="relative aspect-square rounded-2xl p-3 flex flex-col items-start justify-between text-left overflow-hidden"
+      style={{
+        background: selected ? "var(--gradient-cta)" : "var(--color-surface)",
+        color: selected ? "#FFFFFF" : "var(--color-headline)",
+        boxShadow: "var(--shadow-card)",
+      }}
+    >
+      <span className="text-lg font-bold tracking-tight font-mono">{tileLabel(skill.name)}</span>
+      <span className="text-[11px] leading-snug line-clamp-2">{skill.name}</span>
+      {showCategory && (
+        <span className="text-[10px] leading-tight mt-1 opacity-70 line-clamp-1">{skill.category}</span>
+      )}
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-0 h-1 rounded-full"
+        style={{
+          width: `${levelWeight[skill.level] * 100}%`,
+          background: selected ? "#FFFFFF" : "var(--color-accent)",
+        }}
+      />
+    </motion.button>
+  );
+}
+
 export function SkillsSummary() {
   const [active, setActive] = useState(0);
+  const [query, setQuery] = useState("");
+  const [level, setLevel] = useState<LevelFilter>("All");
   const [selected, setSelected] = useState<Skill | null>(null);
-  const category = skillCategories[active];
+
+  const filtering = query.trim() !== "" || level !== "All";
+
+  const matches = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return allSkills.filter(
+      (s) =>
+        (level === "All" || s.level === level) &&
+        (q === "" || s.name.toLowerCase().includes(q) || s.category.toLowerCase().includes(q))
+    );
+  }, [query, level]);
+
+  const categorySkills = skillCategories[active].skills.filter(
+    (s) => level === "All" || s.level === level
+  );
+
+  const clearFilters = () => {
+    setQuery("");
+    setLevel("All");
+  };
 
   return (
     <section id="skills" className="py-20 px-6">
@@ -32,81 +110,127 @@ export function SkillsSummary() {
           Skills built through <em className="font-serif-accent font-normal">owning</em> production systems.
         </h2>
         <p className="mt-3 text-sm max-w-lg" style={{ color: "var(--color-body)" }}>
-          Pick a category, then tap a tile for its level and experience.
+          Search for a tool, filter by depth, or browse by category. Tap any tile for details.
         </p>
 
-        <div role="tablist" aria-label="Skill categories" className="flex flex-wrap gap-2 mt-8">
-          {skillCategories.map((cat, i) => {
-            const isActive = i === active;
-            return (
-              <button
-                key={cat.name}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => {
-                  setActive(i);
-                  setSelected(null);
-                }}
-                className="text-xs font-semibold px-3.5 py-2 rounded-full transition-colors duration-200"
-                style={{
-                  background: isActive ? "var(--gradient-cta)" : "var(--color-surface)",
-                  color: isActive ? "#FFFFFF" : "var(--color-body)",
-                  boxShadow: "var(--shadow-card)",
-                }}
-              >
-                {cat.name}
-              </button>
-            );
-          })}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={category.name}
-            role="tabpanel"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }}
-            className="mt-6 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3"
-          >
-            {category.skills.map((skill, i) => {
-              const isSelected = selected?.name === skill.name;
+        <div className="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div role="tablist" aria-label="Skill categories" className="flex flex-wrap gap-2">
+            {skillCategories.map((cat, i) => {
+              const isActive = i === active && !filtering;
               return (
-                <motion.button
-                  key={skill.name}
+                <button
+                  key={cat.name}
                   type="button"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.03, duration: 0.25, ease: [0, 0, 0.2, 1] }}
-                  whileHover={{ y: -3 }}
-                  whileTap={{ scale: 0.96 }}
-                  onClick={() => setSelected(isSelected ? null : skill)}
-                  aria-pressed={isSelected}
-                  aria-label={`${skill.name}, ${skill.level}, ${skill.years} years`}
-                  className="relative aspect-square rounded-2xl p-3 flex flex-col items-start justify-between text-left overflow-hidden"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => {
+                    setActive(i);
+                    setSelected(null);
+                    clearFilters();
+                  }}
+                  className="text-xs font-semibold px-3.5 py-2 rounded-full transition-colors duration-200"
                   style={{
-                    background: isSelected ? "var(--gradient-cta)" : "var(--color-surface)",
-                    color: isSelected ? "#FFFFFF" : "var(--color-headline)",
+                    background: isActive ? "var(--gradient-cta)" : "var(--color-surface)",
+                    color: isActive ? "#FFFFFF" : "var(--color-body)",
                     boxShadow: "var(--shadow-card)",
                   }}
                 >
-                  <span className="text-lg font-bold tracking-tight font-mono">{tileLabel(skill.name)}</span>
-                  <span className="text-[11px] leading-snug line-clamp-2">{skill.name}</span>
-                  <span
-                    aria-hidden
-                    className="absolute bottom-0 left-0 h-1 rounded-full"
-                    style={{
-                      width: `${levelWeight[skill.level] * 100}%`,
-                      background: isSelected ? "#FFFFFF" : "var(--color-accent)",
-                    }}
-                  />
-                </motion.button>
+                  {cat.name}
+                </button>
               );
             })}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <label className="relative flex items-center">
+              <Search size={14} className="absolute left-3" style={{ color: "var(--color-muted)" }} aria-hidden />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSelected(null);
+                }}
+                placeholder="Search skills"
+                aria-label="Search skills"
+                className="text-xs pl-8 pr-8 py-2 rounded-full w-44 outline-none"
+                style={{
+                  background: "var(--color-surface)",
+                  color: "var(--color-headline)",
+                  boxShadow: "var(--shadow-card)",
+                }}
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                  className="absolute right-2.5"
+                  style={{ color: "var(--color-muted)" }}
+                >
+                  <X size={13} />
+                </button>
+              )}
+            </label>
+            <div role="radiogroup" aria-label="Filter by level" className="flex gap-1 p-1 rounded-full" style={{ background: "var(--color-surface-el)" }}>
+              {levels.map((l) => {
+                const isOn = level === l;
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    role="radio"
+                    aria-checked={isOn}
+                    onClick={() => {
+                      setLevel(l);
+                      setSelected(null);
+                    }}
+                    className="text-[11px] font-semibold px-2.5 py-1.5 rounded-full transition-colors duration-200"
+                    style={{
+                      background: isOn ? "var(--color-surface)" : "transparent",
+                      color: isOn ? "var(--color-headline)" : "var(--color-muted)",
+                      boxShadow: isOn ? "var(--shadow-card)" : "none",
+                    }}
+                  >
+                    {l}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between text-xs" style={{ color: "var(--color-muted)" }}>
+          <span>
+            {filtering
+              ? `${matches.length} of ${allSkills.length} skills`
+              : `${categorySkills.length} skills in ${skillCategories[active].name}`}
+          </span>
+          {filtering && (
+            <button type="button" onClick={clearFilters} className="font-semibold" style={{ color: "var(--color-accent)" }}>
+              Clear filters
+            </button>
+          )}
+        </div>
+
+        <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+          {(filtering ? matches : categorySkills).map((skill, i) => (
+            <Tile
+              key={`${filtering ? "f" : active}-${skill.name}`}
+              skill={skill}
+              index={i}
+              showCategory={filtering}
+              selected={selected?.name === skill.name}
+              onSelect={() => setSelected(selected?.name === skill.name ? null : skill)}
+            />
+          ))}
+        </div>
+
+        {filtering && matches.length === 0 && (
+          <p className="mt-6 text-sm text-center" style={{ color: "var(--color-muted)" }}>
+            No skills match. Try a different search or level.
+          </p>
+        )}
 
         <div className="mt-5 min-h-[56px]">
           <AnimatePresence>
