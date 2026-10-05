@@ -2,7 +2,50 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X } from "lucide-react";
+import {
+  Search,
+  X,
+  Sparkles,
+  TreeDeciduous,
+  Workflow,
+  Blend,
+  Sigma,
+  ScanSearch,
+  Layers,
+  Target,
+  Route,
+  Gauge,
+  Layers3,
+  CalendarRange,
+  ChartLine,
+  Waves,
+  ChartSpline,
+  ShieldCheck,
+  Split,
+  TrendingUp,
+  Megaphone,
+  Activity,
+  TimerReset,
+  GitBranch,
+  Network,
+  GitCompare,
+  Scale,
+  Code,
+  Database,
+  Zap,
+  Table2,
+  FunctionSquare,
+  Cog,
+  Cloud,
+  Server,
+  CloudUpload,
+  GitMerge,
+  Briefcase,
+  Users,
+  Radar,
+  MessageSquareText,
+  type LucideIcon,
+} from "lucide-react";
 import { skillCategories, type Skill, type SkillLevel } from "@/lib/data/skills";
 
 type LevelFilter = "All" | SkillLevel;
@@ -15,15 +58,54 @@ const levelWeight: Record<SkillLevel, number> = {
   Intermediate: 0.45,
 };
 
+const skillIcons: Record<string, LucideIcon> = {
+  "XGBoost (Regressor + Classifier)": TreeDeciduous,
+  "scikit-learn Pipelines": Workflow,
+  "Custom Transformers": Blend,
+  "Ridge / BayesianRidge": Sigma,
+  "SHAP (TreeExplainer)": ScanSearch,
+  "Feature Selection": Layers,
+  "Rare Event Classification": Target,
+  "Markov Chain MTA": Route,
+  "L-BFGS-B Optimization": Gauge,
+  "Model Stacking (LGBM/CatBoost)": Layers3,
+  "EOQ Revenue Forecasting": CalendarRange,
+  "Multi-Horizon Forecasting": ChartLine,
+  "STL Decomposition": Waves,
+  SARIMAX: ChartSpline,
+  "Leakage-Safe Temporal Validation": ShieldCheck,
+  GroupShuffleSplit: Split,
+  "Heuristic Forecasting": TrendingUp,
+  "Marketing Mix Modeling": Megaphone,
+  "Hill Saturation Curves": Activity,
+  "Adstock Modeling": TimerReset,
+  "Response Curve Generation": ChartLine,
+  "Scenario Planning": GitBranch,
+  "Multi-Touch Attribution": Network,
+  "Incrementality Testing": GitCompare,
+  "Causal Inference / DiD": Scale,
+  Python: Code,
+  "SQL / BigQuery": Database,
+  PySpark: Zap,
+  "pandas / NumPy": Table2,
+  "statsmodels / SciPy": FunctionSquare,
+  "joblib (Parallelization)": Cog,
+  "Google Cloud Platform (GCP)": Cloud,
+  BigQuery: Database,
+  "GCP Dataproc": Server,
+  "Cloud Storage (GCS)": CloudUpload,
+  "Apache Airflow": GitMerge,
+  "B2B SaaS Revenue Intelligence": Briefcase,
+  "GTM Analytics (Full Funnel)": Users,
+  "Pipeline & Booking Forecasting": ChartLine,
+  "Marketing Attribution": Radar,
+  "Salesforce Opportunity Semantics": MessageSquareText,
+  "Stakeholder Communication": Users,
+};
+
 const allSkills: (Skill & { category: string })[] = skillCategories.flatMap((cat) =>
   cat.skills.map((s) => ({ ...s, category: cat.name }))
 );
-
-function tileLabel(name: string): string {
-  const words = name.replace(/[()/&+]/g, " ").split(/\s+/).filter(Boolean);
-  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-  return (words[0][0] + words[1][0]).toUpperCase();
-}
 
 function Tile({
   skill,
@@ -38,29 +120,42 @@ function Tile({
   onSelect: () => void;
   showCategory: boolean;
 }) {
+  const Icon = skillIcons[skill.name] ?? Sparkles;
   return (
     <motion.button
       type="button"
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.02, duration: 0.25, ease: [0, 0, 0.2, 1] }}
       whileHover={{ y: -3 }}
-      whileTap={{ scale: 0.96 }}
+      whileTap={{ scale: 0.97 }}
       onClick={onSelect}
       aria-pressed={selected}
       aria-label={`${skill.name}, ${skill.level}, ${skill.years} years`}
-      className="relative aspect-square rounded-2xl p-3 flex flex-col items-start justify-between text-left overflow-hidden"
+      className="relative min-h-[160px] rounded-2xl p-4 flex flex-col items-start text-left overflow-hidden"
       style={{
         background: selected ? "var(--gradient-cta)" : "var(--color-surface)",
         color: selected ? "#FFFFFF" : "var(--color-headline)",
         boxShadow: "var(--shadow-card)",
       }}
     >
-      <span className="text-lg font-bold tracking-tight font-mono">{tileLabel(skill.name)}</span>
-      <span className="text-[11px] leading-snug line-clamp-2">{skill.name}</span>
+      <span
+        className="flex items-center justify-center w-12 h-12 rounded-xl mb-4"
+        style={{
+          background: selected ? "rgba(255,255,255,0.18)" : "var(--color-accent-dim)",
+          color: selected ? "#FFFFFF" : "var(--color-accent)",
+        }}
+      >
+        <Icon size={22} strokeWidth={1.75} />
+      </span>
+      <span className="text-sm font-semibold leading-snug line-clamp-2">{skill.name}</span>
       {showCategory && (
         <span className="text-[10px] leading-tight mt-1 opacity-70 line-clamp-1">{skill.category}</span>
       )}
+      <span className="mt-auto pt-3 w-full flex items-center justify-between text-[10px] font-mono opacity-80">
+        <span>{skill.level}</span>
+        <span>{skill.years}y</span>
+      </span>
       <span
         aria-hidden
         className="absolute bottom-0 left-0 h-1 rounded-full"
@@ -213,7 +308,7 @@ export function SkillsSummary() {
           )}
         </div>
 
-        <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {(filtering ? matches : categorySkills).map((skill, i) => (
             <Tile
               key={`${filtering ? "f" : active}-${skill.name}`}
