@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
+import { FlipIdCard } from "@/components/shared/FlipIdCard";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -155,27 +155,9 @@ export function Hero() {
           </div>
 
           {/* Right column */}
-          <motion.div
-            {...fadeUp(0.1)}
-            className="shrink-0 flex justify-center md:justify-end"
-          >
-            <div
-              className="relative w-56 h-56 rounded-full overflow-hidden"
-              style={{
-                border: "2px solid var(--color-surface)",
-                boxShadow: "var(--shadow-pill), 0 0 0 8px var(--color-accent-dim)",
-              }}
-            >
-              <Image
-                src="/akash.png"
-                alt="Akash Sharma"
-                fill
-                sizes="224px"
-                className="object-cover object-center"
-                priority
-              />
-            </div>
-          </motion.div>
+          <div className="shrink-0 flex justify-center md:justify-end">
+            <FlipIdCard />
+          </div>
 
         </div>
       </div>

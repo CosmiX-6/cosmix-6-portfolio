@@ -28,7 +28,7 @@ export function About() {
             className="text-3xl md:text-4xl font-bold tracking-tight mb-4 max-w-2xl"
             style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
           >
-            I turn messy data into decisions companies can bet on.
+            I turn messy data into <em className="font-serif-accent font-normal">decisions</em> companies can bet on.
           </h2>
         </AnimatedSection>
 

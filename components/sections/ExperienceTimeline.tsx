@@ -22,7 +22,7 @@ export function ExperienceTimeline() {
             className="text-3xl md:text-4xl font-bold tracking-tight mb-10 max-w-2xl"
             style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
           >
-            4+ years owning production ML systems end-to-end.
+            4+ years <em className="font-serif-accent font-normal">owning</em> production ML systems end-to-end.
           </h2>
         </AnimatedSection>
 

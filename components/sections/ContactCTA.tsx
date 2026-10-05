@@ -79,7 +79,7 @@ export function ContactCTA() {
               className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
               style={{ color: "#FFFFFF", letterSpacing: "-0.02em" }}
             >
-              Let&apos;s talk
+              Let&apos;s <em className="font-serif-accent font-normal">talk</em>
             </h2>
             <p
               className="text-base leading-relaxed mb-10 max-w-xl mx-auto"

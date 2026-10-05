@@ -148,6 +148,13 @@ section[id] { scroll-margin-top: 90px; }
   opacity: 0.05;
 }
 
+/* ─── Serif italic accent word inside bold headings ───────────── */
+.font-serif-accent {
+  font-family: var(--font-serif-accent), Georgia, serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
 /* ─── Dot-grid texture (Virion "about"-style decorative bg) ────── */
 .bg-dots {
   background-image: radial-gradient(var(--color-accent) 1px, transparent 1px);
