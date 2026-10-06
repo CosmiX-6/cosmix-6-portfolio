@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const links = [
-  { href: "/#home", label: "Home", id: "home" },
-  { href: "/#about", label: "About", id: "about" },
   { href: "/#work", label: "Work", id: "work" },
+  { href: "/#thinking", label: "Thinking", id: "thinking" },
   { href: "/#experience", label: "Experience", id: "experience" },
+  { href: "/#lab", label: "Lab", id: "lab" },
   { href: "/#skills", label: "Skills", id: "skills" },
   { href: "/#contact", label: "Contact", id: "contact" },
 ];
@@ -60,19 +60,8 @@ export function Navbar() {
       >
         {/* Monogram + wordmark */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 pr-1">
-          <span
-            className="flex items-center justify-center w-9 h-9 rounded-full text-xs font-bold text-white"
-            style={{ background: "var(--gradient-cta)" }}
-          >
-            AK
-          </span>
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="text-sm font-bold tracking-tight" style={{ color: "var(--color-headline)" }}>
-              Akash Labs
-            </span>
-            <span className="text-[10px]" style={{ color: "var(--color-muted)" }}>
-              Data Science · AI Systems
-            </span>
+          <span className="text-sm font-bold tracking-tight pl-1" style={{ color: "var(--color-headline)" }}>
+            Akash Sharma
           </span>
         </Link>
 

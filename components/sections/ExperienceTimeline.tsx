@@ -19,12 +19,12 @@ export function ExperienceTimeline() {
         <AnimatedSection>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
             <div>
-              <div className="eyebrow-badge mb-4">Experience</div>
+              <p className="font-mono text-[11px] tracking-widest uppercase mb-4" style={{ color: "var(--color-muted)" }}>Where I&apos;ve built</p>
               <h2
                 className="text-3xl md:text-4xl font-bold tracking-tight max-w-xl"
                 style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
               >
-                Building and evolving revenue AI systems.
+                Production ML systems I&apos;ve owned, end to end.
               </h2>
             </div>
             <p className="text-sm max-w-sm" style={{ color: "var(--color-body)" }}>
