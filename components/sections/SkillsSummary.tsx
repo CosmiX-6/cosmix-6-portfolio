@@ -18,7 +18,7 @@ import { skillCategories, type Skill, type SkillLevel } from "@/lib/data/skills"
 
 const categoryMeta: Record<string, { icon: LucideIcon; appliedIn: string }> = {
   "Machine Learning": { icon: Brain, appliedIn: "Revenue Forecasting, Propensity Models" },
-  Forecasting: { icon: TrendingUp, appliedIn: "Pipeline Projection Engine" },
+  Forecasting: { icon: TrendingUp, appliedIn: "Sales Pipeline Forecasting" },
   "Marketing Science": { icon: Megaphone, appliedIn: "MMM Platform, Budget Planning" },
   "Programming & Data": { icon: Code, appliedIn: "All Production Systems" },
   "Cloud & Infrastructure": { icon: Cloud, appliedIn: "Production ML Pipelines" },

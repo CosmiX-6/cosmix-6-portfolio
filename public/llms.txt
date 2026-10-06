@@ -54,7 +54,7 @@ Full-stack MMX platform: BayesianRidge on STL-decomposed residuals, Hill Curve T
 (L-BFGS-B multi-start), adstock decay, PCA attribution, response curve generation, scenario planning.
 Supports spend optimization and budget reallocation recommendations.
 
-### Pipeline Projection Engine (P08)
+### Sales Pipeline Forecasting (P08)
 Central projection system integrating 8+ ML model families into daily pipeline and booking
 projections. Two-layer architecture: bottom-up propensity aggregation + top-down macro forecast scaling.
 

@@ -137,8 +137,8 @@ export const projects: Project[] = [
   // ── PIPELINE INTELLIGENCE ──────────────────────────────
   {
     id: "P08",
-    slug: "pipeline-projection-engine",
-    title: "Full Pipeline Projection Engine",
+    slug: "sales-pipeline-forecasting",
+    title: "Sales Pipeline Forecasting",
     domain: "Pipeline Intelligence",
     tier: 1,
     employment: "ada-asia",
@@ -169,8 +169,8 @@ export const projects: Project[] = [
   },
   {
     id: "P13",
-    slug: "demand-generation-potential-model",
-    title: "Demand Generation Potential Model",
+    slug: "pipeline-potential-forecasting",
+    title: "Pipeline Potential Forecasting",
     domain: "Pipeline Intelligence",
     tier: 1,
     employment: "ada-asia",
@@ -195,8 +195,8 @@ export const projects: Project[] = [
   },
   {
     id: "P23",
-    slug: "walk-in-pipeline-projection",
-    title: "Walk-In Pipeline Projection",
+    slug: "inbound-pipeline-forecasting",
+    title: "Inbound Pipeline Forecasting",
     domain: "Pipeline Intelligence",
     tier: 2,
     employment: "ada-asia",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     problem:
       "Complementing the Demand Generation model, teams needed a simpler regression-based estimate for walk-in pipeline from sources that don't follow the standard demand generation pattern.",
     what:
-      "First model built using the Generic Regressor Framework (P22). Predicts walk-in pipeline created within the quarter from new sources, as a regression target using the standardized feature pipeline and validation framework.",
+      "First model built using the ML Regression Framework (P22). Predicts walk-in pipeline created within the quarter from new sources, as a regression target using the standardized feature pipeline and validation framework.",
     impact: "Added granularity to within-quarter pipeline creation estimates, complementing the Demand Generation model.",
     metrics: [],
     techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
@@ -261,7 +261,7 @@ export const projects: Project[] = [
     what:
       "XGBoost Classifier trained on lead attributes, activity/engagement patterns, journey sequences, funnel stage timestamps, and derived velocity metrics. Multi-quarter scoring: separate probability per quarter horizon. Feature selection via Feature Importance + Chi-squared + ANOVA F-test. Heuristic fallback for low-data customers using segment conversion rates.",
     impact:
-      "Replaced flat conversion rates with ML-scored per-lead conversion likelihoods, feeding the Pipeline Projection Engine with more accurate record-level contributions.",
+      "Replaced flat conversion rates with ML-scored per-lead conversion likelihoods, feeding the Sales Pipeline Forecasting with more accurate record-level contributions.",
     metrics: [
       { value: "4", label: "Quarter Horizons Scored" },
       { value: "Daily", label: "Scoring Frequency" },
@@ -297,8 +297,8 @@ export const projects: Project[] = [
   },
   {
     id: "P24",
-    slug: "account-propensity-x-month",
-    title: "Account Propensity X Month",
+    slug: "multi-horizon-account-propensity",
+    title: "Multi-Horizon Account Propensity",
     domain: "Propensity & Scoring",
     tier: 2,
     employment: "ada-asia",
@@ -322,8 +322,8 @@ export const projects: Project[] = [
   // ── REVENUE FORECASTING LAYERS ──────────────────────────
   {
     id: "P01B",
-    slug: "time-decay-forecast-adjustment",
-    title: "Time-Decay Forecast Adjustment",
+    slug: "time-decay-forecast-smoothing",
+    title: "Time-Decay Forecast Smoothing",
     domain: "Revenue Forecasting",
     tier: 1,
     employment: "revsure-ai",
@@ -345,8 +345,8 @@ export const projects: Project[] = [
   },
   {
     id: "P01C",
-    slug: "average-index-forecast-adjustment",
-    title: "Average-Index Forecast Adjustment",
+    slug: "seasonal-index-forecast-adjustment",
+    title: "Seasonal Index Forecast Adjustment",
     domain: "Revenue Forecasting",
     tier: 1,
     employment: "revsure-ai",
@@ -368,8 +368,8 @@ export const projects: Project[] = [
   },
   {
     id: "P01F",
-    slug: "forecast-explainability-shap",
-    title: "Forecast Explainability & SHAP Logging",
+    slug: "model-explainability-shap",
+    title: "Model Explainability with SHAP",
     domain: "Revenue Forecasting",
     tier: 1,
     employment: "revsure-ai",
@@ -391,8 +391,8 @@ export const projects: Project[] = [
   },
   {
     id: "P01G",
-    slug: "configurable-multi-model-framework",
-    title: "Configurable Multi-Model ML Framework",
+    slug: "multi-model-ml-framework",
+    title: "Multi-Model ML Framework",
     domain: "Revenue Forecasting",
     tier: 1,
     employment: "revsure-ai",
@@ -420,7 +420,7 @@ export const projects: Project[] = [
   {
     id: "P19",
     slug: "campaign-performance-prediction",
-    title: "Campaign Performance Prediction Engine",
+    title: "Campaign Performance Prediction",
     domain: "Marketing Science",
     tier: 1,
     employment: "ada-asia",
@@ -447,8 +447,8 @@ export const projects: Project[] = [
   // ── DATA ENGINEERING ────────────────────────────────────
   {
     id: "P05",
-    slug: "pyspark-revenue-metrics-pipeline",
-    title: "Revenue Metrics Pipeline Migration",
+    slug: "pyspark-data-pipeline-migration",
+    title: "PySpark Data Pipeline Migration",
     domain: "Data Engineering",
     tier: 1,
     employment: "ada-asia",
@@ -496,8 +496,8 @@ export const projects: Project[] = [
   },
   {
     id: "P04",
-    slug: "smart-filter-parser",
-    title: "Smart Filter Parser & SQL Generation",
+    slug: "dynamic-sql-generation",
+    title: "Dynamic SQL Query Generation",
     domain: "Data Engineering",
     tier: 2,
     employment: "ada-asia",
@@ -521,8 +521,8 @@ export const projects: Project[] = [
   // ── PLATFORM & INFRASTRUCTURE ──────────────────────────
   {
     id: "P22",
-    slug: "generic-regressor-framework",
-    title: "Generic Regressor Framework",
+    slug: "ml-regression-framework",
+    title: "ML Regression Framework",
     domain: "Platform & Infrastructure",
     tier: 2,
     employment: "ada-asia",
@@ -610,7 +610,7 @@ export const projects: Project[] = [
     what:
       "XGBoost Regressor trained on account attributes, historical booking patterns, and product prediction inputs (from P14). Heuristic segment-average fallback for low-data scenarios. Feature selection via Information Value.",
     impact:
-      "Enabled reliable per-record expected value computation (propensity × size) in the Pipeline Projection Engine for all leads and opportunities, including those with missing amounts.",
+      "Enabled reliable per-record expected value computation (propensity × size) in the Sales Pipeline Forecasting for all leads and opportunities, including those with missing amounts.",
     metrics: [],
     techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
     tags: ["Deal Size Prediction", "Revenue Estimation", "Pipeline Intelligence"],
@@ -654,17 +654,17 @@ export const projects: Project[] = [
     problem:
       "Revenue teams needed per-record booking predictions for bottom-up forecasting, separate from the aggregate macro forecast.",
     what:
-      "Built using the Generic Regressor Framework: XGBoost Regressor and Classifier combination predicting booking likelihood and value at the record level. Evolved into the Product Prediction Model (P14) and established the reusable framework (P22).",
+      "Built using the ML Regression Framework: XGBoost Regressor and Classifier combination predicting booking likelihood and value at the record level. Evolved into the Product Prediction Model (P14) and established the reusable framework (P22).",
     impact:
-      "Provided per-record booking contribution estimates for the Pipeline Projection Engine and established the reusable modeling framework.",
+      "Provided per-record booking contribution estimates for the Sales Pipeline Forecasting and established the reusable modeling framework.",
     metrics: [{ value: "Weekend", label: "MVP Build Time" }],
     techStack: ["Python", "XGBoost", "scikit-learn", "BigQuery"],
     tags: ["Booking Prediction", "Revenue Forecasting", "Record-Level ML"],
   },
   {
     id: "P25",
-    slug: "record-level-likelihood-win-rate",
-    title: "Record Level Likelihood & Win Rate",
+    slug: "deal-win-probability-model",
+    title: "Deal Win Probability Model",
     domain: "Revenue Forecasting",
     tier: 2,
     employment: "ada-asia",
