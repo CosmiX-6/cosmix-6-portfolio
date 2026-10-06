@@ -177,7 +177,7 @@ const html = `<!DOCTYPE html>
 <div class="section">
   <div class="sh">Summary</div>
   <p class="summary">AI/ML Engineer with 4+ years building and operating production ML systems for B2B SaaS revenue intelligence.
-  Owned 25+ systems spanning revenue forecasting, pipeline projection, propensity modeling, attribution, and marketing mix modeling,
+  Owned 25+ systems spanning revenue forecasting, sales pipeline forecasting, propensity modeling, attribution, and marketing mix modeling,
   scoring millions of records daily. Strong across modeling, leakage-safe validation, explainability, monitoring, distributed data
   processing, and production ML pipelines on GCP.</p>
 </div>
@@ -193,9 +193,9 @@ const html = `<!DOCTYPE html>
     <div class="job-company">Revsure AI</div>
     <ul class="bullets">
       <li>Held booking model MAPE in the 5–15% range through forecast-category feature engineering, with daily end-of-quarter forecast accuracy of ~85–99% validated against actual quarter-end outcomes</li>
-      <li>Designed two production forecast adjustment layers (time-decay and average-index), bringing the combined macro forecast system to &lt;10% overall pipeline MAPE</li>
+      <li>Designed two production forecast adjustment layers (time-decay and average-index) that refine the combined macro forecast system</li>
       <li>Productionized model explainability across XGBoost and Ridge forecasts using SHAP and coefficient attribution; logged feature contributions to BigQuery and surfaced them in customer-facing dashboards</li>
-      <li>Built a ML Regression Framework covering feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV, quarter-aware validation, scoring/writeback, and 30+ runtime parameters for customer-specific behavior without code changes</li>
+      <li>Built an ML Regression Framework covering feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV, quarter-aware validation, scoring/writeback, and 30+ runtime parameters for customer-specific behavior without code changes</li>
       <li>Built a production Model Metric Dashboard tracking MAPE, wMAPE, MAE, RMSE, and classification metrics for degradation detection and retraining validation</li>
     </ul>
   </div>
@@ -208,10 +208,10 @@ const html = `<!DOCTYPE html>
     <div class="job-company">ADA Asia</div>
     <ul class="bullets">
       <li>Architected and productionized a Sales Pipeline Forecasting system for 15+ enterprise customers; 8+ ML model families aggregate bottom-up into daily multi-quarter revenue projections across millions of records</li>
-      <li>Engineered the Marketing Mix Modeling platform from research through production using Hill saturation curves, adstock decay, seasonal decomposition, and scenario planning; 5-15% MAPE across 60+ channels including 10+ paid channels</li>
+      <li>Engineered the Marketing Mix Modeling platform from research through production using Hill saturation curves, adstock decay, seasonal decomposition, and scenario planning; 5–15% MAPE across 60+ channels including 10+ paid channels</li>
       <li>Owned the Revenue Forecasting Platform end-to-end, evolving a quarter-to-date heuristic into a production XGBoost system with leakage-safe cross-validation and daily scoring across current and future quarter horizons</li>
       <li>Built a four-model propensity scoring suite for accounts, leads, opportunities, and demand generation, with multi-horizon conversion likelihoods, SHAP explanations, and a statistical fallback for low-data customers</li>
-      <li>Cut revenue-metric pipeline runtime from ~1 day to ~3 minutes using distributed PySpark on GCP Dataproc; parallelized model training from 5-6 hours to ~1 hour across 30+ customer tenants</li>
+      <li>Cut revenue-metric pipeline runtime from ~1 day to ~3 minutes using distributed PySpark on GCP Dataproc; parallelized model training from 5–6 hours to ~1 hour across 30+ customer tenants</li>
     </ul>
   </div>
 </div>
