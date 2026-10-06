@@ -18,7 +18,7 @@ export const experiences: Experience[] = [
     context:
       "Continued ownership and evolution of the same B2B SaaS Revenue Intelligence Platform, enhancing the forecasting, attribution, and marketing mix modeling systems built during the prior engagement.",
     highlights: [
-      "Reduced booking model MAPE by ~52% through forecast category feature engineering",
+      "Holds model MAPE in the 5–15% range through forecast category feature engineering, with daily EOQ forecast accuracy of ~85–99%",
       "Deployed time-decay and average-index forecast adjustment layers to production",
       "Built dual-algorithm explainability infrastructure (SHAP + coefficient contribution) with BigQuery logging",
       "Improved configurable multi-model ML framework to support 30+ parameters",

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
 import { HeroDashboard } from "@/components/shared/HeroDashboard";
-import { supportingProof } from "@/lib/data/metrics";
+import { supportingProofs } from "@/lib/data/metrics";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -46,13 +46,18 @@ export function Hero() {
 
             <motion.h1
               {...fadeUp(0.06)}
-              className="text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.08] mb-6"
+              className="text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.08] mb-3"
               style={{ color: "var(--color-headline)", letterSpacing: "-0.035em" }}
             >
-              Applied Data Science,
-              <br />
-              <span style={{ color: "var(--color-accent)" }}>proven in production.</span>
+              Akash Sharma
             </motion.h1>
+            <motion.p
+              {...fadeUp(0.1)}
+              className="text-2xl md:text-3xl font-semibold tracking-tight leading-snug mb-6"
+              style={{ color: "var(--color-accent)", letterSpacing: "-0.02em" }}
+            >
+              Applied Data Science, proven in production.
+            </motion.p>
 
             <motion.p
               {...fadeUp(0.14)}
@@ -124,12 +129,18 @@ export function Hero() {
             </div>
           ))}
         </motion.div>
-        <p className="mt-4 text-xs text-center" style={{ color: "var(--color-muted)" }}>
-          <span className="font-mono font-bold" style={{ color: "var(--color-metric)" }}>
-            {supportingProof.value}
-          </span>{" "}
-          {supportingProof.label}, {supportingProof.detail}
-        </p>
+        <div className="mt-4 grid sm:grid-cols-2 gap-3">
+          {supportingProofs.map((p) => (
+            <div key={p.label} className="flex items-baseline gap-3 px-5 py-3 rounded-2xl" style={{ background: "var(--color-surface-el)" }}>
+              <span className="font-mono font-bold text-lg" style={{ color: "var(--color-metric)" }}>
+                {p.value}
+              </span>
+              <span className="text-xs" style={{ color: "var(--color-muted)" }}>
+                <span className="font-semibold" style={{ color: "var(--color-headline)" }}>{p.label}</span>, {p.detail}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -53,9 +53,9 @@ export const projects: Project[] = [
     what:
       "Built and evolved the core end-of-quarter (EOQ) forecasting system, growing it from a QTD-based heuristic into a multi-layer ML platform. The system produces daily forecasts across four quarter horizons using XGBoost with leakage-safe GroupShuffleSplit validation. Enhancements over 4 years include: time-decay and average-index adjustment layers, SHAP explainability with dual-algorithm contribution logging, and a configurable multi-model framework supporting 30+ parameters for algorithm selection, feature groups, and ensemble composition.",
     impact:
-      "Reduced booking model MAPE by ~52% through forecast category feature engineering. System delivers daily pipeline and booking forecasts used by enterprise revenue teams for EOQ planning and boardroom reporting.",
+      "Holds model MAPE in the 5–15% range through forecast category feature engineering, with daily EOQ forecast accuracy of ~85–99%. System delivers daily pipeline and booking forecasts used by enterprise revenue teams for EOQ planning and boardroom reporting.",
     metrics: [
-      { value: "~52%", label: "MAPE Reduction" },
+      { value: "5–15%", label: "Model MAPE" },
       { value: "4+", label: "Quarter Horizons" },
       { value: "Daily", label: "Scoring Frequency" },
     ],

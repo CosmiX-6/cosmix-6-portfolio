@@ -75,8 +75,8 @@ const domainIcons: Record<string, React.ReactNode> = {
 
 const employmentLabels: Record<string, string> = {
   "ada-asia":    "ADA Asia",
-  "revsure-ai":  "Revsure AI",
-  "both":        "ADA Asia → Revsure AI",
+  "revsure-ai":  "Current role",
+  "both":        "ADA Asia → Current role",
 };
 
 function readingTime(...parts: string[]): number {

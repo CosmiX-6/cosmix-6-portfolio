@@ -30,8 +30,15 @@ export const highlights: Highlight[] = [
   },
 ];
 
-export const supportingProof = {
-  value: "~52%",
-  label: "reduction in booking model MAPE",
-  detail: "through forecast-category feature engineering, shipped to production at Revsure AI.",
-};
+export const supportingProofs = [
+  {
+    value: "5–15%",
+    label: "Model MAPE",
+    detail: "daily EOQ forecasting across customers",
+  },
+  {
+    value: "~85–99%",
+    label: "EOQ Forecast Accuracy",
+    detail: "daily quarter-end forecasts validated against actual quarter-end outcomes",
+  },
+];

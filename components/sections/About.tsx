@@ -132,7 +132,7 @@ export function About() {
                 </p>
                 <p>
                   In December 2024, I transitioned into Revsure AI as an AI Engineer, continuing to
-                  own and evolve the same platform: reducing forecast MAPE by ~52%, shipping
+                  own and evolve the same platform: holding model MAPE in the 5–15% range, shipping
                   explainability infrastructure, building a configurable multi-model framework, and
                   resolving production-critical edge cases at scale.
                 </p>
