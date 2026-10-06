@@ -37,7 +37,7 @@ Marketing Science Data Scientist, ML Platform Engineer.
 
 ## Verified Impact
 
-- Forecast model MAPE reduced ~52% through forecast category feature engineering
+- Model MAPE in the 5–15% range through forecast category feature engineering; daily EOQ forecast accuracy of ~85–99%
 - Modeling pipeline time reduced from 5–6 hours to 1 hour via joblib parallelization
 - Migrated revenue metrics pipeline from pandas to distributed PySpark, resolving critical implementation bugs
 - 25 production ML systems shipped end-to-end
