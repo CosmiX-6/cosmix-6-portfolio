@@ -232,7 +232,7 @@ const html = `<!DOCTYPE html>
 <div class="section">
   <div class="sh">Awards &amp; Recognition</div>
   <div class="award-line"><strong>AQUA SPOT Award</strong>, ADA Global | Nov 2024, sustained ML platform ownership and delivery across the Revenue Intelligence product</div>
-  <div class="award-line"><strong>Star of the Month</strong> | Apr 2026, consistent system improvement and technical delivery as AI Engineer</div>
+  <div class="award-line"><strong>Star of the Month</strong>, Revsure AI | Apr 2026, consistent system improvement and technical delivery as AI Engineer</div>
 </div>
 
 <div class="section">
