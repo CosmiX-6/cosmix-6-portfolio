@@ -192,7 +192,7 @@ const html = `<!DOCTYPE html>
     </div>
     <div class="job-company">Revsure AI</div>
     <ul class="bullets">
-      <li>Reduced end-of-quarter booking forecast error by ~52% through forecast-category feature engineering on the production revenue prediction model</li>
+      <li>Held booking model MAPE in the 5–15% range through forecast-category feature engineering, with daily end-of-quarter forecast accuracy of ~85–99% validated against actual quarter-end outcomes</li>
       <li>Designed two production forecast adjustment layers (time-decay and average-index), bringing the combined macro forecast system to &lt;10% overall pipeline MAPE</li>
       <li>Productionized model explainability across XGBoost and Ridge forecasts using SHAP and coefficient attribution; logged feature contributions to BigQuery and surfaced them in customer-facing dashboards</li>
       <li>Built a Generic Regressor Framework covering feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV, quarter-aware validation, scoring/writeback, and 30+ runtime parameters for customer-specific behavior without code changes</li>
@@ -232,7 +232,7 @@ const html = `<!DOCTYPE html>
 <div class="section">
   <div class="sh">Awards &amp; Recognition</div>
   <div class="award-line"><strong>AQUA SPOT Award</strong>, ADA Global | Nov 2024, sustained ML platform ownership and delivery across the Revenue Intelligence product</div>
-  <div class="award-line"><strong>Star of the Month</strong>, Revsure AI | Apr 2026, consistent system improvement and technical delivery as AI Engineer</div>
+  <div class="award-line"><strong>Star of the Month</strong> | Apr 2026, consistent system improvement and technical delivery as AI Engineer</div>
 </div>
 
 <div class="section">
