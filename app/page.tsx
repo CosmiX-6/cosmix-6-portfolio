@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
-import { MetricsBar } from "@/components/sections/MetricsBar";
 import { About } from "@/components/sections/About";
-import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { SkillsSummary } from "@/components/sections/SkillsSummary";
+import { ToolsRow } from "@/components/sections/ToolsRow";
+import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
+import { HowIWork } from "@/components/sections/HowIWork";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export const metadata: Metadata = {
@@ -15,11 +16,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <MetricsBar />
       <About />
-      <ExperienceTimeline />
       <FeaturedProjects />
       <SkillsSummary />
+      <ToolsRow />
+      <ExperienceTimeline />
+      <HowIWork />
       <ContactCTA />
     </>
   );

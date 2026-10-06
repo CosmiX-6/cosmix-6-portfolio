@@ -49,14 +49,14 @@ export function WorkCard({ project }: { project: Project }) {
         className="relative h-36 flex items-end justify-between p-5"
         style={{ background: `linear-gradient(135deg, ${color}2e 0%, transparent 75%)` }}
       >
-        <span style={{ color }} className="opacity-70">
-          {domainIcons[project.domain]}
-        </span>
         <span
-          className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
+          className="text-[11px] font-semibold px-2.5 py-1 rounded-full self-start"
           style={{ background: "var(--color-surface)", color, boxShadow: "var(--shadow-card)" }}
         >
           {project.domain}
+        </span>
+        <span style={{ color }} className="opacity-70">
+          {domainIcons[project.domain]}
         </span>
       </div>
 

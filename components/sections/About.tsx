@@ -1,5 +1,32 @@
-import { Sparkles, MapPin, Briefcase, Globe } from "lucide-react";
+import { Sparkles, MapPin, Briefcase, Globe, Database, Sigma, Server, Target, ArrowRight } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
+
+const steps = [
+  {
+    icon: Database,
+    title: "Data",
+    body: "Raw, messy, multi-source",
+    detail: "CRM · Ads · Product · Sales · External data",
+  },
+  {
+    icon: Sigma,
+    title: "Modeling",
+    body: "Statistical + ML methods",
+    detail: "Forecasting · Attribution · MMM · Propensity",
+  },
+  {
+    icon: Server,
+    title: "Production",
+    body: "Scalable & reliable systems",
+    detail: "Pipelines · APIs · Monitoring · Explainability",
+  },
+  {
+    icon: Target,
+    title: "Business Decision",
+    body: "Insights that drive impact",
+    detail: "Pipeline · Revenue · Marketing strategy · Planning",
+  },
+];
 
 const exploring = [
   "LLM orchestration & multi-agent pipelines",
@@ -22,6 +49,61 @@ export function About() {
     >
       <div className="absolute inset-0 bg-dots pointer-events-none" aria-hidden />
       <div className="relative max-w-5xl mx-auto">
+        {/* What I do */}
+        <AnimatedSection>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+            <div>
+              <div className="eyebrow-badge mb-4">What I do</div>
+              <h2
+                className="text-3xl md:text-4xl font-bold tracking-tight max-w-md"
+                style={{ color: "var(--color-headline)", letterSpacing: "-0.02em" }}
+              >
+                End-to-end Data Science for real-world impact.
+              </h2>
+            </div>
+            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "var(--color-body)" }}>
+              From raw, messy data to production systems. I work across the entire lifecycle to build
+              solutions that are accurate, explainable, and actually used.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-4 gap-4 mb-20">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <AnimatedSection key={step.title} delay={i * 0.05} className="relative">
+                <div className="card-soft p-6 h-full">
+                  <span
+                    className="flex items-center justify-center w-12 h-12 rounded-full mb-5"
+                    style={{ background: "var(--color-accent-dim)", color: "var(--color-accent)" }}
+                  >
+                    <Icon size={22} strokeWidth={1.75} />
+                  </span>
+                  <p className="text-base font-semibold mb-1" style={{ color: "var(--color-headline)" }}>
+                    {step.title}
+                  </p>
+                  <p className="text-sm mb-3" style={{ color: "var(--color-body)" }}>
+                    {step.body}
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                    {step.detail}
+                  </p>
+                </div>
+                {i < steps.length - 1 && (
+                  <span
+                    className="hidden md:flex absolute top-1/2 -right-[11px] -translate-y-1/2 z-10 items-center justify-center w-[22px] h-[22px] rounded-full"
+                    style={{ background: "var(--color-surface)", color: "var(--color-accent)", boxShadow: "var(--shadow-card)" }}
+                    aria-hidden
+                  >
+                    <ArrowRight size={12} />
+                  </span>
+                )}
+              </AnimatedSection>
+            );
+          })}
+        </div>
+
         <AnimatedSection>
           <div className="eyebrow-badge mb-4">About</div>
           <h2
