@@ -16,6 +16,7 @@ import {
   Server,
 } from "lucide-react";
 import { projects, getProjectBySlug } from "@/lib/data/projects";
+import { caseStudies } from "@/lib/data/caseStudies";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ShareLinks } from "@/components/shared/ShareLinks";
 import { ProjectCard } from "@/components/shared/ProjectCard";
@@ -79,6 +80,17 @@ const employmentLabels: Record<string, string> = {
   "both":        "ADA Asia → Current role",
 };
 
+function CaseSection({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <h2 className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: "var(--color-muted)" }}>
+        {label}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
 function readingTime(...parts: string[]): number {
   const words = parts.join(" ").trim().split(/\s+/).length;
   return Math.max(1, Math.round(words / 200));
@@ -89,6 +101,7 @@ export default async function ProjectPage({ params }: PageProps) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
+  const narrative = caseStudies[project.slug];
   const accentColor = domainColors[project.domain] ?? "var(--color-accent)";
   const domainIcon = domainIcons[project.domain];
   const currentIndex = projects.findIndex((p) => p.slug === slug);
@@ -255,42 +268,114 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="px-6 pb-12">
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12">
             {/* Main content */}
-            <div className="md:col-span-2 space-y-10">
-              <section>
-                <h2
-                  className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: "var(--color-muted)" }}
-                >
-                  The Problem
-                </h2>
-                <p className="text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
-                  {project.problem}
-                </p>
-              </section>
-
-              <section>
-                <h2
-                  className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: "var(--color-muted)" }}
-                >
-                  What Was Built
-                </h2>
+            <div className="md:col-span-2 space-y-12">
+              <CaseSection label="Overview">
                 <p className="text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
                   {project.what}
                 </p>
-              </section>
+              </CaseSection>
 
-              <section>
-                <h2
-                  className="font-mono text-xs tracking-widest uppercase mb-4"
-                  style={{ color: "var(--color-muted)" }}
-                >
-                  Business Impact
-                </h2>
+              <CaseSection label="The problem">
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
+                  {project.problem}
+                </p>
+                {narrative?.initialApproach && (
+                  <dl className="mt-6 grid sm:grid-cols-2 gap-3">
+                    <div className="card-soft p-5">
+                      <dt className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--color-muted)" }}>
+                        Initial approach
+                      </dt>
+                      <dd className="text-sm leading-relaxed" style={{ color: "var(--color-body)" }}>
+                        {narrative.initialApproach}
+                      </dd>
+                    </div>
+                    {narrative.whyNotEnough && (
+                      <div className="card-soft p-5">
+                        <dt className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--color-muted)" }}>
+                          Why it wasn&apos;t enough
+                        </dt>
+                        <dd className="text-sm leading-relaxed" style={{ color: "var(--color-body)" }}>
+                          {narrative.whyNotEnough}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+                )}
+              </CaseSection>
+
+              {narrative?.flow && (
+                <CaseSection label="How the system works">
+                  <ol className="flex flex-col gap-2">
+                    {narrative.flow.map((step, i) => (
+                      <li key={step.label} className="flex items-start gap-4">
+                        <span
+                          className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-mono text-[10px] font-bold"
+                          style={{ background: "var(--color-accent-dim)", color: "var(--color-accent)" }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div className="pt-0.5">
+                          <p className="text-sm font-semibold" style={{ color: "var(--color-headline)" }}>
+                            {step.label}
+                          </p>
+                          {step.note && (
+                            <p className="text-xs" style={{ color: "var(--color-muted)" }}>
+                              {step.note}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </CaseSection>
+              )}
+
+              {narrative?.decisions && (
+                <CaseSection label="Engineering decisions">
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {narrative.decisions.map((d) => (
+                      <div key={d.question} className="card-soft p-5">
+                        <p className="font-mono text-xs font-semibold mb-2" style={{ color: "var(--color-accent)" }}>
+                          {d.question}
+                        </p>
+                        <p className="text-sm leading-relaxed" style={{ color: "var(--color-body)" }}>
+                          {d.answer}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </CaseSection>
+              )}
+
+              {narrative?.validation && (
+                <CaseSection label="Validation">
+                  <p className="text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
+                    {narrative.validation}
+                  </p>
+                </CaseSection>
+              )}
+
+              {narrative?.failures && (
+                <CaseSection label="What broke">
+                  <ul className="flex flex-wrap gap-2">
+                    {narrative.failures.map((f) => (
+                      <li
+                        key={f}
+                        className="text-sm px-3 py-1.5 rounded-full"
+                        style={{ background: "var(--color-surface-el)", color: "var(--color-headline)" }}
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </CaseSection>
+              )}
+
+              <CaseSection label="Results">
                 <p className="text-base leading-relaxed" style={{ color: "var(--color-body)" }}>
                   {project.impact}
                 </p>
-              </section>
+              </CaseSection>
             </div>
 
             {/* Sidebar */}
