@@ -2,24 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
-import { EngineeringArtifact } from "@/components/shared/EngineeringArtifact";
 
 export function Hero() {
   return (
     <section id="home" className="relative px-6 scroll-mt-28">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-[1.1fr_1fr] gap-12 items-center pt-8 pb-20">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[1.1fr_0.85fr] gap-12 items-center pt-8 pb-20">
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div
-              className="relative w-11 h-11 rounded-full overflow-hidden shrink-0"
-              style={{ border: "1.5px solid var(--color-border)" }}
-            >
-              <Image src="/akash.png" alt="Akash Sharma" fill sizes="44px" className="object-cover object-center" />
-            </div>
-            <p className="font-mono text-[11px] tracking-widest uppercase" style={{ color: "var(--color-muted)" }}>
-              AI Engineer · Bengaluru · Open to opportunities
-            </p>
-          </div>
+          <p className="font-mono text-[11px] tracking-widest uppercase mb-6" style={{ color: "var(--color-muted)" }}>
+            AI Engineer · Bengaluru · Open to opportunities
+          </p>
           <h1
             className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.04] mb-4"
             style={{ color: "var(--color-headline)", letterSpacing: "-0.035em" }}
@@ -72,7 +63,35 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <EngineeringArtifact />
+
+        <figure className="relative mx-auto md:mx-0 w-full max-w-sm">
+          <div
+            className="relative aspect-[4/5] rounded-3xl overflow-hidden"
+            style={{ boxShadow: "var(--shadow-card)" }}
+          >
+            <Image
+              src="/akash.png"
+              alt="Akash Sharma"
+              fill
+              sizes="(min-width: 768px) 360px, 80vw"
+              className="object-cover object-top"
+              priority
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 px-5 py-4"
+              style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 100%)" }}
+            >
+              <p className="text-sm font-semibold text-white">Akash Sharma</p>
+              <p className="font-mono text-[11px] text-white/75">AI Engineer · Bengaluru</p>
+            </div>
+          </div>
+          <figcaption
+            className="absolute -bottom-4 -left-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-full"
+            style={{ background: "var(--color-surface)", color: "var(--color-muted)", boxShadow: "var(--shadow-card)" }}
+          >
+            fig. 00 · self
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
