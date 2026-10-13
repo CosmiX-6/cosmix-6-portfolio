@@ -64,10 +64,22 @@ export function Hero() {
           </div>
         </div>
 
-        <figure className="relative mx-auto md:mx-0 w-full max-w-sm">
+        <div className="relative mx-auto md:mx-0 w-full max-w-sm">
           <div
-            className="relative aspect-[4/5] rounded-3xl overflow-hidden"
-            style={{ boxShadow: "var(--shadow-card)" }}
+            aria-hidden
+            className="absolute -inset-5 rounded-[36px]"
+            style={{
+              background: "radial-gradient(70% 70% at 50% 35%, var(--color-accent-glow) 0%, transparent 75%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute -bottom-4 -right-4 w-full h-full rounded-[28px]"
+            style={{ background: "var(--color-accent-dim)" }}
+          />
+          <div
+            className="relative aspect-[4/5] rounded-[28px] overflow-hidden"
+            style={{ boxShadow: "var(--shadow-card-hover)", border: "1px solid var(--color-border)" }}
           >
             <Image
               src="/akash.png"
@@ -77,21 +89,8 @@ export function Hero() {
               className="object-cover object-top"
               priority
             />
-            <div
-              className="absolute inset-x-0 bottom-0 px-5 py-4"
-              style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 100%)" }}
-            >
-              <p className="text-sm font-semibold text-white">Akash Sharma</p>
-              <p className="font-mono text-[11px] text-white/75">AI Engineer · Bengaluru</p>
-            </div>
           </div>
-          <figcaption
-            className="absolute -bottom-4 -left-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-full"
-            style={{ background: "var(--color-surface)", color: "var(--color-muted)", boxShadow: "var(--shadow-card)" }}
-          >
-            fig. 00 · self
-          </figcaption>
-        </figure>
+        </div>
       </div>
     </section>
   );
