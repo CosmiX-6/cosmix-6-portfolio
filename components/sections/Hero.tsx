@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
@@ -8,9 +9,17 @@ export function Hero() {
     <section id="home" className="relative px-6 scroll-mt-28">
       <div className="max-w-5xl mx-auto grid md:grid-cols-[1.1fr_1fr] gap-12 items-center pt-8 pb-20">
         <div>
-          <p className="font-mono text-[11px] tracking-widest uppercase mb-6" style={{ color: "var(--color-muted)" }}>
-            AI Engineer · Bengaluru · Open to opportunities
-          </p>
+          <div className="flex items-center gap-3 mb-6">
+            <div
+              className="relative w-11 h-11 rounded-full overflow-hidden shrink-0"
+              style={{ border: "1.5px solid var(--color-border)" }}
+            >
+              <Image src="/akash.png" alt="Akash Sharma" fill sizes="44px" className="object-cover object-center" />
+            </div>
+            <p className="font-mono text-[11px] tracking-widest uppercase" style={{ color: "var(--color-muted)" }}>
+              AI Engineer · Bengaluru · Open to opportunities
+            </p>
+          </div>
           <h1
             className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.04] mb-4"
             style={{ color: "var(--color-headline)", letterSpacing: "-0.035em" }}
