@@ -26,8 +26,17 @@ export const personSchema = {
     "https://github.com/CosmiX-6/",
   ],
   description:
-    "AI Engineer with 4+ years building production ML systems: forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
+    "AI Engineer in Bengaluru, India, with 4.5 years building production ML and LLM systems and delivering them to enterprise customers: forecasting, explainability, multi-provider LLM orchestration and AI agents.",
+  homeLocation: {
+    "@type": "Place",
+    name: "Bengaluru, Karnataka, India",
+  },
   knowsAbout: [
+    "Large Language Models",
+    "LLM Orchestration",
+    "AI Agents",
+    "Generative AI",
+    "Forward Deployed Engineering",
     "Time-Series Forecasting",
     "Marketing Mix Modeling",
     "Multi-Touch Attribution",
@@ -38,7 +47,6 @@ export const personSchema = {
     "Machine Learning Engineering",
     "Propensity Modeling",
     "Causal Inference",
-    "Statistical Experimentation",
     "STL Decomposition",
     "SARIMAX",
     "Applied ML",
@@ -46,6 +54,11 @@ export const personSchema = {
   alumniOf: [
     { "@type": "EducationalOrganization", name: "Imarticus Learning" },
     { "@type": "EducationalOrganization", name: "T.Z.A.S.P. Pragati College" },
+    { "@type": "CollegeOrUniversity", name: "University of Mumbai" },
+  ],
+  award: [
+    "Star of the Month, RevSure AI (2026)",
+    "AQUA SPOT Award, ADA Global (2024)",
   ],
   worksFor: {
     "@type": "Organization",

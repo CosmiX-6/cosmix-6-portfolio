@@ -41,9 +41,15 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   description:
-    "AI Engineer with 4+ years building production ML systems: forecasting pipelines, attribution models, statistical experimentation, and ML infrastructure at scale.",
+    "Akash Sharma, AI Engineer in Bengaluru: 4.5 years building production ML and LLM systems for enterprise customers - forecasting, explainability, multi-provider LLM orchestration and AI agents.",
   keywords: [
     "AI Engineer",
+    "Forward Deployed Engineer",
+    "Applied AI Engineer",
+    "LLM Engineer",
+    "AI Agents",
+    "Generative AI",
+    "Bengaluru",
     "Data Scientist",
     "ML Engineer",
     "Time-Series Forecasting",

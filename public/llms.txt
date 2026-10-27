@@ -1,11 +1,12 @@
 # Akash Sharma | AI Engineer
 # Website: https://akashlabs.dev
-# Last updated: 2026-06
+# Last updated: 2026-10
 
 ## Identity
 
-Akash Sharma is an AI Engineer with 4+ years of production ML experience, building forecasting
-pipelines, attribution models, marketing science systems, and ML infrastructure at scale.
+Akash Sharma is an AI Engineer based in Bengaluru, India, with 4.5 years of experience building
+production machine learning and LLM systems and delivering them to enterprise customers at two
+B2B SaaS revenue-intelligence startups.
 
 Current role: AI Engineer at Revsure AI (December 2024 – Present)
 Prior role: Data Scientist at ADA Asia (April 2022 – December 2024)
@@ -14,15 +15,33 @@ Both roles: Same enterprise SaaS intelligence platform, with continuous product 
 Contact: akashsharmaxxiv@gmail.com
 LinkedIn: https://www.linkedin.com/in/akash-sharma-01775b14a/
 GitHub: https://github.com/CosmiX-6/
+Location: Bengaluru, Karnataka, India
 
 ## Primary Positioning
 
-AI Engineer who builds production ML systems that turn complex, high-dimensional data into reliable
-business decisions: forecasting pipelines, attribution models, marketing science, and ML
-infrastructure that companies depend on.
+Forward Deployed / Applied AI Engineer: builds production ML and LLM systems and takes them to
+customers. Joins enterprise customer calls to explain forecasts and model behaviour, fixes
+customer-reported issues, and implements customer-requested configurations across 30+ tenants.
 
-Secondary positioning: Applied ML Engineer, Senior Data Scientist, Forecasting Data Scientist,
-Marketing Science Data Scientist, ML Platform Engineer.
+Secondary positioning: AI Engineer, ML Engineer, Applied ML Engineer, Senior Data Scientist,
+Forecasting Data Scientist, Marketing Science Data Scientist, ML Platform Engineer.
+
+## LLM Systems and AI Agents
+
+### Narovva: autonomous news-to-social publishing system (2026)
+Retrieves and de-duplicates news, has an LLM extract a grounded structured brief (Pydantic),
+renders carousels and motion Reels with captions and voice-over, and publishes on a schedule.
+Multi-provider LLM orchestration (Gemini, OpenAI, open-weight models via OpenRouter) with per-model
+quota tracking, rate-limit-aware retries and exponential backoff. Integrates 10 external APIs.
+229 offline tests across 4 repos using fake model providers. Live on Instagram as @contextunfiltered.
+Public package: https://github.com/CosmiX-6/poster-core
+
+### Agentic video-production toolkit: 7 custom Claude Code skills (2026)
+~3.9K lines of Python. Edits raw footage into an editable Premiere Pro project (faster-whisper
+transcription, retake removal, assembly), decodes a reference video into a reusable style, scores
+cuts against release gates, and uses a token-protected local bridge to drive Premiere Pro /
+After Effects (ExtendScript) and Blender (Python). Model decisions are kept separate from
+deterministic tool calls.
 
 ## Core Expertise
 
@@ -68,6 +87,15 @@ metadata. Daily attribution across marketing touchpoints.
 Python, XGBoost, Ridge Regression, BayesianRidge, scikit-learn, SHAP, STL, SARIMAX, Markov Chain,
 L-BFGS-B, PySpark, Spark SQL, BigQuery, GCP, GCP Dataproc, Parquet,
 Apache Airflow, Splink, BERT Embeddings, pandas, NumPy, statsmodels, SciPy, joblib
+
+LLM and engineering: Gemini, OpenAI and OpenRouter APIs, structured outputs (Pydantic), multi-provider
+fallback, Claude Code (custom skills), browser automation, TypeScript, React / Next.js, PostgreSQL,
+REST APIs, GitHub Actions, Vercel serverless, FFmpeg
+
+## Recognition
+
+- Star of the Month, RevSure AI (Apr 2026)
+- AQUA SPOT Award, ADA Global (Nov 2024)
 
 ## Education
 
