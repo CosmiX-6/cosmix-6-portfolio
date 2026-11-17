@@ -18,12 +18,11 @@ export const experiences: Experience[] = [
     context:
       "Continued ownership and evolution of the same B2B SaaS Revenue Intelligence Platform, enhancing the forecasting, attribution, and marketing mix modeling systems built during the prior engagement.",
     highlights: [
-      "Holds model MAPE in the 5–15% range through forecast category feature engineering, with daily EOQ forecast accuracy of ~85–99%",
-      "Deployed time-decay and average-index forecast adjustment layers to production",
-      "Built dual-algorithm explainability infrastructure (SHAP + coefficient contribution) with BigQuery logging",
-      "Improved configurable multi-model ML framework to support 30+ parameters",
-      "Fixed critical MMX production bugs: MinMax extrapolation, scenario cascade drift, STL edge cases",
-      "Authored comprehensive methodology documentation and customer-facing guidance",
+      "Develop and maintain production forecasting systems for booking and revenue prediction, using forecast-category feature engineering to achieve 5–15% MAPE and daily end-of-quarter forecast accuracy of ~85–99%, validated against actual quarter-end outcomes",
+      "Designed two production forecast adjustment layers—time-decay and average-index—to refine and improve the combined macro forecast system",
+      "Productionized model explainability across XGBoost and Ridge forecasts using SHAP and coefficient attribution, logging feature contributions to BigQuery and surfacing them in customer-facing dashboards",
+      "Built a configurable ML regression framework covering feature engineering, algorithm selection (XGBoost, LightGBM, CatBoost, Ridge), RandomizedSearchCV, quarter-aware validation, and production scoring and writeback. Exposed 30+ runtime parameters to support customer-specific configurations without code changes",
+      "Developed a production model metrics dashboard tracking MAPE, wMAPE, MAE, RMSE, and classification metrics for performance monitoring, degradation detection, and retraining validation",
     ],
   },
   {
@@ -35,13 +34,11 @@ export const experiences: Experience[] = [
     context:
       "Built and maintained the ML layer of a B2B SaaS Revenue Intelligence Platform from early prototype through full production: 25+ models spanning forecasting, attribution, propensity, and data engineering.",
     highlights: [
-      "Built the Revenue Forecasting Platform from QTD heuristic through production XGBoost-based EOQ system",
-      "Engineered the Marketing Mix Modeling Platform from research through production",
-      "Designed and owned the Sales Pipeline Forecasting system integrating 8+ ML model families",
-      "Built Markov Chain Multi-Touch Attribution system with firmographic and campaign metadata enrichment",
-      "Migrated revenue metrics pipeline from pandas to distributed PySpark, resolving critical implementation bugs",
-      "Reduced modeling pipeline from 5–6 hours to 1 hour via joblib parallelization",
-      "Provided guidance and mentorship to interns across the team",
+      "Architected and productionized a Sales Pipeline Forecasting system serving 15+ enterprise customers, combining 8+ ML model families to generate bottom-up, daily multi-quarter revenue projections across millions of records",
+      "Engineered a Marketing Mix Modeling platform from research to production, incorporating Bayesian regression, Hill saturation curves, adstock decay, seasonal decomposition, and scenario planning. Supported configurable channel-level modeling across 60+ channels, including 10+ paid channels, with 5–15% MAPE",
+      "Owned the Revenue Forecasting Platform end-to-end, evolving a quarter-to-date heuristic into a production XGBoost forecasting system with leakage-safe cross-validation and daily scoring across current and future quarter horizons",
+      "Built a four-model propensity scoring suite covering accounts, leads, opportunities, and demand generation, generating multi-horizon conversion likelihoods with SHAP-based explanations and statistical fallbacks for low-data customers",
+      "Optimized revenue-metric processing using distributed PySpark on GCP Dataproc, reducing pipeline runtime from approximately one day to three minutes; parallelized model training from 5–6 hours to approximately one hour across 30+ customer tenants",
     ],
   },
 ];
