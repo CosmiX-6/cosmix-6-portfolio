@@ -15,7 +15,7 @@ const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Akash Sharma - AI / ML Engineer</title>
+<title>Akash Sharma - AI Engineer</title>
 <style>
   @page {
     size: A4;
@@ -163,7 +163,7 @@ const html = `<!DOCTYPE html>
 
 <div>
   <div class="name">Akash Sharma</div>
-  <div class="tagline">AI / ML Engineer - Production ML &amp; Revenue Intelligence</div>
+  <div class="tagline">AI Engineer - Production ML &amp; Revenue Intelligence</div>
   <div class="contact">
     Bengaluru, India
     <span class="sep">|</span>+91 8422081717
